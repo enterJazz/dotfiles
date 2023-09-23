@@ -1,11 +1,65 @@
 {
   description = "A very basic flake";
 
-  outputs = { self, nixpkgs }: {
+  inputs =
+  {
+    nixpkgs.url = "github:NixOs/nixpkgs/nixos-23.05";
+    home-manager =
+    {
+      url = "github:nix-community/home-manager/release-23.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
 
-    packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
+  outputs = { self, nixpkgs, home-manager, ... }:
+  let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+    username = "robert";
+  in
+  {
+    homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration
+    {
+      inherit pkgs;
+      modules =
+      [
+        ./home.nix
+        {
+          home =
+          {
+            packages = with pkgs;
+            [
+              tree
+              man-pages
+              nix-index
+              age
+              tmux
+              git
+              rename
+	      firefox
+            ];
+          
+            username = "${username}";
+            homeDirectory = "/home/${username}";
+            stateVersion = "23.05";
+          };
+        }
+      ];
+    };
 
-    packages.x86_64-linux.default = self.packages.x86_64-linux.hello;
-
+    apps.${system}."switch-${username}-hm" =
+    {
+      type = "app";
+      program = "${self.homeConfigurations.${username}.activationPackage}/activate";
+    };   
+    devShells.${system}.default = pkgs.mkShell
+    {
+      name = "dotfiles-devshell";
+      buildInputs = with pkgs;
+      [
+        just
+        fzf
+      ];
+    };
   };
 }

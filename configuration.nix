@@ -60,11 +60,17 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.robert =
+  users =
   {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    defaultUserShell = pkgs.zsh;
+    users.robert =
+    {
+      isNormalUser = true;
+      extraGroups = [
+        "wheel"
+        "video"
+      ]; # Enable ‘sudo’ for the user.
+    };
   };
   
   # List packages installed in system profile. To search, run:
@@ -73,6 +79,11 @@
   #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #   wget
   # ];
+  environment =
+  {
+    shells = [ pkgs.zsh ];
+    variables.EDITOR = "nvim";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -81,15 +92,12 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  # programs that have to be enabled in config
   programs =
   {
-    direnv =
-    {
-      enable = true;
-      # enableZshIntegration = true;
-      nix-direnv.enable = true;
-    };
     zsh.enable = true;
+    light.enable = true;
   };
 
   # List services that you want to enable:
@@ -117,5 +125,25 @@
   system.stateVersion = "23.05"; # Did you read the comment?
   
   boot.loader.grub.device = "/dev/sda";
+
+  security.polkit.enable = true;
+
+  # from nixos.wiki/wiki/Sway
+  systemd.user.services.kanshi =
+  {
+    description = "kanshi daemon";
+    serviceConfig =
+    {
+      type = "simple";
+      ExecStart = ''${pkgs.kanshi}/bin/kanshi -c kanshi_config_file'';
+    };
+  };
+
+  # from drakerossman.com/blog/wayland-on-nixos-confusion-conquest-triumph
+  # audio
+  sound.enable = true;
+  nixpkgs.config.pulseaudio = true;
+  hardware.pulseaudio.enable = true;
+  hardware.opengl.enable = true;
 }
 

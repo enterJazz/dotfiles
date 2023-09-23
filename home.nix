@@ -1,31 +1,50 @@
-{ pkgs, username, ... }:
 {
-  home =
+  programs =
   {
-    packages = with pkgs;
-      [
-        vim
-        tree
-        man-pages
-        nix-index
-        age
-        tmux
-        git
-        rename
-      ];
-  
-    username = ${username};
-    homeDirectory = "/home/${username}";
-  
-    programs =
+    neovim =
     {
-      direnv =
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+    };
+    direnv =
+    {
+      enable = true;
+      # enableZshIntegration = true;
+      nix-direnv.enable = true;
+    };
+    zsh =
+    {
+      enable = true;
+      oh-my-zsh =
       {
         enable = true;
-        enableZshIntegration = true;
-        nix-direnv.enable = true;
+        plugins =
+        [
+          "git"
+          "z"
+          # "zsh-autosuggestions"
+        ];
+        theme = "robbyrussell";
       };
-      zsh.enable = true;
-    };  
+    };
   };
+  # from nixos.wiki/wiki/Sway
+  wayland.windowManager.sway =
+  {
+    enable = true;
+    config = rec
+    {
+      modifier = "Mod4";
+      terminal = "kitty";
+      output =
+      {
+        "Virtual-1" =
+	{
+	  mode = "1920x1080@60Hz";
+	};
+      };
+    };
+  };
+
 }
