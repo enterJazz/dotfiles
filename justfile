@@ -6,7 +6,7 @@ default:
 
 init-nixos-config:
     @ mkdir -p /etc/nixos
-    @! sudo ln ./configuration.nix /etc/nixos/configuration.nix 
+    @! sudo ln ./nixos/* /etc/nixos/*
     sudo nixos-rebuild --flake .#klamm switch
 
 init-hm:

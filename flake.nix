@@ -56,7 +56,8 @@
         inherit system;
 	modules =
 	[
-	  ./configuration.nix
+	  ./nixos/configuration.nix
+	  ./nixos/greetd.nix
 	];
       };
     };
