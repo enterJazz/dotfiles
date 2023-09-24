@@ -5,9 +5,15 @@ default:
     just --choose
 
 init-nixos-config:
-    mkdir -p /etc/nixos
-    @! sudo ln -s /etc/nixos/configuration.nix ./configuration.nix
+    @ mkdir -p /etc/nixos
+    @! sudo ln ./configuration.nix /etc/nixos/configuration.nix 
     sudo nixos-rebuild --flake .#klamm switch
 
 init-hm:
+    @ mkdir -p ~/.config/home-manager
+    @ ln home.nix ~/.config/home-manager/home.nix
     nix run .#switch-robert-hm
+
+init-ssh-conf:
+    @ mkdir -p ~/.ssh/keys
+    @ ln config ~/.ssh/config

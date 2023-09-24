@@ -38,6 +38,7 @@
               git
               rename
 	      firefox
+	      bitwarden
             ];
           
             username = "${username}";

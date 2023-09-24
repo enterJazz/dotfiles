@@ -1,0 +1,2 @@
+Host *
+	IdentityFile ~/.ssh/keys/%r@%h
