@@ -36,7 +36,6 @@
     config = rec
     {
       modifier = "Mod4";
-      terminal = "kitty";
       output =
       {
         "Virtual-1" =

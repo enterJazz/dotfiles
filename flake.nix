@@ -29,6 +29,7 @@
           {
             packages = with pkgs;
             [
+	      alacritty
               tree
               man-pages
               nix-index
@@ -45,6 +46,18 @@
           };
         }
       ];
+    };
+
+    nixosConfigurations =
+    {
+      klamm = nixpkgs.lib.nixosSystem
+      {
+        inherit system;
+	modules =
+	[
+	  ./configuration.nix
+	];
+      };
     };
 
     apps.${system}."switch-${username}-hm" =
