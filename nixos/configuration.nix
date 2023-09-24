@@ -14,10 +14,6 @@
       ./hardware-configuration.nix
     ];
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   nix =
   {
     package = pkgs.nixFlakes;
@@ -124,7 +120,21 @@
 
   system.stateVersion = "23.05";
   
-  boot.loader.grub.device = "/dev/sda";
+  boot.loader =
+  {
+    grub =
+    {
+      enable = true;
+      version = 2;
+      device = "nodev";
+      efiSupport = true;
+    };
+    efi =
+    {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot";
+    };
+  };
 
   security.polkit.enable = true;
 

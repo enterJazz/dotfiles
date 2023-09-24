@@ -39,6 +39,10 @@
               rename
 	      firefox
 	      bitwarden
+	      thunderbird
+	      mako
+	      wl-clipboard
+	      shotman
             ];
           
             username = "${username}";
