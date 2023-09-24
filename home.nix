@@ -1,4 +1,27 @@
+{ pkgs, ... }:
 {
+  home.packages = with pkgs;
+  [
+    alacritty
+    tree
+    man-pages
+    nix-index
+    age
+    tmux
+    git
+    rename
+    firefox
+    bitwarden
+    thunderbird
+    mako
+    wl-clipboard
+    shotman
+    telegram-desktop
+    signal-desktop
+    slack
+    obsidian
+  ];
+
   programs =
   {
     neovim =
@@ -6,6 +29,35 @@
       enable = true;
       viAlias = true;
       vimAlias = true;
+      coc =
+      {
+        enable = true;
+	settings =
+	''
+	'';
+      };
+      defaultEditor = true;
+      extraConfig =
+      ''
+        set showmatch
+        set errorbells
+
+        set hlsearch
+        set smartcase
+        set incsearch
+
+        set autoindent
+	set expandtab
+	set shiftwidth=2
+	set smartindent
+	set smarttab
+	set softtabstop=4
+
+        set wrap linebreak nolist
+
+	" autocmd FileType yaml ts=2 sts=2 sw=2 expandtab
+	" autocmd FileType nix ts=2 sts=2 sw=2 expandtab
+      '';
     };
     direnv =
     {

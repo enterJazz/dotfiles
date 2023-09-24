@@ -20,31 +20,18 @@
   {
     homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration
     {
-      inherit pkgs;
+      # workaround: https://github.com/nix-community/home-manager/issues/2942#issuecomment-1378627909
+      pkgs = import nixpkgs
+      {
+        inherit system;
+        config.allowUnfree = true;
+      };
       modules =
       [
         ./home.nix
         {
           home =
           {
-            packages = with pkgs;
-            [
-	      alacritty
-              tree
-              man-pages
-              nix-index
-              age
-              tmux
-              git
-              rename
-	      firefox
-	      bitwarden
-	      thunderbird
-	      mako
-	      wl-clipboard
-	      shotman
-            ];
-          
             username = "${username}";
             homeDirectory = "/home/${username}";
             stateVersion = "23.05";

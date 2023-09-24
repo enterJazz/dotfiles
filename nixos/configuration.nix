@@ -125,7 +125,6 @@
     grub =
     {
       enable = true;
-      version = 2;
       device = "nodev";
       efiSupport = true;
     };
@@ -152,7 +151,12 @@
   # from drakerossman.com/blog/wayland-on-nixos-confusion-conquest-triumph
   # audio
   sound.enable = true;
-  nixpkgs.config.pulseaudio = true;
+  nixpkgs.config =
+  {
+    pulseaudio = true;
+    # allowUnfree = true;
+    # allowUnfreePredicate = (_: true);
+  };
   hardware.pulseaudio.enable = true;
   hardware.opengl.enable = true;
 }

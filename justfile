@@ -11,7 +11,7 @@ init-nixos-config:
 
 init-hm:
     @ mkdir -p ~/.config/home-manager
-    @ ln home.nix ~/.config/home-manager/home.nix
+    @! ln home.nix ~/.config/home-manager/home.nix
     nix run .#switch-robert-hm
 
 init-ssh-conf:
