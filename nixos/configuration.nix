@@ -121,7 +121,10 @@
     {
       servers =
       {
-        rbgL1 = { config = '' config /etc/nixos/openvpn/vpn-il11-2.4-linux.ovpn ''; };
+        # TODO: manage secret better ( not in plaintext )
+        rbgL1 = {
+          config = '' config /etc/nixos/openvpn/vpn-il11-2.4-linux/vpn-il11-2.4-linux.ovpn '';
+          };
       };
     };
   };
@@ -173,14 +176,17 @@
   };
   
 
-  # from nixos.wiki/wiki/Sway
-  systemd.user.services.kanshi =
-  {
-    description = "kanshi daemon";
-    serviceConfig =
+  systemd = 
+  { 
+    # from nixos.wiki/wiki/Sway
+    user.services.kanshi =
     {
-      type = "simple";
-      ExecStart = ''${pkgs.kanshi}/bin/kanshi -c kanshi_config_file'';
+      description = "kanshi daemon";
+      serviceConfig =
+      {
+        type = "simple";
+        ExecStart = ''${pkgs.kanshi}/bin/kanshi -c kanshi_config_file'';
+      };
     };
   };
 

@@ -3,7 +3,6 @@
   home = {
     packages = with pkgs;
     [
-      alacritty
       tree
       man-pages
       nix-index
