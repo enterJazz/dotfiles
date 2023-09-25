@@ -45,7 +45,20 @@
           force = true;
           engines =
           {
-            "Nix Packages" = {
+            "Google Scholar" =
+            {
+              urls = [{ template = "https://scholar.google.com/scholar?hl=en&q={searchTerms}"; }];
+              icon = "https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Scholar_logo.svg";
+              definedAliases = [ "@scholar" ];
+            };
+            "GitHub" =
+            {
+              urls = [{ template = "https://github.com/search?q={searchTerms}&type=repositories"; }];
+              icon = "https://upload.wikimedia.org/wikipedia/commons/9/95/Font_Awesome_5_brands_github.svg";
+              definedAliases = [ "@gh" ];
+            };
+            "Nix Packages" =
+            {
               urls =
               [{
                   template = "https://search.nixos.org/packages";
@@ -80,10 +93,13 @@
           "distribution.searchplugins.defaultLocale" = "de-DE";
           "general.useragent.locale" = "de-DE";
           "browser.bookmarks.showMobileBookmarks" = false;
+          "browser.toolbars.bookmarks.showOtherBookmarks" = false;
+          "browser.compactmode.show" = true;
           "browser.newtabpage.pinned" = [{
             title = "NixOS";
             url = "https://nixos.org";
           }];
+          "extensions.pocket.enabled" = false;
         };
         extensions = with pkgs.nur.repos.rycee.firefox-addons;
         [
