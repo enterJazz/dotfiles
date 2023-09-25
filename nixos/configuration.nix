@@ -20,10 +20,16 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
-  networking.hostName = "klamm"; # Define your hostname.
-  # Pick only one of the below networking options.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  # networking
+  networking =
+  {
+    hostName = "klamm"; # Define your hostname.
+    wireless =
+    {
+      enable = true;  # Enables wireless support via wpa_supplicant.
+      userControlled.enable = true;
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -153,7 +159,12 @@
     };
   };
 
-  security.polkit.enable = true;
+  security =
+  {
+    polkit.enable = true;
+    pam.services.swaylock.fprintAuth = false;
+  };
+  
 
   # from nixos.wiki/wiki/Sway
   systemd.user.services.kanshi =
