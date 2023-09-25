@@ -1,29 +1,88 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs;
-  [
-    alacritty
-    tree
-    man-pages
-    nix-index
-    age
-    tmux
-    git
-    rename
-    firefox
-    bitwarden
-    thunderbird
-    mako
-    wl-clipboard
-    shotman
-    telegram-desktop
-    signal-desktop
-    slack
-    obsidian
-  ];
+  home = {
+    packages = with pkgs;
+    [
+      alacritty
+      tree
+      man-pages
+      nix-index
+      age
+      tmux
+      git
+      rename
+      firefox-wayland
+      bitwarden
+      thunderbird
+      mako
+      wl-clipboard
+      shotman
+      telegram-desktop
+      signal-desktop
+      slack
+      obsidian
+      zotero
+    ];
+    sessionVariables =
+    {
+      MOZ_ENABLE_WAYLAND = 1;
+      XDG_CURRENT_DESKTOP = "sway";
+    };
+  };
 
   programs =
   {
+    firefox =
+    {
+      enable = true;
+      profiles.robert =
+      {
+        name = "robert";
+        id = 0;
+        search =
+        {
+          default = "DuckDuckGo";
+          force = true;
+          engines =
+          {
+            "Nix Packages" = {
+              urls =
+              [{
+                  template = "https://search.nixos.org/packages";
+                  params =
+                  [
+                      { name = "type"; value = "packages"; }
+                      { name = "query"; value = "{searchTerms}"; }
+                  ];
+              }];
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@np" ];
+            };
+            "NixOS Wiki" =
+            {
+              urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
+              iconUpdateURL = "https://nixos.wiki/favicon.png";
+              updateInterval = 24 * 60 * 60 * 1000;
+              definedAliases = [ "@nw" ];
+            };
+            "Wikipedia (en)".metaData.alias = "@wiki";
+            "Google".metaData.hidden = true;
+            "Amazon.com".metaData.hidden = true;
+            "Bing".metaData.hidden = true;
+            "eBay".metaData.hidden = true;
+          };
+        };
+        extensions = with pkgs.nur.repos.rycee.firefox-addons;
+        [
+          ublock-origin
+          privacy-badger
+          bitwarden
+          clearurls
+          decentraleyes
+        ];
+        isDefault = true;
+      };
+    };
     neovim =
     {
       enable = true;
@@ -41,7 +100,6 @@
       [
         vim-toml
         vim-surround
-        #" Plug 'svermeulen/vim-yoink'
         # {
         #   plugin = vim-yoink;
         #   config =
@@ -86,7 +144,7 @@
         }
         vim-gitgutter
         nvim-lspconfig
-
+        # vim-just
       ];
       extraConfig =
       ''
@@ -168,5 +226,4 @@
       bindsym Print+Shift+Control exec shotman -c window
     '';
   };
-
 }
