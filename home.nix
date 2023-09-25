@@ -72,6 +72,19 @@
             "eBay".metaData.hidden = true;
           };
         };
+        settings =
+        {
+          "browser.startup.homepage" = "https://nixos.org";
+          "browser.search.region" = "DE";
+          "browser.search.isUS" = false;
+          "distribution.searchplugins.defaultLocale" = "de-DE";
+          "general.useragent.locale" = "de-DE";
+          "browser.bookmarks.showMobileBookmarks" = false;
+          "browser.newtabpage.pinned" = [{
+            title = "NixOS";
+            url = "https://nixos.org";
+          }];
+        };
         extensions = with pkgs.nur.repos.rycee.firefox-addons;
         [
           ublock-origin
