@@ -117,6 +117,13 @@
   services =
   {
     pipewire.enable = true;
+    openvpn =
+    {
+      servers =
+      {
+        rbgL1 = { config = '' config /etc/nixos/openvpn/vpn-il11-2.4-linux.ovpn ''; };
+      };
+    };
   };
 
   xdg =
