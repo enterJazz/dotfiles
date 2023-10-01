@@ -70,6 +70,8 @@
 	modules =
 	[
 	  ./nixos/hosts/barnabas.nix
+          # TODO refactor
+          sops-nix.nixosModules.sops
 	];
       };
     };
@@ -87,6 +89,7 @@
         just
         fzf
         age
+        sops
       ];
     };
   };

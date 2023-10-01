@@ -10,9 +10,14 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ../hardware/hardware-configuration.nix
       ../modules/greetd.nix
+      # <sops-nix/modules/sops>
+      ../modules/sops.nix
+      ../modules/pipewire.nix
+      ../modules/zsh.nix
+      ../modules/networking.nix
     ];
 
   nix =
