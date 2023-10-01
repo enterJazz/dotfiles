@@ -245,6 +245,25 @@
       };
     };
   };
+
+  # embedd in config files : https://github.com/Mic92/sops-nix#templates
+  sops =
+  {
+    age.keyFile = "~/.config/sops/keys.txt";
+    # defaultSopsFile = ./secrets.yaml;
+    secrets.test =
+    {
+      # owner = "hass";
+      path = "%r/test.txt";
+      # key = ...
+      # restartUnits = [ "home-assistant.service" ];
+    };
+    # for other services to use secrets: order after
+    # {
+    #   systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
+    # }
+  };
+
   # from nixos.wiki/wiki/Sway
   wayland.windowManager.sway =
   {

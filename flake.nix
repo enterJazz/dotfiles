@@ -10,15 +10,24 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/NUR";
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, ... }:
+  outputs =
+  {
+    self
+    , nixpkgs
+    , home-manager
+    , nur
+    , sops-nix
+    , ... }:
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
     username = "robert";
   in
   {
+    # home configuration
     homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration
     {
       # workaround: https://github.com/nix-community/home-manager/issues/2942#issuecomment-1378627909
@@ -30,6 +39,7 @@
       };
       modules =
       [
+        <sops-nix/modules/home-manager/sops.nix>
         ./home.nix
         {
           home =
@@ -41,7 +51,8 @@
         }
       ];
     };
-
+    
+    # system configuration
     nixosConfigurations =
     {
       klamm = nixpkgs.lib.nixosSystem
@@ -67,6 +78,7 @@
       [
         just
         fzf
+        age
       ];
     };
   };
