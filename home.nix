@@ -3,6 +3,7 @@
   home = {
     packages = with pkgs;
     [
+      keyd
       tree
       man-pages
       nix-index

@@ -116,6 +116,17 @@
   # List services that you want to enable:
   services =
   {
+    keyd =
+    {
+      enable = true;
+      settings =
+      {
+        main =
+        {
+          delete = "off";
+        };
+      };
+    };
     pipewire.enable = true;
     openvpn =
     {
