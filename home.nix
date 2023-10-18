@@ -3,6 +3,7 @@
   home = {
     packages = with pkgs;
     [
+      libreoffice
       evince
       authy
       wget

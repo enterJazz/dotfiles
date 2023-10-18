@@ -15,4 +15,12 @@
     };
   };
 
+  # templates
+  sops.templates =
+  {
+    "wpa_supplicant.conf".content =
+    ''
+
+    '';
+  };
 }

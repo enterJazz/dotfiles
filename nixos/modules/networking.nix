@@ -15,7 +15,7 @@
       ''
         network={
                 ssid="Arnetwork 138"
-                psk=${config.sops.wpa_supplicant.Arnetwork_psk}
+                psk=${config.sops.wpa_secrets.arnetwork_138_psk}
         }
         network={
                 ssid="eduroam"
@@ -27,7 +27,7 @@
                 subject_match="radius.lrz.de"
                 anonymous_identity="anonymous@eduroam.mwn.de"
                 phase2="auth=PAP"
-                password="${config.sops.wpa_supplicant.eduroam_password}"
+                password="${config.sops.secrets.wpa_supplicant.eduroam_password}"
         }
       '';
     };
