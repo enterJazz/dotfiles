@@ -1,9 +1,13 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   home = {
     packages = with pkgs;
     [
       keyd
+      evince
+      authy
+      wget
+      unzip
       tree
       man-pages
       nix-index
@@ -22,6 +26,11 @@
       slack
       obsidian
       zotero
+      zathura
+      syncthing
+      drawio
+      protonmail-bridge
+      pass # protonmail integration ; todo: integrate correctly
     ];
     sessionVariables =
     {
@@ -217,9 +226,15 @@
       # enableZshIntegration = true;
       nix-direnv.enable = true;
     };
+    zathura =
+    {
+      enable = true;
+    };
+    
     zsh =
     {
       enable = true;
+      enableCompletion = true;
       oh-my-zsh =
       {
         enable = true;
@@ -245,6 +260,7 @@
         show-failed-attempts = true;
       };
     };
+<<<<<<< HEAD
     waybar =
     {
       enable = true;
@@ -382,25 +398,35 @@
 	}
       };
     };
+=======
+    ssh =
+    {
+      enable = true;
+      matchBlocks =
+      {
+        dosServer = lib.hm.dag.entryBefore [ "any" ]
+        {
+          host = "*.dos.cit.tum.de";
+          identityFile = "~/.ssh/keys/dos.cit.tum.de";
+        };
+        any =
+        {
+          host = "*";
+          identityFile = "~/.ssh/keys/%r@%h";
+        };
+      };
+    };
+    password-store =
+    {
+      enable = true;
+    };
+    gpg =
+    {
+      enable = true;
+    };
+>>>>>>> e4b8087 (update home-manager config)
   };
 
-  # embedd in config files : https://github.com/Mic92/sops-nix#templates
-  sops =
-  {
-    age.keyFile = "~/.config/sops/keys.txt";
-    # defaultSopsFile = ./secrets.yaml;
-    secrets.test =
-    {
-      # owner = "hass";
-      path = "%r/test.txt";
-      # key = ...
-      # restartUnits = [ "home-assistant.service" ];
-    };
-    # for other services to use secrets: order after
-    # {
-    #   systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
-    # }
-  };
 
   # from nixos.wiki/wiki/Sway
   wayland.windowManager.sway =
@@ -425,4 +451,37 @@
     '';
   };
   
+  services =
+  {
+    syncthing =
+    {
+      enable = true;
+    };
+    mako =
+    {
+      enable = true;
+      extraConfig =
+      ''
+        [urgency=low]
+        border-color=#cccccc
+
+        [urgency=normal]
+        border-color=#d08770
+
+        [urgency=high]
+        border-color=#bf616a
+        default-timeout=0
+
+        [category=mpd]
+        default-timeout=2000
+        group-by=category
+      '';
+    };
+    # need this for pass
+    gpg-agent =
+    {
+      enable = true;
+      enableZshIntegration = true;
+    };
+  };
 }
