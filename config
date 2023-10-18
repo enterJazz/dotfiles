@@ -1,5 +1,0 @@
-Host *.dse.in.tum.de
-        IdentityFile ~/.ssh/keys/dse.in.tum.de
-
-Host *
-	IdentityFile ~/.ssh/keys/%r@%h

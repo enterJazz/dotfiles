@@ -26,17 +26,6 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
-  # networking
-  networking =
-  {
-    hostName = "klamm"; # Define your hostname.
-    wireless =
-    {
-      enable = true;  # Enables wireless support via wpa_supplicant.
-      userControlled.enable = true;
-    };
-  };
-
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
@@ -88,6 +77,8 @@
       extraGroups = [
         "wheel"
         "video"
+        "audio"
+        config.users.groups.keys.age
       ]; # Enable ‘sudo’ for the user.
     };
   };
@@ -200,13 +191,7 @@
   # from drakerossman.com/blog/wayland-on-nixos-confusion-conquest-triumph
   # audio
   sound.enable = true;
-  nixpkgs.config =
-  {
-    pulseaudio = true;
-    # allowUnfree = true;
-    # allowUnfreePredicate = (_: true);
-  };
-  hardware.pulseaudio.enable = true;
+  # hardware.pulseaudio.enable = true;
   hardware.opengl.enable = true;
 }
 
