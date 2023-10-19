@@ -13,6 +13,11 @@
     [ # Include the results of the hardware scan.
       ../hardware/hardware-configuration.nix
       ../modules/greetd.nix
+      # <sops-nix/modules/sops>
+      ../modules/sops.nix
+      ../modules/pipewire.nix
+      ../modules/zsh.nix
+      # ../modules/networking.nix
     ];
 
   nix =
@@ -83,6 +88,8 @@
       extraGroups = [
         "wheel"
         "video"
+        "audio"
+        config.users.groups.keys.age
       ]; # Enable ‘sudo’ for the user.
     };
   };
@@ -195,13 +202,7 @@
   # from drakerossman.com/blog/wayland-on-nixos-confusion-conquest-triumph
   # audio
   sound.enable = true;
-  nixpkgs.config =
-  {
-    pulseaudio = true;
-    # allowUnfree = true;
-    # allowUnfreePredicate = (_: true);
-  };
-  hardware.pulseaudio.enable = true;
+  # hardware.pulseaudio.enable = true;
   hardware.opengl.enable = true;
 }
 

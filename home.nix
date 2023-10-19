@@ -260,7 +260,6 @@
         show-failed-attempts = true;
       };
     };
-<<<<<<< HEAD
     waybar =
     {
       enable = true;
@@ -399,6 +398,8 @@
       };
     };
 =======
+=======
+>>>>>>> origin/dev
     ssh =
     {
       enable = true;
@@ -424,7 +425,6 @@
     {
       enable = true;
     };
->>>>>>> e4b8087 (update home-manager config)
   };
 
 
