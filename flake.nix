@@ -60,8 +60,16 @@
         inherit system;
 	modules =
 	[
-	  ./nixos/configuration.nix
-	  ./nixos/greetd.nix
+	  ./nixos/hosts/klamm.nix
+	];
+      };
+
+      barnabas = nixpkgs.lib.nixosSystem
+      {
+        inherit system;
+	modules =
+	[
+	  ./nixos/hosts/barnabas.nix
 	];
       };
     };

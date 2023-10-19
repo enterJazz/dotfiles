@@ -11,7 +11,8 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ../hardware/hardware-configuration.nix
+      ../modules/greetd.nix
     ];
 
   nix =
@@ -128,16 +129,6 @@
       };
     };
     pipewire.enable = true;
-    openvpn =
-    {
-      servers =
-      {
-        # TODO: manage secret better ( not in plaintext )
-        rbgL1 = {
-          config = '' config /etc/nixos/openvpn/vpn-il11-2.4-linux/vpn-il11-2.4-linux.ovpn '';
-          };
-      };
-    };
   };
 
   xdg =

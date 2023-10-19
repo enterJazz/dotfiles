@@ -6,7 +6,8 @@ default:
     just --choose
 
 init-nixos-config:
-    sudo nixos-rebuild --flake .#klamm switch
+    # may need to install bootloader
+    sudo nixos-rebuild --flake .#$(hostname) switch
 
 init-hm:
     nix run .#switch-robert-hm
