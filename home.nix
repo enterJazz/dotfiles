@@ -265,6 +265,11 @@
     waybar =
     {
       enable = true;
+      systemd =
+      {
+        enable = true;
+        target = "sway-session.target";
+      };
       settings =
       {
         mainBar =
@@ -514,6 +519,8 @@
     enable = true;
     config = rec
     {
+      # bars by waybar
+      bars = [];
       modifier = "Mod4";
       output =
       {
@@ -529,6 +536,8 @@
       bindsym Print+Shift exec shotman -c region
       bindsym Print+Shift+Control exec shotman -c window
     '';
+    systemdIntegration = true;
+
   };
   
   services =
