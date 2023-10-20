@@ -39,7 +39,7 @@
       };
       modules =
       [
-        <sops-nix/modules/home-manager/sops.nix>
+        # <sops-nix/modules/home-manager/sops.nix>
         ./home.nix
         {
           home =
@@ -71,7 +71,7 @@
 	[
 	  ./nixos/hosts/barnabas.nix
           # TODO refactor
-          sops-nix.nixosModules.sops
+          # sops-nix.nixosModules.sops
 	];
       };
     };

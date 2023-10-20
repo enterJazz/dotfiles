@@ -14,7 +14,7 @@
       ../hardware/hardware-configuration.nix
       ../modules/greetd.nix
       # <sops-nix/modules/sops>
-      ../modules/sops.nix
+      # ../modules/sops.nix
       ../modules/pipewire.nix
       ../modules/zsh.nix
       ../modules/networking.nix
@@ -78,7 +78,7 @@
         "wheel"
         "video"
         "audio"
-        config.users.groups.keys.age
+        # config.users.groups.keys.age
       ]; # Enable ‘sudo’ for the user.
     };
   };
