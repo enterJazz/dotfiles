@@ -150,7 +150,7 @@
           "z"
           # "zsh-autosuggestions"
         ];
-        theme = "robbyrussell";
+        theme = "avit";
       };
     };
     ssh =
