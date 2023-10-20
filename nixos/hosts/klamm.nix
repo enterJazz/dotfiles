@@ -20,6 +20,7 @@
       ../modules/networking.nix
       ../modules/xournalpp.nix
       ../modules/fuse.nix
+      ../modules/protonmail.nix
     ];
 
   nix =
@@ -87,10 +88,12 @@
   
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   wget
-  # ];
+  environment.systemPackages = with pkgs;
+  [
+    vim
+    wget
+    openvpn
+  ];
   environment =
   {
     shells = [ pkgs.zsh ];

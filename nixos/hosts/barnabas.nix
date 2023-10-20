@@ -18,6 +18,7 @@
       ../modules/pipewire.nix
       ../modules/zsh.nix
       # ../modules/networking.nix
+      ../modules/protonmail.nix
     ];
 
   nix =
