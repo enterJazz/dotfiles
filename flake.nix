@@ -39,6 +39,7 @@
       };
       modules =
       [
+        # <sops-nix/modules/home-manager/sops.nix>
         ./home.nix
         {
           home =
@@ -59,9 +60,18 @@
         inherit system;
 	modules =
 	[
-	  ./nixos/configuration.nix
-          sops-nix.nixosModules.sops
-	  ./nixos/greetd.nix
+	  ./nixos/hosts/klamm.nix
+	];
+      };
+
+      barnabas = nixpkgs.lib.nixosSystem
+      {
+        inherit system;
+	modules =
+	[
+	  ./nixos/hosts/barnabas.nix
+          # TODO refactor
+          # sops-nix.nixosModules.sops
 	];
       };
     };

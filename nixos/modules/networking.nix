@@ -12,7 +12,7 @@
     {
       # TODO: fix ; for now use manually
       enable = true;
-      userControlled.enable = false;
+      userControlled.enable = true;
 #       extraConfig =
 #       ''
 #         network={
@@ -29,7 +29,7 @@
 #                 subject_match="radius.lrz.de"
 #                 anonymous_identity="anonymous@eduroam.mwn.de"
 #                 phase2="auth=PAP"
-#                 password="${config.sops.secrets.wpa_supplicant.eduroam_password}"
+#                 password="${config.sops.wpa_supplicant.eduroam_password}"
 #         }
 #       '';
     };
@@ -40,7 +40,7 @@
     enable = false;
     serviceConfig =
     {
-      SupplementaryGroups = [ config.users.groups.keys.age ];
+      # SupplementaryGroups = [ config.users.groups.keys.age ];
     };
   };
 }

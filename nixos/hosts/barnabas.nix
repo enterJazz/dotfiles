@@ -11,20 +11,30 @@
 {
   imports =
     [ # Include the results of the hardware scan.
+      ../hardware/hardware-configuration.nix
+      ../modules/greetd.nix
       # <sops-nix/modules/sops>
-      # ./modules/sops.nix
-      ./hardware-configuration.nix
-      ./modules/pipewire.nix
-      ./modules/zsh.nix
-      ./modules/networking.nix
-      ./modules/xournalpp.nix
-      ./modules/fuse.nix
+      # ../modules/sops.nix
+      ../modules/pipewire.nix
+      ../modules/zsh.nix
+      # ../modules/networking.nix
     ];
 
   nix =
   {
     package = pkgs.nixFlakes;
     settings.experimental-features = [ "nix-command" "flakes" ];
+  };
+
+  # networking
+  networking =
+  {
+    hostName = "barnabas"; # Define your hostname.
+    wireless =
+    {
+      enable = true;  # Enables wireless support via wpa_supplicant.
+      userControlled.enable = true;
+    };
   };
 
   # Set your time zone.
@@ -96,14 +106,6 @@
     variables.EDITOR = "nvim";
   };
 
-  systemd.services.wpa_supplicant =
-  {
-    serviceConfig =
-    {
-      SupplementaryGroups = [ config.users.groups.keys.age ];
-    };
-  };
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -122,17 +124,18 @@
   # List services that you want to enable:
   services =
   {
-    pipewire.enable = true;
-    openvpn =
+    keyd =
     {
-      servers =
+      enable = true;
+      settings =
       {
-        # TODO: manage secret better ( not in plaintext )
-        rbgL1 = {
-          config = '' config /etc/nixos/openvpn/vpn-il11-2.4-linux/vpn-il11-2.4-linux.ovpn '';
-          };
+        main =
+        {
+          delete = "off";
+        };
       };
     };
+    pipewire.enable = true;
   };
 
   xdg =
