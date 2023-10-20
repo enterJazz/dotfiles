@@ -3,6 +3,8 @@
   home = {
     packages = with pkgs;
     [
+      dig
+      xournalpp
       libreoffice
       evince
       authy
