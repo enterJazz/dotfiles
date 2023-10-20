@@ -28,28 +28,54 @@
   in
   {
     # home configuration
-    homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration
+    homeConfigurations =
     {
-      # workaround: https://github.com/nix-community/home-manager/issues/2942#issuecomment-1378627909
-      pkgs = import nixpkgs
+      "${username}-pc" = home-manager.lib.homeManagerConfiguration
       {
-        inherit system;
-        config.allowUnfree = true;
-        overlays = [ nur.overlay ];
-      };
-      modules =
-      [
-        # <sops-nix/modules/home-manager/sops.nix>
-        ./home.nix
+        # workaround: https://github.com/nix-community/home-manager/issues/2942#issuecomment-1378627909
+        pkgs = import nixpkgs
         {
-          home =
+          inherit system;
+          config.allowUnfree = true;
+          overlays = [ nur.overlay ];
+        };
+        modules =
+        [
+          # <sops-nix/modules/home-manager/sops.nix>
+          ./home/pc.nix
           {
-            username = "${username}";
-            homeDirectory = "/home/${username}";
-            stateVersion = "23.05";
-          };
-        }
-      ];
+            home =
+            {
+              username = "${username}";
+              homeDirectory = "/home/${username}";
+              stateVersion = "23.05";
+            };
+          }
+        ];
+      };
+      "${username}-server" = home-manager.lib.homeManagerConfiguration
+      {
+        # workaround: https://github.com/nix-community/home-manager/issues/2942#issuecomment-1378627909
+        pkgs = import nixpkgs
+        {
+          inherit system;
+          config.allowUnfree = true;
+          overlays = [ nur.overlay ];
+        };
+        modules =
+        [
+          # <sops-nix/modules/home-manager/sops.nix>
+          ./home/server.nix
+          {
+            home =
+            {
+              username = "${username}";
+              homeDirectory = "/home/${username}";
+              stateVersion = "23.05";
+            };
+          }
+        ];
+      };
     };
     
     # system configuration
@@ -76,11 +102,19 @@
       };
     };
 
-    apps.${system}."switch-${username}-hm" =
+    apps.${system} =
     {
-      type = "app";
-      program = "${self.homeConfigurations.${username}.activationPackage}/activate";
-    };   
+      "switch-${username}-hm-pc" =
+      {
+        type = "app";
+        program = "${self.homeConfigurations."${username}-pc".activationPackage}/activate";
+      };
+      "switch-${username}-hm-server" =
+      {
+        type = "app";
+        program = "${self.homeConfigurations."${username}-server".activationPackage}/activate";
+      };
+    };
     devShells.${system}.default = pkgs.mkShell
     {
       name = "dotfiles-devshell";

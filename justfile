@@ -9,8 +9,11 @@ init-nixos-config:
     # may need to install bootloader
     sudo nixos-rebuild --flake .#$(hostname) switch
 
-init-hm:
-    nix run .#switch-robert-hm
+init-hm-pc:
+    nix run .#switch-$(whoami)-hm-pc
+
+init-hm-server:
+    nix run .#switch-$(whoami)-hm-server
 
 init-links:
     @ mkdir -p ~/.ssh/keys \
