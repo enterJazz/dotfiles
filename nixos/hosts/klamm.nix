@@ -29,6 +29,9 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
+
+  networking.hostName = "klamm";
+
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 

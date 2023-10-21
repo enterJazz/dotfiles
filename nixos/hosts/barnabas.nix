@@ -17,7 +17,7 @@
       # ../modules/sops.nix
       ../modules/pipewire.nix
       ../modules/zsh.nix
-      # ../modules/networking.nix
+      ../modules/networking.nix
       ../modules/protonmail.nix
     ];
 
@@ -25,17 +25,6 @@
   {
     package = pkgs.nixFlakes;
     settings.experimental-features = [ "nix-command" "flakes" ];
-  };
-
-  # networking
-  networking =
-  {
-    hostName = "barnabas"; # Define your hostname.
-    wireless =
-    {
-      enable = true;  # Enables wireless support via wpa_supplicant.
-      userControlled.enable = true;
-    };
   };
 
   # Set your time zone.

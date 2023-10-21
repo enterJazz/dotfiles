@@ -7,7 +7,8 @@
 # networking
   networking =
   {
-    hostName = "klamm";
+    supplicant."robert".configFile.path = "/etc/wpa_supplicant/wpa_supplicant.conf";
+    # hostName = "klamm";
     wireless =
     {
       # TODO: fix ; for now use manually
