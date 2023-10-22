@@ -1,5 +1,11 @@
 { pkgs, lib, ... }:
 {
+
+  imports =
+  [
+    ./modules/zsh.nix
+  ];
+
   home = {
     packages = with pkgs;
     [
@@ -137,22 +143,7 @@
       # enableZshIntegration = true;
       nix-direnv.enable = true;
     };
-    zsh =
-    {
-      enable = true;
-      enableCompletion = true;
-      oh-my-zsh =
-      {
-        enable = true;
-        plugins =
-        [
-          "git"
-          "z"
-          # "zsh-autosuggestions"
-        ];
-        theme = "avit";
-      };
-    };
+    zsh.theme = lib.mkForce "avit";
     ssh =
     {
       enable = true;

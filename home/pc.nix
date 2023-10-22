@@ -1,5 +1,10 @@
 { pkgs, lib, ... }:
 {
+  imports =
+  [
+    ./modules/zsh.nix
+  ];
+
   home = {
     packages = with pkgs;
     [
@@ -232,23 +237,6 @@
     zathura =
     {
       enable = true;
-    };
-    
-    zsh =
-    {
-      enable = true;
-      enableCompletion = true;
-      oh-my-zsh =
-      {
-        enable = true;
-        plugins =
-        [
-          "git"
-          "z"
-          # "zsh-autosuggestions"
-        ];
-        theme = "robbyrussell";
-      };
     };
     swaylock =
     {
