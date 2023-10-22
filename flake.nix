@@ -97,7 +97,7 @@
 	[
 	  ./nixos/hosts/barnabas.nix
           # TODO refactor
-          # sops-nix.nixosModules.sops
+          sops-nix.nixosModules.sops
 	];
       };
     };

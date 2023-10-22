@@ -14,6 +14,7 @@
       # TODO: fix ; for now use manually
       enable = true;
       userControlled.enable = true;
+      environmentFile = config.sops.secrets.wpa_secrets.path;
 #       extraConfig =
 #       ''
 #         network={

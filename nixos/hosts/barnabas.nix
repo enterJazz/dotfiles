@@ -14,7 +14,7 @@
       ../hardware/hardware-configuration.nix
       ../modules/greetd.nix
       # <sops-nix/modules/sops>
-      # ../modules/sops.nix
+      ../modules/sops.nix
       ../modules/pipewire.nix
       ../modules/zsh.nix
       ../modules/networking.nix

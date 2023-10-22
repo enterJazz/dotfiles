@@ -7,20 +7,12 @@
     # defaultSopsFile = ./secrets.yaml;
     secrets =
     {
-      wpa_supplicant =
+      wpa_secrets =
       {
-        sopsFile = ../secrets/wpa_secrets.yaml;
+        sopsFile = ../secrets/wpa_secrets.env;
+        format = "dotenv";
         restartUnits = [ "wpa_supplicant.service" ];
       };
     };
-  };
-
-  # templates
-  sops.templates =
-  {
-    "wpa_supplicant.conf".content =
-    ''
-
-    '';
   };
 }
