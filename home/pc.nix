@@ -298,15 +298,18 @@
           modules-right =
           [
             "custom/left-arrow-dark"
+            "network"
+            "custom/left-arrow-light"
+            "custom/left-arrow-dark"
             "pulseaudio"
             "custom/left-arrow-light"
             "custom/left-arrow-dark"
-            "memory"
-            "custom/left-arrow-light"
-            "custom/left-arrow-dark"
-            "cpu"
-            "custom/left-arrow-light"
-            "custom/left-arrow-dark"
+            # "memory"
+            # "custom/left-arrow-light"
+            # "custom/left-arrow-dark"
+            # "cpu"
+            # "custom/left-arrow-light"
+            # "custom/left-arrow-dark"
             "battery"
             "custom/left-arrow-light"
             "custom/left-arrow-dark"
@@ -359,6 +362,16 @@
             "tooltip" = false;
           };
 
+          network =
+          {
+            "format-wifi" = "{icon} {essid}";
+            "format-ethernet" = " {ifname}: {ipaddr}/{cidr}";
+            "format-disconnected" = "⚠ Disconnected";
+            "interval" = 7;
+            "format-icons" = {
+              "default" = "";
+            };
+          };
           pulseaudio = {
                   "format" = "{icon} {volume:2}%";
                   "format-bluetooth" = "{icon}  {volume}%";
@@ -434,6 +447,7 @@
         #clock.1,
         #clock.2,
         #clock.3,
+        #network,
         #pulseaudio,
         #memory,
         #cpu,
@@ -459,7 +473,12 @@
         	border: #1a1a1a;
         	padding: 0 3px;
         }
-        
+        #network {
+                color: #2980b9;
+        }
+        #network.disconnected {
+                color: #f53c3c;
+        }
         #pulseaudio {
         	color: #268bd2;
         }
