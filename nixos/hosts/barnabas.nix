@@ -19,6 +19,7 @@
       ../modules/zsh.nix
       ../modules/networking.nix
       ../modules/protonmail.nix
+      ../modules/remote-builder.nix
     ];
 
   nix =

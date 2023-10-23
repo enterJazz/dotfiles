@@ -21,6 +21,7 @@
       ../modules/xournalpp.nix
       ../modules/fuse.nix
       ../modules/protonmail.nix
+      ../modules/remote-builder.nix
     ];
 
   nix =
