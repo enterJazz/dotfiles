@@ -13,6 +13,11 @@
         format = "dotenv";
         restartUnits = [ "wpa_supplicant.service" ];
       };
+      remoteBuilder =
+      {
+        sopsFile = ../secrets/remote-doctor-builder-key;
+        format = "binary";
+      };
     };
   };
 }
