@@ -4,10 +4,10 @@
 # for a more complex example.
 keys:
   - &tum_dse_server age1mgm93qpxh2hnntgd69zacj6lx3j2xdfwjsc8jamvxh86gc8dqqrq7gmv7m
-  - &klamm age1h72rxhnmvfp55rct4zj4frhuav0uf23sgre2e8qyrvqd3zu3x40swg0rhc
+  - &pc age1h72rxhnmvfp55rct4zj4frhuav0uf23sgre2e8qyrvqd3zu3x40swg0rhc
 creation_rules:
-  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+  - path_regex: secrets/[^/]+
     key_groups:
     - age:
       - *tum_dse_server
-      - *klamm
+      - *pc

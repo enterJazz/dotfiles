@@ -10,11 +10,11 @@
       # speedFactor = 0;
       hostName = "vislor";
       protocol = "ssh";
-      sshUser = "robert";
+      sshUser = "nix";
       system = "x86_64-linux";
       maxJobs = 64;
       # TODO replace w/ sops
-      sshKey = "/home/robert/.ssh/keys/dos.cit.tum.de";
+      sshKey = config.sops.secrets.remoteBuilder.path;
       supportedFeatures =
       [
         "big-parallel"
