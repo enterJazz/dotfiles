@@ -2,6 +2,7 @@
 {
   imports =
   [
+    ./modules/ssh.nix
     ./modules/zsh.nix
   ];
 
@@ -492,23 +493,6 @@
         	padding: 0 10px;
         }
               '';
-    };
-    ssh =
-    {
-      enable = true;
-      matchBlocks =
-      {
-        dosServer = lib.hm.dag.entryBefore [ "any" ]
-        {
-          host = "*.dos.cit.tum.de";
-          identityFile = "~/.ssh/keys/dos.cit.tum.de";
-        };
-        any =
-        {
-          host = "*";
-          identityFile = "~/.ssh/keys/%r@%h";
-        };
-      };
     };
     password-store =
     {
