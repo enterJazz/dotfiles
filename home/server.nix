@@ -143,7 +143,7 @@
       # enableZshIntegration = true;
       nix-direnv.enable = true;
     };
-    zsh.theme = lib.mkForce "avit";
+    zsh.oh-my-zsh.theme = lib.mkForce "avit";
     ssh =
     {
       enable = true;
