@@ -9,6 +9,8 @@
   home = {
     packages = with pkgs;
     [
+      # teams
+      brave
       light
       pavucontrol
       dig
