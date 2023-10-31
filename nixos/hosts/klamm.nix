@@ -14,7 +14,7 @@
       ../hardware/hardware-configuration.nix
       ../modules/greetd.nix
       # <sops-nix/modules/sops>
-      # ../modules/sops.nix
+      ../modules/sops.nix
       ../modules/pipewire.nix
       ../modules/zsh.nix
       ../modules/networking.nix
@@ -102,14 +102,6 @@
   {
     shells = [ pkgs.zsh ];
     variables.EDITOR = "nvim";
-  };
-
-  systemd.services.wpa_supplicant =
-  {
-    serviceConfig =
-    {
-      SupplementaryGroups = [ config.users.groups.keys.age ];
-    };
   };
 
   # Some programs need SUID wrappers, can be configured further or are
