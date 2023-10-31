@@ -7,7 +7,7 @@ default:
 
 init-nixos-config:
     # may need to install bootloader
-    sudo nixos-rebuild --flake .#$(hostname) switch
+    sudo nixos-rebuild --flake .#$(hostname) switch --impure
 
 init-hm-pc:
     nix run .#switch-$(whoami)-hm-pc

@@ -87,6 +87,7 @@
 	modules =
 	[
 	  ./nixos/hosts/klamm.nix
+          sops-nix.nixosModules.sops
 	];
       };
 
