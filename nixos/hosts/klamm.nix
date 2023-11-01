@@ -80,6 +80,7 @@
     defaultUserShell = pkgs.zsh;
     users.robert =
     {
+      uid = 1001;
       isNormalUser = true;
       extraGroups = [
         "wheel"
