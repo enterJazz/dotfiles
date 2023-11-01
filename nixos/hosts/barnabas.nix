@@ -20,6 +20,7 @@
       ../modules/networking.nix
       ../modules/protonmail.nix
       ../modules/remote-builder.nix
+      ../modules/nextcloud.nix
     ];
 
   nix =
@@ -75,6 +76,7 @@
     defaultUserShell = pkgs.zsh;
     users.robert =
     {
+      uid = 1001;
       isNormalUser = true;
       extraGroups = [
         "wheel"

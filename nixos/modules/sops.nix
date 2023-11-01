@@ -18,6 +18,13 @@
         sopsFile = ../secrets/remote-doctor-builder-key;
         format = "binary";
       };
+      davfs_nextcloud =
+      {
+        sopsFile = ../secrets/davfs_nextcloud;
+        # owner = config.users.users.robert.name;
+        # group = config.services.davfs2.davGroup;
+        format = "binary";
+      };
     };
   };
 }
