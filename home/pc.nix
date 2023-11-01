@@ -10,7 +10,7 @@
     packages = with pkgs;
     [
       # teams
-      brave
+      # brave
       light
       pavucontrol
       dig
