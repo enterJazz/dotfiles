@@ -39,7 +39,6 @@
       obsidian
       zotero
       zathura
-      syncthing
       drawio
       protonmail-bridge
       pass # protonmail integration ; todo: integrate correctly
@@ -537,10 +536,6 @@
   
   services =
   {
-    syncthing =
-    {
-      enable = true;
-    };
     mako =
     {
       enable = true;
