@@ -1,12 +1,13 @@
 { pkgs, ... }:
 {
-  systemd.user.services."protonmail-bridge" =
+  systemd.services."protonmail-bridge" =
   {
-      description = "protonmail bridge";
-      serviceConfig =
-      {
-        type = "simple";
-        ExecStart = ''${pkgs.protonmail-bridge}/bin/protonmail-bridge -n'';
-      };
+    enable = true;
+    description = "protonmail bridge";
+    serviceConfig =
+    {
+      type = "simple";
+      ExecStart = ''${pkgs.protonmail-bridge}/bin/protonmail-bridge -n'';
+    };
   };
 }
