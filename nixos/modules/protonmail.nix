@@ -1,12 +1,12 @@
 { pkgs, ... }:
 {
-  systemd.services."protonmail-bridge" =
+  # TODO: fix -> can't open sercret vault
+  systemd.user.services."protonmail-bridge" =
   {
-    enable = true;
+    enable = false;
     description = "protonmail bridge";
     serviceConfig =
     {
-      type = "simple";
       ExecStart = ''${pkgs.protonmail-bridge}/bin/protonmail-bridge -n'';
     };
   };
