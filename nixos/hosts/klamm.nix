@@ -20,7 +20,7 @@
       ../modules/networking.nix
       ../modules/xournalpp.nix
       ../modules/fuse.nix
-      ../modules/protonmail.nix
+      # ../modules/protonmail.nix
       ../modules/remote-builder.nix
       ../modules/nextcloud.nix
     ];
