@@ -20,7 +20,6 @@
       git
       rename
       # bitwarden
-      # syncthing
       pass
     ];
   };
