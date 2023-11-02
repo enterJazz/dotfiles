@@ -11,6 +11,7 @@
     [
       # teams
       # brave
+      zoom-us
       light
       pavucontrol
       dig
