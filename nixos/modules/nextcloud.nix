@@ -27,9 +27,7 @@
         '';
 
         uid = toString config.users.users.robert.uid;
-        gid = toString config.users.groups.robert.gid;
 
-        # TODO: add uid in this command and make it work
         mapConf = pkgs.writeText "autofs.mnt"
         ''
           nextcloud \
