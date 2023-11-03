@@ -23,6 +23,7 @@
       # ../modules/protonmail.nix
       ../modules/remote-builder.nix
       ../modules/nextcloud.nix
+      ../modules/borgbackup.nix
     ];
 
   nix =

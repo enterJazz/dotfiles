@@ -25,6 +25,17 @@
         # group = config.services.davfs2.davGroup;
         format = "binary";
       };
+      # borgbackup secrets
+      klamm-borgbackup-passphrase =
+      {
+        sopsFile = ../secrets/klamm/borgbackup-passphrase;
+        format = "binary";
+      };
+      klamm-borgbackup-ssh =
+      {
+        sopsFile = ../secrets/klamm/borgbackup-ssh-key;
+        format = "binary";
+      };
     };
   };
 }
