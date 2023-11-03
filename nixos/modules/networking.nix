@@ -18,6 +18,7 @@
       networks =
       {
         "Arnetwork 138".psk = "@PSK_ARNETWORK@";
+        "iPhone von Robert".psk = "@PSK_IPHONE@";
       };
       extraConfig =
       ''
