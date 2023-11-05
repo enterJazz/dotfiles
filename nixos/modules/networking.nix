@@ -4,14 +4,10 @@
   , lib
   , ... }:
 {
-# networking
   networking =
   {
-    supplicant."robert".configFile.path = "/etc/wpa_supplicant/wpa_supplicant.conf";
-    # hostName = "klamm";
     wireless =
     {
-      # TODO: fix ; for now use manually
       enable = true;
       userControlled.enable = true;
       environmentFile = config.sops.secrets.wpa_secrets.path;

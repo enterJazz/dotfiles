@@ -41,8 +41,6 @@
       zotero
       zathura
       drawio
-      protonmail-bridge
-      pass # protonmail integration ; todo: integrate correctly
     ];
     sessionVariables =
     {
@@ -497,14 +495,6 @@
         }
               '';
     };
-    password-store =
-    {
-      enable = true;
-    };
-    gpg =
-    {
-      enable = true;
-    };
   };
 
 
@@ -556,12 +546,6 @@
         default-timeout=2000
         group-by=category
       '';
-    };
-    # need this for pass
-    gpg-agent =
-    {
-      enable = true;
-      enableZshIntegration = true;
     };
   };
 }
