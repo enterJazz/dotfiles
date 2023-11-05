@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [ pkgs.protonmail-bridge pkgs.pass ];
+  environment.systemPackages = with pkgs; [ protonmail-bridge pass ];
   services.gnome.gnome-keyring.enable = true;
 
   # TODO: this is broken ; uses different pass than I do
