@@ -1,6 +1,8 @@
 { pkgs, config, ... }:
 {
   # I stole this from Joerg
+  
+  environment.systemPackages = with pkgs; [ curl ];
   services.borgbackup.jobs.home-robert =
   {
     paths =
