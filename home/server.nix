@@ -9,6 +9,8 @@
   home = {
     packages = with pkgs;
     [
+      fzf
+      cpuid
       dig
       wget
       unzip
