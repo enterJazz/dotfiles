@@ -25,6 +25,7 @@
       ../modules/remote-builder.nix
       ../modules/nextcloud.nix
       ../modules/borgbackup.nix
+      ../modules/ssh.nix
     ];
 
   nix =
