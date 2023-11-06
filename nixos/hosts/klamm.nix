@@ -26,6 +26,7 @@
       ../modules/nextcloud.nix
       ../modules/borgbackup.nix
       ../modules/ssh.nix
+      ../modules/docker.nix
     ];
 
   nix =
