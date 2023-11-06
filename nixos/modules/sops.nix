@@ -41,6 +41,11 @@
         sopsFile = ../secrets/klamm/borgbackup-healthchecks;
         format = "binary";
       };
+      intel =
+      {
+        sopsFile = ../secrets/intel;
+        format = "binary";
+      };
     };
   };
 }
