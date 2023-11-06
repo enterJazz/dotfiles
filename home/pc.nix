@@ -11,6 +11,7 @@
     [
       # teams
       # brave
+      fzf
       zoom-us
       light
       pavucontrol
