@@ -10,18 +10,20 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ../hardware/hardware-configuration.nix
-      ../modules/greetd.nix
-      # <sops-nix/modules/sops>
-      ../modules/sops.nix
-      ../modules/pipewire.nix
-      ../modules/zsh.nix
-      ../modules/networking.nix
-      ../modules/protonmail.nix
-      ../modules/remote-builder.nix
-      ../modules/nextcloud.nix
-    ];
+  [
+    ../hardware/hardware-configuration.nix
+    ../modules/greetd.nix
+    ../modules/sops.nix
+    ../modules/pipewire.nix
+    ../modules/zsh.nix
+    ../modules/networking.nix
+    # ../modules/protonmail.nix
+    ../modules/xournalpp.nix
+    ../modules/remote-builder.nix
+    ../modules/nextcloud.nix
+    ../modules/ssh.nix
+    ../modules/docker.nix
+  ];
 
   nix =
   {
