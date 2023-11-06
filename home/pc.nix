@@ -11,7 +11,7 @@
     [
       # teams
       # brave
-      fzf
+      docker-compose
       zoom-us
       light
       pavucontrol
@@ -52,6 +52,11 @@
 
   programs =
   {
+    fzf =
+    {
+      enable = true;
+      enableZshIntegration = true;
+    };
     firefox =
     {
       enable = true;
