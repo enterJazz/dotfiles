@@ -17,6 +17,7 @@
     ../modules/pipewire.nix
     ../modules/zsh.nix
     ../modules/networking.nix
+    # ../modules/passwordstore.nix
     # ../modules/protonmail.nix
     ../modules/xournalpp.nix
     ../modules/remote-builder.nix

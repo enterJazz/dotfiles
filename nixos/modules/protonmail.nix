@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{
+  pkgs
+  , config
+  , ... }:
 {
   environment.systemPackages = with pkgs; [ protonmail-bridge pass ];
   services.gnome.gnome-keyring.enable = true;
@@ -9,10 +12,13 @@
   # requires initing pass before ( pass init <gpg-id> )
   systemd.user.services."protonmail-bridge" =
   {
-    enable = false;
+    enable = true;
     description = "Protonmail Bridge";
     after = [ "network.target" ];
     wantedBy = [ "default.target" ];
+    # user = "robert";
+    # home = "${config.users.users.robert.home}";
+
     # path = [ pkgs.pass ];
     serviceConfig =
     {
