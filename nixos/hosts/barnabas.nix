@@ -21,7 +21,6 @@
     # ../modules/protonmail.nix
     ../modules/xournalpp.nix
     ../modules/remote-builder.nix
-    ../modules/nextcloud.nix
     ../modules/ssh.nix
     ../modules/docker.nix
   ];
@@ -202,5 +201,8 @@
   hardware.opengl.enable = true;
 
   networking.hostName = "barnabas";
+
+  # try to enable sgx by updating kernel
+  # boot.kernelPackages = pkgs.linuxPackages_6_5;
 }
 

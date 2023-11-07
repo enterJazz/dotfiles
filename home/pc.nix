@@ -10,7 +10,11 @@
     packages = with pkgs;
     [
       # teams
-      # brave
+      nextcloud-client
+      brave
+      openvpn
+      ferdium
+      cpuid
       docker-compose
       zoom-us
       light
@@ -533,6 +537,11 @@
   
   services =
   {
+    nextcloud-client =
+    {
+      enable = true;
+      startInBackground = true;
+    };
     mako =
     {
       enable = true;
