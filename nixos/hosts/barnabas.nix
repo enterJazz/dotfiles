@@ -23,6 +23,7 @@
     ../modules/remote-builder.nix
     ../modules/ssh.nix
     ../modules/docker.nix
+    ../modules/borgbackup.nix
   ];
 
   nix =

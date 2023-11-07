@@ -41,6 +41,22 @@
         sopsFile = ../secrets/klamm/borgbackup-healthchecks;
         format = "binary";
       };
+      barnabas-borgbackup-passphrase =
+      {
+        sopsFile = ../secrets/barnabas/borgbackup-passphrase;
+        format = "binary";
+      };
+      barnabas-borgbackup-ssh =
+      {
+        sopsFile = ../secrets/barnabas/borgbackup-ssh-key;
+        format = "binary";
+      };
+      barnabas-borgbackup-healthchecks =
+      {
+        sopsFile = ../secrets/barnabas/borgbackup-healthchecks;
+        format = "binary";
+      };
+
       intel =
       {
         sopsFile = ../secrets/intel;
