@@ -56,11 +56,29 @@
         sopsFile = ../secrets/barnabas/borgbackup-healthchecks;
         format = "binary";
       };
-
+      gitlab-lrz =
+      {
+        sopsFile = ../secrets/keys/gitlab.lrz.de;
+        format = "binary";
+        owner = config.users.users.robert.name;
+      };
+      github =
+      {
+        sopsFile = ../secrets/keys/github.com;
+        format = "binary";
+        owner = config.users.users.robert.name;
+      };
+      dos-cit-tum-de =
+      {
+        sopsFile = ../secrets/keys/dos.cit.tum.de;
+        format = "binary";
+        owner = config.users.users.robert.name;
+      };
       intel =
       {
         sopsFile = ../secrets/intel;
         format = "binary";
+        owner = config.users.users.robert.name;
       };
     };
   };

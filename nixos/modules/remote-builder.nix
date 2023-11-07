@@ -23,34 +23,5 @@
       ];
     }
   ];
-  # TODO: probably move hm-ssh into nixos ssh
-  programs.ssh =
-  {
-    extraConfig =
-    ''
-    Host login-tum
-      User tunnel
-      HostName login.dos.cit.tum.de
-      IdentityFile ${config.sops.secrets.remoteBuilder.path}
 
-    Host vislor
-      User nix
-      ProxyJump login-tum
-      HostName vislor.dos.cit.tum.de
-      IdentityFile ${config.sops.secrets.remoteBuilder.path}
-    '';
-    knownHosts =
-    {
-      "login.dos.cit.tum.de" =
-      {
-        hostNames = [ "login.dos.cit.tum.de" ];
-        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOdlUylM9WIFfIYZDK8rjVYQzX+RYwIlLgsEh4j0pNx6";
-      };
-      "vislor.dos.cit.tum.de " =
-      {
-        hostNames = [ "vislor.dos.cit.tum.de" ];
-        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBFKh4D5rTKnC8Jmhuj1SA7a82IG642dXmk38wYdP/lD";
-      };
-    };
-  };
 }
