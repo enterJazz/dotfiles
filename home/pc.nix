@@ -39,9 +39,9 @@
       mako
       wl-clipboard
       shotman
-      telegram-desktop
+      # telegram-desktop
       signal-desktop
-      slack
+      # slack
       obsidian
       zotero
       zathura
