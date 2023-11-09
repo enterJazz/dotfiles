@@ -26,6 +26,7 @@
     ../modules/ssh.nix
     ../modules/docker.nix
     ../modules/borgbackup.nix
+    ../modules/nix-ld.nix
   ];
 
   nix =
