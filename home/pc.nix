@@ -2,7 +2,6 @@
 {
   imports =
   [
-    ./modules/ssh.nix
     ./modules/zsh.nix
   ];
 
@@ -10,6 +9,7 @@
     packages = with pkgs;
     [
       # teams
+      sshpass
       nextcloud-client
       brave
       openvpn
