@@ -74,9 +74,9 @@
         format = "binary";
         owner = config.users.users.robert.name;
       };
-      intel =
+      thesis =
       {
-        sopsFile = ../secrets/intel;
+        sopsFile = ../secrets/thesis;
         format = "binary";
         owner = config.users.users.robert.name;
       };

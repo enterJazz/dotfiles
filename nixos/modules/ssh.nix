@@ -8,9 +8,17 @@
   {
     extraConfig =
     ''
-    Host 146.152.*.*
+    Host thesissshserver
+      HostName 146.152.205.66
       User guest
-      IdentityFile ${config.sops.secrets.intel.path}
+      IdentityFile ${config.sops.secrets.thesis.path}
+
+    Host sdp
+      HostName 192.168.6.2
+      User sdp
+      ProxyCommand ssh -W %h:%p thesissshserver
+      LocalForward 10443 192.168.6.3:443
+      LocalForward 10022 192.168.6.4:22
 
     Host login-tum-builder
       User tunnel
