@@ -198,4 +198,3 @@
   # hardware.pulseaudio.enable = true;
   hardware.opengl.enable = true;
 }
-

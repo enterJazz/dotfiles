@@ -38,6 +38,7 @@
           inherit system;
           config.allowUnfree = true;
           overlays = [ nur.overlay ];
+          config.permittedInsecurePackages = [ "electron-24.8.6" ];
         };
         modules =
         [

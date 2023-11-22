@@ -47,7 +47,8 @@
       obsidian
       zotero
       zathura
-      drawio
+      # NOTE: 2023-11-22 uses EOL electron
+      # drawio
     ];
     sessionVariables =
     {
