@@ -3,6 +3,7 @@
 
   imports =
   [
+    ./modules/fzf.nix
     ./modules/zsh.nix
     ./modules/neovim.nix
   ];
@@ -11,7 +12,6 @@
     packages = with pkgs;
     [
       lazygit
-      fzf
       cpuid
       dig
       wget

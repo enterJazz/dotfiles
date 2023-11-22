@@ -2,6 +2,7 @@
 {
   imports =
   [
+    ./modules/fzf.nix
     ./modules/zsh.nix
     ./modules/neovim.nix
   ];
@@ -59,11 +60,6 @@
 
   programs =
   {
-    fzf =
-    {
-      enable = true;
-      enableZshIntegration = true;
-    };
     firefox =
     {
       enable = true;
