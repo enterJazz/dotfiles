@@ -6,6 +6,7 @@
     ./modules/fzf.nix
     ./modules/zsh.nix
     ./modules/neovim.nix
+    ./modules/ssh.nix
   ];
 
   home = {
