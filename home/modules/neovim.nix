@@ -1,5 +1,23 @@
 { pkgs, lib, ... }:
 {
+  # required for coc
+  home.packages = with pkgs;
+  [
+    ## nix
+    # A sensible formatter for nix code.
+    nixpkgs-fmt
+    
+    # An LSP for nix.
+    rnix-lsp
+
+    ## rust: see https://github.com/iamthememory/dotfiles/blob/main/home/neovim/filetypes/rust.nix
+    # for when I need it
+
+    ## C
+    clang_16
+    clang-tools_16
+  ];
+
   programs.neovim =
   {
     enable = true;
@@ -9,8 +27,23 @@
     {
       enable = true;
       settings =
-      ''
-      '';
+      {
+        ## C
+        "clangd.arguments" =  [ "--clang-tidy" ];
+        "clangd.fallbackFlags" =  [ "-stdc++17" ];
+
+        languageserver.nix =
+        {
+          # The command to run.
+          command = "rnix-lsp";
+
+          # Run on nix files.
+          filetypes =
+          [
+            "nix"
+          ];
+        };
+      };
     };
     defaultEditor = true;
     plugins = with pkgs.vimPlugins;
