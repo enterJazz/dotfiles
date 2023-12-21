@@ -8,7 +8,7 @@
   [
     {
       # speedFactor = 0;
-      hostName = "vislor";
+      hostName = "vislor-builder";
       protocol = "ssh";
       sshUser = "nix";
       system = "x86_64-linux";
