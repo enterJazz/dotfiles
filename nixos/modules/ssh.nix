@@ -20,24 +20,19 @@
       LocalForward 10443 192.168.6.3:443
       LocalForward 10022 192.168.6.4:22
 
-    Host login-tum-builder
-      User tunnel
-      HostName login.dos.cit.tum.de
-      IdentityFile ${config.sops.secrets.remoteBuilder.path}
-
-    Host login-tum-user
+    Host login-tum
       User tunnel
       HostName login.dos.cit.tum.de
       IdentityFile ${config.sops.secrets.dos-cit-tum-de.path}
 
-    Host *.dos.cit.tum.de
+    Host *.dos.cit.tum.de !login.dos.cit.tum.de
       User robert
-      ProxyJump login-tum-user
+      ProxyJump login-tum
       IdentityFile ${config.sops.secrets.dos-cit-tum-de.path}
 
-    Host vislor
+    Host vislor-builder
       User nix
-      ProxyJump login-tum-builder
+      ProxyJump login-tum
       HostName vislor.dos.cit.tum.de
       IdentityFile ${config.sops.secrets.remoteBuilder.path}
 
