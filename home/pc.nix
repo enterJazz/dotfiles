@@ -11,6 +11,7 @@
     packages = with pkgs;
     [
       # teams
+      ripgrep
       lazygit
       sshpass
       nextcloud-client
