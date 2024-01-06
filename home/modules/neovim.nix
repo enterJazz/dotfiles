@@ -18,6 +18,18 @@ let
       hash = "sha256-ekGKOYzmdaMqAun/3fRGlhA7bLKuhzsXsEcFNukgFWU=";
     };
   };
+  vim-cutlass = pkgs.vimUtils.buildVimPlugin
+  {
+    pname = "vim-cutlass";
+    version = "0.0.0";
+    src = pkgs.fetchFromGitHub
+    {
+      owner = "svermeulen";
+      repo = "vim-cutlass";
+      rev = "7afd649415541634c8ce317fafbc31cd19d57589";
+      hash = "sha256-j5W9q905ApDf3fvCIS4UwyHYnEZu5Ictn+6JkV/xjig=";
+    };
+  };
 in
 {
   # required for coc
@@ -71,36 +83,7 @@ in
       copilot-vim
       vim-toml
       nvim-surround
-      # {
-      #   plugin = vim-yoink;
-      #   config =
-      #   ''
-      #     " vim-yoink config
-      #     " swap most recent paste around in yank history
-      #     nmap <c-n> <plug>(YoinkPostPasteSwapBack)
-      #     nmap <c-p> <plug>(YoinkPostPasteSwapForward)
-
-      #     " use vimyank for pasting
-      #     nmap p <plug>(YoinkPaste_p)
-      #     nmap P <plug>(YoinkPaste_P)
-
-      #     " permanently cycle through history
-      #     nmap [y <plug>(YoinkRotateBack)
-      #     nmap ]y <plug>(YoinkRotateForward)
-
-      #     " toggle if current paste is formatted
-      #     nmap <c-=> <plug>(YoinkPostPasteToggleFormat)
-      #   '';
-      # }
       vim-repeat
-      # {
-      #   plugin = vim-cutlass;
-      #   config =
-      #   ''
-      #     " vimcutlass: add cut operations to Yank history
-      #     let g:yoinkIncludeDeleteOperations = 1
-      #   '';
-      # }
       ale
       {
         plugin = vim-easy-align;
@@ -118,7 +101,42 @@ in
       # vim-just
     ] ++
     [
-      vim-yoink
+      {
+        plugin = vim-yoink;
+        config =
+        ''
+          " vim-yoink config
+          " swap most recent paste around in yank history
+          nmap <c-n> <plug>(YoinkPostPasteSwapBack)
+          nmap <c-p> <plug>(YoinkPostPasteSwapForward)
+
+          " use vimyank for pasting
+          nmap p <plug>(YoinkPaste_p)
+          nmap P <plug>(YoinkPaste_P)
+
+          " permanently cycle through history
+          nmap [y <plug>(YoinkRotateBack)
+          nmap ]y <plug>(YoinkRotateForward)
+
+          " toggle if current paste is formatted
+          nmap <c-=> <plug>(YoinkPostPasteToggleFormat)
+        '';
+      }
+      {
+        plugin = vim-cutlass;
+        config =
+        ''
+          " vimcutlass: add cut operations to Yank history
+          let g:yoinkIncludeDeleteOperations = 1
+
+          " vimcutlass: map 'r' as cut
+          nnoremap r d
+          xnoremap r d
+
+          nnoremap rr dd
+          nnoremap R D
+        '';
+      }
     ];
     extraConfig =
     ''
