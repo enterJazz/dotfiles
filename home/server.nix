@@ -5,6 +5,7 @@
   [
     ./modules/fzf.nix
     ./modules/zsh.nix
+    ./modules/fish.nix
     ./modules/neovim.nix
     ./modules/ssh.nix
     ./modules/dev.nix
@@ -49,7 +50,7 @@
       # enableZshIntegration = true;
       nix-direnv.enable = true;
     };
-    zsh.oh-my-zsh.theme = lib.mkForce "avit";
+    # zsh.oh-my-zsh.theme = lib.mkForce "avit";
     ssh =
     {
       enable = true;

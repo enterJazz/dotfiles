@@ -1,4 +1,24 @@
-{ pkgs, lib, ... }:
+{
+  pkgs
+  , lib
+  , vim-yoink
+  , ...
+}:
+let
+  # TODO: include as flake input
+  vim-yoink = pkgs.vimUtils.buildVimPlugin
+  {
+    pname = "vim-yoink";
+    version = "0.0.0";
+    src = pkgs.fetchFromGitHub
+    {
+      owner = "svermeulen";
+      repo = "vim-yoink";
+      rev = "89ed6934679fdbc3c20f552b50b1f869f624cd22";
+      hash = "sha256-ekGKOYzmdaMqAun/3fRGlhA7bLKuhzsXsEcFNukgFWU=";
+    };
+  };
+in
 {
   # required for coc
   home.packages = with pkgs;
@@ -50,7 +70,7 @@
     [
       copilot-vim
       vim-toml
-      vim-surround
+      nvim-surround
       # {
       #   plugin = vim-yoink;
       #   config =
@@ -96,6 +116,9 @@
       vim-gitgutter
       nvim-lspconfig
       # vim-just
+    ] ++
+    [
+      vim-yoink
     ];
     extraConfig =
     ''
