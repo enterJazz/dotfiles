@@ -15,5 +15,9 @@
       ];
       theme = "robbyrussell";
     };
+    initExtra =
+    ''
+      DISABLE_UNTRACKED_FILES_DIRTY="true"
+    '';
   };
 }
