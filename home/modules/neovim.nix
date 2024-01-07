@@ -1,11 +1,23 @@
 {
   pkgs
   , lib
-  , vim-yoink
   , ...
 }:
 let
   # TODO: include as flake input
+  vim-just = pkgs.vimUtils.buildVimPlugin
+  {
+    pname = "vim-just";
+    version = "0.0.0";
+    src = pkgs.fetchFromGitHub
+    {
+      owner = "NoahTheDuke";
+      repo = "vim-just";
+      rev = "c2c785b61eb5d5eddd8fe64e6856c9bf8988a3c4";
+      hash = "sha256-QAIPxd0jptR9j6kY1utZmXY4353/FN6UP0wfv/Z/H8k=";
+    };
+  };
+
   vim-yoink = pkgs.vimUtils.buildVimPlugin
   {
     pname = "vim-yoink";
@@ -82,7 +94,7 @@ in
     [
       copilot-vim
       vim-toml
-      nvim-surround
+      vim-surround
       vim-repeat
       ale
       {
@@ -98,7 +110,8 @@ in
       }
       vim-gitgutter
       nvim-lspconfig
-      # vim-just
+      coc-pyright
+      vim-just
     ] ++
     [
       {
