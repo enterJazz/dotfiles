@@ -42,7 +42,6 @@
       firefox-wayland
       bitwarden
       thunderbird
-      mako
       wl-clipboard
       shotman
       # telegram-desktop
