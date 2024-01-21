@@ -5,6 +5,7 @@
     ./modules/fzf.nix
     ./modules/zsh.nix
     ./modules/neovim.nix
+    ./modules/foot.nix
   ];
 
   home = {
@@ -434,9 +435,9 @@
       bindsym Print+Shift exec shotman -c region
       bindsym Print+Shift+Control exec shotman -c window
     '';
-    systemdIntegration = true;
-
+    systemd.enable = true;
   };
+
   
   services =
   {
