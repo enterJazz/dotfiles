@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, unfree, ... }:
 {
   imports =
   [
@@ -47,11 +47,11 @@
       # telegram-desktop
       signal-desktop
       # slack
-      obsidian
+      unfree.obsidian
       zotero
       zathura
       # NOTE: 2023-11-22 uses EOL electron
-      # drawio
+      unfree.drawio
     ];
     sessionVariables =
     {
