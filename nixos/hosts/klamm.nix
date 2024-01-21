@@ -27,6 +27,7 @@
     ../modules/docker.nix
     ../modules/borgbackup.nix
     ../modules/nix-ld.nix
+    ../modules/fonts.nix
   ];
 
   nix =
@@ -55,16 +56,6 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-
-  fonts.fonts = with pkgs;
-  [
-    (nerdfonts.override { fonts = [ "DroidSansMono"]; })
-    dejavu_fonts
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-  ];
-  
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
