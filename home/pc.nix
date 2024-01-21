@@ -11,6 +11,7 @@
     packages = with pkgs;
     [
       # teams
+      shotwell
       ripgrep
       lazygit
       sshpass
