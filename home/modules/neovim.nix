@@ -185,6 +185,11 @@ in
 
       " remove highlight
       nnoremap <silent> <esc> :noh<cr><esc>
+
+      " show current line number
+      set number
+      " show relative line numbers
+      set relativenumber
     '';
   };
 }
