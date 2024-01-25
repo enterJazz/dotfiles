@@ -50,8 +50,8 @@
       obsidian
       zotero
       zathura
-      # NOTE: 2023-11-22 uses EOL electron
       drawio
+      playerctl
     ];
     sessionVariables =
     {
@@ -413,19 +413,45 @@
 
   # from nixos.wiki/wiki/Sway
   wayland.windowManager.sway =
+  let
+    mod = "Mod4";
+    alt = "Mod1";
+  in
   {
     enable = true;
     config = rec
     {
       # bars by waybar
       bars = [];
-      modifier = "Mod4";
+      modifier = "${mod}";
       output =
       {
         "Virtual-1" =
 	{
 	  mode = "1920x1080@60Hz";
 	};
+      };
+      keybindings =
+      lib.mkOptionDefault
+      {
+        # Lock
+        "${mod}+Shift+semicolon" = "exec swaylock -c 000000";
+        # Dismiss notifications
+        "${mod}+Escape" = "exec makoctl dismiss";
+        # Volume
+        "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+        "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
+        "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+        # Audio input
+        # NOTE: doesn't seem to work?
+        "XF86AudioMicMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+        # Brightness
+        "XF86MonBrightnessDown" = "exec light -U 5";
+        "XF86MonBrightnessUp" = "exec light -A 5";
+        # Control audio
+        "XF86AudioPlay" = "exec playerctl play-pause";
+        "XF86AudioNext" = "exec playerctl next";
+        "XF86AudioPrev" = "exec playerctl previous";
       };
     };
     extraConfig =
