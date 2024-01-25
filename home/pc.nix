@@ -1,4 +1,7 @@
 { pkgs, lib, ... }:
+let
+  slackdump = pkgs.callPackage ./modules/slackdump.nix { inherit pkgs; };
+in
 {
   imports =
   [
@@ -52,6 +55,9 @@
       zathura
       drawio
       playerctl
+    ] ++
+    [
+      slackdump
     ];
     sessionVariables =
     {
