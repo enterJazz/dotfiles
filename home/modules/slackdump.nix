@@ -1,19 +1,23 @@
 { pkgs, stdenv, lib, ... }:
-stdenv.mkDerivation rec
+pkgs.buildGoModule
 {
   name = "slackdump";
-  version = "2.5.3";
-  src = pkgs.fetchurl
+  src = pkgs.fetchFromGitHub
   {
-    url = "https://github.com/rusq/slackdump/releases/download/v${version}/slackdump_Linux_x86_64.tar.gz";
-    hash = "sha256-93NwpXK74lRC/8RVKPJ8TPWgDRbdcDKkSMY0WUMftEQ=";
+    owner = "enterJazz";
+    repo = "slackdump";
+    rev = "patch-1";
+    hash = "sha256-rlT9en6iTLF7Ohy+L/qqovWlSwOueUxO0u+eTzf+uCg=";
+    # hash = "sha256-H2ZV7tPaXQRNCDqJt4yAyHAAT4KDL+NSz404pkyiwLI=";
   };
 
-  sourceRoot = ".";
+  vendorHash = "sha256-0O8LSGva9uga4D5L8wMAwKIMt/0UWxdlpndIAynEhoc=";
 
-  installPhase =
+  buildInputs = with pkgs; [ go ];
+
+  postInstall =
   ''
-    install -m755 -D slackdump $out/bin/slackdump
+    install -Dm755 ./contrib/incremental_backup/dump.sh $out/bin/.
   '';
 }
 
