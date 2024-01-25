@@ -132,6 +132,8 @@
         xdg-desktop-portal-wlr
         xdg-desktop-portal-gtk
       ];
+      # I don't really care about this, I just want nixos to stop complaining
+      config.common.default = "*";
     };
   };
 

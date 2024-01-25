@@ -443,7 +443,8 @@
         "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
         "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
         # Audio input
-        # NOTE: doesn't seem to work?
+        # NOTE: XF86AudioMicMute is not the correct key?
+        # https://github.com/qmk/qmk_firmware/issues/17749 ?
         "XF86AudioMicMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
         # Brightness
         "XF86MonBrightnessDown" = "exec light -U 5";
