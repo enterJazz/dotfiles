@@ -27,6 +27,7 @@
     ../modules/borgbackup.nix
     ../modules/nix-ld.nix
     ../modules/fonts.nix
+    ../modules/fwupd.nix
   ];
 
   nix =

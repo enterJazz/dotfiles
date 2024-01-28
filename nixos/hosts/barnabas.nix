@@ -27,6 +27,8 @@
     ../modules/docker.nix
     ../modules/borgbackup.nix
     ../modules/fonts.nix
+    ../modules/fwupd.nix
+    ../modules/lanzaboote.nix
   ];
 
   nix =
@@ -152,12 +154,12 @@
   
   boot.loader =
   {
-    grub =
-    {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
-    };
+#     grub =
+#     {
+#       enable = true;
+#       device = "nodev";
+#       efiSupport = true;
+#     };
     efi =
     {
       canTouchEfiVariables = true;

@@ -11,6 +11,11 @@
     };
     nur.url = "github:nix-community/NUR";
     sops-nix.url = "github:Mic92/sops-nix";
+    lanzaboote =
+    {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -20,6 +25,7 @@
     , home-manager
     , nur
     , sops-nix
+    , lanzaboote
     , ... }:
   let
     system = "x86_64-linux";
@@ -100,6 +106,7 @@
 	  ./nixos/hosts/barnabas.nix
           # TODO refactor
           sops-nix.nixosModules.sops
+          lanzaboote.nixosModules.lanzaboote
 	];
       };
     };

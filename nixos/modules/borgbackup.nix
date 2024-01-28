@@ -58,7 +58,7 @@
     postHook =
     ''
       if [[ $exitStatus -eq 0 ]] ; then
-        ${pkgs.curl}/bin/curl $(cat ${config.sops.secrets.klamm-borgbackup-healthchecks.path})
+        ${pkgs.curl}/bin/curl $(cat ${config.sops.secrets."${config.networking.hostName}-borgbackup-healthchecks".path})
       fi
     '';
   };
