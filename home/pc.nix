@@ -15,6 +15,7 @@ in
     packages = with pkgs;
     [
       # teams
+      jq
       shotwell
       ripgrep
       lazygit
@@ -459,6 +460,9 @@ in
         "XF86AudioPlay" = "exec playerctl play-pause";
         "XF86AudioNext" = "exec playerctl next";
         "XF86AudioPrev" = "exec playerctl previous";
+
+        # rotate current display
+        "${mod}+Shift+r" = "exec swaymsg output $(swaymsg -t get_outputs | jq -r '.[] | select(.focused == true) | .name') transform 90 clockwise";
       };
     };
     extraConfig =
