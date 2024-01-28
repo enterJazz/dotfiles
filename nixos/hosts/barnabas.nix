@@ -116,12 +116,9 @@
     keyd =
     {
       enable = true;
-      settings =
+      keyboards.default.settings =
       {
-        main =
-        {
-          delete = "off";
-        };
+        main.delete = "off";
       };
     };
     pipewire.enable = true;
@@ -137,6 +134,7 @@
         xdg-desktop-portal-wlr
         xdg-desktop-portal-gtk
       ];
+      config.common.default = "*";
     };
   };
 

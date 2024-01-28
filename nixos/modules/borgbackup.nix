@@ -62,6 +62,8 @@
       fi
     '';
   };
+  # NOTE: ssh used different knownHosts config and ignored this, causing borg
+  # setup to fail
   programs.ssh.knownHosts =
   {
     "borgbackup.cit.tum.de" =
