@@ -190,6 +190,11 @@ in
       set number
       " show relative line numbers
       set relativenumber
+
+      " https://stackoverflow.com/a/6638381
+      ca tn tabnew
+      ca th tabp
+      ca tl tabn
     '';
   };
 }
