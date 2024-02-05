@@ -19,6 +19,7 @@
       ProxyCommand ssh -W %h:%p thesissshserver
       LocalForward 10443 192.168.6.3:443
       LocalForward 10022 192.168.6.4:22
+      IdentityFile ${config.sops.secrets.thesis.path}
 
     Host login-tum
       User tunnel
