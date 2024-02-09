@@ -32,40 +32,63 @@
     , ... }:
   flake-parts.lib.mkFlake { inherit inputs; }
   {
-    perSystem = { ... }:
+    # ex: https://github.com/DioxusLabs/dioxus/blob/0a4603d30e0e2942438c6cbf1bc66e88cb635a8e/flake.nix#L11
+    perSystem =
     {
-        packages = {
-        };
+      pkgs
+      , system
+      , ...
+    }:
+    let
+      username = "robert";
+    in
+    {
+#       homeConfigurations =
+#       {
+#         # Q: HM per machine? or per OS?
+#         # common config
+#         # specialize per host
+#       };
+      packages = {
+      };
     };
     systems =
     [
       "x86_64-linux"
-      "aarch64-linux"
+      "aarch64-darwin"
     ];
     flake =
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       username = "robert";
+      hmpkgs = import nixpkgs
+      {
+        inherit system;
+        config.allowUnfree = true;
+        overlays = [ nur.overlay ];
+        config.permittedInsecurePackages = [ "electron-25.9.0" ];
+      };
     in
     {
 # home configuration
       homeConfigurations =
       {
+        "amalia" = home-manager.lib.homeManagerConfiguration
+        {
+          modules =
+          [
+            ./home/hosts/amalia.nix
+          ];
+        };
         "${username}-pc" = home-manager.lib.homeManagerConfiguration
         {
 # workaround: https://github.com/nix-community/home-manager/issues/2942#issuecomment-1378627909
-          pkgs = import nixpkgs
-          {
-            inherit system;
-            config.allowUnfree = true;
-            overlays = [ nur.overlay ];
-            config.permittedInsecurePackages = [ "electron-25.9.0" ];
-          };
+          pkgs = hmpkgs;
           modules =
-            [
+          [
 # <sops-nix/modules/home-manager/sops.nix>
-            ./home/pc.nix
+          ./home/pc.nix
             {
               home =
               {
@@ -74,30 +97,25 @@
                 stateVersion = "23.05";
               };
             }
-            ];
+          ];
         };
         "${username}-server" = home-manager.lib.homeManagerConfiguration
         {
 # workaround: https://github.com/nix-community/home-manager/issues/2942#issuecomment-1378627909
-          pkgs = import nixpkgs
-          {
-            inherit system;
-            config.allowUnfree = true;
-            overlays = [ nur.overlay ];
-          };
+          pkgs = hmpkgs; 
           modules =
-            [
+          [
 # <sops-nix/modules/home-manager/sops.nix>
-            ./home/server.nix
+          ./home/hosts/server.nix
             {
               home =
               {
                 username = "${username}";
                 homeDirectory = "/home/${username}";
-                stateVersion = "23.05";
+                stateVersion = "23.11";
               };
             }
-            ];
+          ];
         };
       };
 
