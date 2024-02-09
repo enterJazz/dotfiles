@@ -8,3 +8,6 @@ waybar:
 
 disk:
 - [ ] add disk encryption (via disko? for next machine)
+
+hm:
+- [ ] add hm for macos
