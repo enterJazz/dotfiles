@@ -3,53 +3,24 @@
 
   imports =
   [
-    ./modules/fzf.nix
-    ./modules/zsh.nix
-    ./modules/fish.nix
-    ./modules/neovim.nix
-    ./modules/ssh.nix
-    ./modules/dev.nix
+    # ../modules/fish.nix
+    ../modules/dev.nix
+    ../common/linux.nix
   ];
 
   home = {
     packages = with pkgs;
     [
-      lazygit
       cpuid
       dig
-      wget
-      unzip
-      tree
-      man-pages
-      nix-index
-      age
-      tmux
-      git
       rename
       # bitwarden
       pass
     ];
   };
 
-    nix =
-    {
-      package = pkgs.nix;
-      settings.experimental-features =
-      [
-        "nix-command"
-        "flakes"
-        # "allow-import-from-derivation"
-      ];
-    };
-
   programs =
   {
-    direnv =
-    {
-      enable = true;
-      # enableZshIntegration = true;
-      nix-direnv.enable = true;
-    };
     # zsh.oh-my-zsh.theme = lib.mkForce "avit";
     ssh =
     {
