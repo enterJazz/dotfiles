@@ -8,35 +8,6 @@
   {
     extraConfig =
     ''
-    Host thesissshserver
-      HostName 146.152.205.66
-      User guest
-      IdentityFile ${config.sops.secrets.thesis.path}
-
-    Host sdp
-      HostName 192.168.6.2
-      User sdp
-      ProxyCommand ssh -W %h:%p thesissshserver
-      LocalForward 10443 192.168.6.3:443
-      LocalForward 10022 192.168.6.4:22
-      IdentityFile ${config.sops.secrets.thesis.path}
-
-    Host login-tum
-      User tunnel
-      HostName login.dos.cit.tum.de
-      IdentityFile ${config.sops.secrets.dos-cit-tum-de.path}
-
-    Host *.dos.cit.tum.de !login.dos.cit.tum.de
-      User robert
-      ProxyJump login-tum
-      IdentityFile ${config.sops.secrets.dos-cit-tum-de.path}
-
-    Host vislor-builder
-      User nix
-      ProxyJump login-tum
-      HostName vislor.dos.cit.tum.de
-      IdentityFile ${config.sops.secrets.remoteBuilder.path}
-
     Host gitlab.lrz.de
       User git
       IdentityFile ${config.sops.secrets.gitlab-lrz.path}
@@ -47,16 +18,6 @@
     '';
     knownHosts =
     {
-      "login.dos.cit.tum.de" =
-      {
-        hostNames = [ "login.dos.cit.tum.de" ];
-        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOdlUylM9WIFfIYZDK8rjVYQzX+RYwIlLgsEh4j0pNx6";
-      };
-      "vislor.dos.cit.tum.de " =
-      {
-        hostNames = [ "vislor.dos.cit.tum.de" ];
-        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBFKh4D5rTKnC8Jmhuj1SA7a82IG642dXmk38wYdP/lD";
-      };
       "github.com" =
       {
         hostNames = [ "github.com" ];
