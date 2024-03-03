@@ -16,6 +16,7 @@
         "Arnetwork 138".psk = "@PSK_ARNETWORK@";
         "iPhone von Robert".psk = "@PSK_IPHONE@";
         "navigator".psk = "@PSK_NAVIGATOR@";
+        "Alpina Dolomites".psk = "@PSK_ALPINA_DOLOMITES@";
       };
       extraConfig =
       ''
