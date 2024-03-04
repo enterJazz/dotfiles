@@ -21,15 +21,13 @@
     # ../modules/fuse.nix
     # ../modules/passwordstore.nix
     # ../modules/protonmail.nix
-    ../modules/xournalpp.nix
     ../modules/remote-builder.nix
     ../modules/ssh.nix
     ../modules/docker.nix
     ../modules/borgbackup.nix
+    ../modules/nix-ld.nix
     ../modules/fonts.nix
     ../modules/fwupd.nix
-    ../modules/lanzaboote.nix
-    ../modules/bluetooth.nix
   ];
 
   nix =
@@ -37,6 +35,9 @@
     package = pkgs.nixFlakes;
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
+
+
+  networking.hostName = "klamm";
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -75,7 +76,7 @@
     defaultUserShell = pkgs.zsh;
     users.robert =
     {
-      uid = 1001;
+      uid = 1000;
       isNormalUser = true;
       extraGroups = [
         "wheel"
@@ -88,10 +89,12 @@
   
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   wget
-  # ];
+  environment.systemPackages = with pkgs;
+  [
+    vim
+    wget
+    openvpn
+  ];
   environment =
   {
     shells = [ pkgs.zsh ];
@@ -116,14 +119,6 @@
   # List services that you want to enable:
   services =
   {
-    keyd =
-    {
-      enable = true;
-      keyboards.default.settings =
-      {
-        main.delete = "off";
-      };
-    };
     pipewire.enable = true;
   };
 
@@ -137,6 +132,7 @@
         xdg-desktop-portal-wlr
         xdg-desktop-portal-gtk
       ];
+      # I don't really care about this, I just want nixos to stop complaining
       config.common.default = "*";
     };
   };
@@ -155,12 +151,12 @@
   
   boot.loader =
   {
-#     grub =
-#     {
-#       enable = true;
-#       device = "nodev";
-#       efiSupport = true;
-#     };
+    grub =
+    {
+      enable = true;
+      device = "nodev";
+      efiSupport = true;
+    };
     efi =
     {
       canTouchEfiVariables = true;
@@ -194,10 +190,4 @@
   sound.enable = true;
   # hardware.pulseaudio.enable = true;
   hardware.opengl.enable = true;
-
-  networking.hostName = "barnabas";
-
-  # try to enable sgx by updating kernel
-  # boot.kernelPackages = pkgs.linuxPackages_6_5;
 }
-
