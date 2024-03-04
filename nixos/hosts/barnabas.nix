@@ -29,6 +29,7 @@
     ../modules/fonts.nix
     ../modules/fwupd.nix
     ../modules/lanzaboote.nix
+    ../modules/bluetooth.nix
   ];
 
   nix =
