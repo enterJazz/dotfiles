@@ -83,6 +83,12 @@ in
           force = true;
           engines =
           {
+            "Investopedia" =
+            {
+              urls = [{ template = "https://www.investopedia.com/search?q={searchTerms}"; }];
+              icon = "https://upload.wikimedia.org/wikipedia/commons/3/37/Investopedia_Logo.svg";
+              definedAliases = [ "@invest" ];
+            };
             "Google Scholar" =
             {
               urls = [{ template = "https://scholar.google.com/scholar?hl=en&q={searchTerms}"; }];
