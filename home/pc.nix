@@ -16,6 +16,7 @@ in
     packages = with pkgs;
     [
       # teams
+      neofetch
       jq
       shotwell
       ripgrep
