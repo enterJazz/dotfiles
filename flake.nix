@@ -67,7 +67,7 @@
         inherit system;
         config.allowUnfree = true;
         overlays = [ nur.overlay ];
-        config.permittedInsecurePackages = [ "electron-25.9.0" ];
+        config.permittedInsecurePackages = [ "electron-25.9.0" "nix-2.15.3" ];
       };
     in
     {
