@@ -10,6 +10,7 @@ in
     ./modules/neovim.nix
     ./modules/foot.nix
     ./modules/waybar.nix
+    ./modules/direnv.nix
   ];
 
   home = {
@@ -158,12 +159,6 @@ in
       };
     };
 
-    direnv =
-    {
-      enable = true;
-      # enableZshIntegration = true;
-      nix-direnv.enable = true;
-    };
     zathura =
     {
       enable = true;

@@ -12,6 +12,10 @@ init-nixos-config:
 init-hm-pc:
     nix run .#switch-$(whoami)-hm-pc
 
+init-hm-amalia:
+    nix run .#switch-amalia --extra-experimental-features nix-command --extra-experimental-features flakes --show-trace
+
+
 init-hm-server:
     nix run .#switch-$(whoami)-hm-server
 
