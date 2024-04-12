@@ -181,7 +181,7 @@ in
       set backspace=indent,eol,start	
 
       set undofile
-      set undodir=/home/robert/.config/nvim/.vimundo/
+      set undodir=$HOME/.config/nvim/.vimundo/
 
       " remove highlight
       nnoremap <silent> <esc> :noh<cr><esc>

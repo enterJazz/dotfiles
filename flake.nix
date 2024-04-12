@@ -30,28 +30,29 @@
     , lanzaboote
     , flake-parts
     , ... }:
+  # https://flake.parts/getting-started
   flake-parts.lib.mkFlake { inherit inputs; }
   {
     # ex: https://github.com/DioxusLabs/dioxus/blob/0a4603d30e0e2942438c6cbf1bc66e88cb635a8e/flake.nix#L11
-    perSystem =
-    {
-      pkgs
-      , system
-      , ...
-    }:
-    let
-      username = "robert";
-    in
-    {
-#       homeConfigurations =
-#       {
-#         # Q: HM per machine? or per OS?
-#         # common config
-#         # specialize per host
-#       };
-      packages = {
-      };
-    };
+#      perSystem =
+#      {
+#        pkgs
+#        , system
+#        , ...
+#      }:
+#      let
+#        username = "robert";
+#      in
+#      {
+#  #       homeConfigurations =
+#  #       {
+#  #         # Q: HM per machine? or per OS?
+#  #         # common config
+#  #         # specialize per host
+#  #       };
+#        packages = {
+#        };
+#      };
     systems =
     [
       "x86_64-linux"
@@ -69,6 +70,15 @@
         overlays = [ nur.overlay ];
         config.permittedInsecurePackages = [ "electron-25.9.0" "nix-2.15.3" ];
       };
+      aasystem = "aarch64-darwin";
+      aapkgs = nixpkgs.legacyPackages.${aasystem};
+      aahmpkgs = import nixpkgs
+      {
+        system = aasystem;
+        config.allowUnfree = true;
+        overlays = [ nur.overlay ];
+        config.permittedInsecurePackages = [ "electron-25.9.0" ];
+      };
     in
     {
 # home configuration
@@ -76,9 +86,18 @@
       {
         "amalia" = home-manager.lib.homeManagerConfiguration
         {
+          pkgs = aahmpkgs;
           modules =
           [
             ./home/hosts/amalia.nix
+            {
+              home =
+              {
+                username = "robertschambach";
+                homeDirectory = "/Users/robertschambach";
+                stateVersion = "23.11";
+              };
+            }
           ];
         };
         "${username}-pc" = home-manager.lib.homeManagerConfiguration
@@ -142,6 +161,15 @@
               sops-nix.nixosModules.sops
               lanzaboote.nixosModules.lanzaboote
             ];
+        };
+      };
+
+      apps.${aasystem} =
+      {
+        "switch-amalia" =
+        {
+          type = "app";
+          program = "${self.homeConfigurations."amalia".activationPackage}/activate";
         };
       };
 
