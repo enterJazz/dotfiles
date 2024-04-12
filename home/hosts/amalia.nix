@@ -6,5 +6,12 @@
     ../modules/zsh.nix
     ../modules/neovim.nix
   ];
-  home = {};
+  home =
+  {
+    packages = with pkgs;
+    [
+      drawio
+      tmux
+    ];
+  };
 }
