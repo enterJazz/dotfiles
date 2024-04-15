@@ -44,6 +44,10 @@
     Host github.com
       User git
       IdentityFile ${config.sops.secrets.github.path}
+
+    Host u400394.your-storagebox.de
+      User u400394
+      IdentityFile ${config.sops.secrets.storagebox-ssh.path}
     '';
     knownHosts =
     {
