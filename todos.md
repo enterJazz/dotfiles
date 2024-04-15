@@ -11,3 +11,7 @@ disk:
 
 hm:
 - [ ] add hm for macos
+
+macos:
+- borg
+- nextcloud hetzn

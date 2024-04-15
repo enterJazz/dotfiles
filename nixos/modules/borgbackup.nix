@@ -44,8 +44,8 @@
       mode = "repokey";
       passCommand = "cat ${config.sops.secrets."${config.networking.hostName}-borgbackup-passphrase".path}";
     };
-    environment.BORG_RSH = "ssh -i ${config.sops.secrets."${config.networking.hostName}-borgbackup-ssh".path} -o ProxyJump=login-tum";
-    repo = "borg@borgbackup.cit.tum.de:${config.networking.hostName}";
+    environment.BORG_RSH = "ssh -p23 -i ${config.sops.secrets."${config.networking.hostName}-borgbackup-ssh".path}";
+    repo = "u400394@u400394.your-storagebox.de:backups/${config.networking.hostName}::${config.networking.hostName}";
     compression = "auto,zstd";
     startAt = "daily";
     prune.keep =
@@ -70,6 +70,11 @@
     {
       hostNames = [ "borgbackup.cit.tum.de" ];
       publicKey = "SHA256:qp2UT3bAeh4LAB6jYBR1Ij9oTa8edCNR4w2n4s7whts";
+    };
+    "u400394.your-storagebox.de" =
+    {
+      hostNames = [ "u400394.your-storagebox.de" ];
+      publicKey = "SHA256:EMlfI8GsRIfpVkoW1H2u0zYVpFGKkIMKHFZIRkf2ioI";
     };
   };
 }

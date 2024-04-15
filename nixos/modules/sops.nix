@@ -74,6 +74,12 @@
         format = "binary";
         owner = config.users.users.robert.name;
       };
+      storagebox-ssh =
+      {
+        sopsFile = ../secrets/keys/u400394.your-storagebox.de;
+        format = "binary";
+        owner = config.users.users.robert.name;
+      };
       thesis =
       {
         sopsFile = ../secrets/thesis;
