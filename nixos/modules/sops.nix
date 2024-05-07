@@ -80,12 +80,19 @@
         format = "binary";
         owner = config.users.users.robert.name;
       };
-      thesis =
+      wg-scontain-privkey =
       {
-        sopsFile = ../secrets/thesis;
+        sopsFile = ../secrets/keys/wg-scontain-privkey;
         format = "binary";
         owner = config.users.users.robert.name;
       };
+      wg-scontain-psk =
+      {
+        sopsFile = ../secrets/keys/wg-scontain-psk;
+        format = "binary";
+        owner = config.users.users.robert.name;
+      };
+
     };
   };
 }

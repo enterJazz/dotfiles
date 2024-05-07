@@ -30,6 +30,7 @@
     ../modules/fwupd.nix
     ../modules/lanzaboote.nix
     ../modules/bluetooth.nix
+    ../modules/wireguard.nix
   ];
 
   nix =

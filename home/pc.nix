@@ -17,6 +17,7 @@ in
     packages = with pkgs;
     [
       # teams
+      wireguard-tools
       neofetch
       jq
       shotwell
@@ -59,6 +60,7 @@ in
       zathura
       drawio
       playerctl
+      figma-linux
     ] ++
     [
       slackdump
