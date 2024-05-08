@@ -43,6 +43,10 @@
     Host 192.168.20*
       User robert
       IdentityFile ${config.sops.secrets.dev-vm-robert.path}
+
+    Host scone.cf
+      User git
+      IdentityFile ${config.sops.secrets.scone-cf.path}
     '';
     knownHosts =
     {
