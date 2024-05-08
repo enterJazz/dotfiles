@@ -56,6 +56,12 @@
         sopsFile = ../secrets/barnabas/borgbackup-healthchecks;
         format = "binary";
       };
+      gitlab-office-scontain-com =
+      {
+        sopsFile = ../secrets/keys/gitlab.office.scontain.com;
+        format = "binary";
+        owner = config.users.users.robert.name;
+      };
       gitlab-lrz =
       {
         sopsFile = ../secrets/keys/gitlab.lrz.de;
