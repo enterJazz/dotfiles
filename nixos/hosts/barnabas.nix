@@ -31,6 +31,7 @@
     ../modules/lanzaboote.nix
     ../modules/bluetooth.nix
     ../modules/wireguard.nix
+    ../modules/openvpn.nix
   ];
 
   nix =
