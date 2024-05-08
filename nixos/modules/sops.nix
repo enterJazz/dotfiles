@@ -104,6 +104,12 @@
         format = "binary";
         owner = config.users.users.robert.name;
       };
+      scone-cf =
+      {
+        sopsFile = ../secrets/keys/scone.cf;
+        format = "binary";
+        owner = config.users.users.robert.name;
+      };
     };
   };
 }
