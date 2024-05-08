@@ -98,7 +98,12 @@
         format = "binary";
         owner = config.users.users.robert.name;
       };
-
+      dev-vm-robert =
+      {
+        sopsFile = ../secrets/keys/dev-vm-robert;
+        format = "binary";
+        owner = config.users.users.robert.name;
+      };
     };
   };
 }
