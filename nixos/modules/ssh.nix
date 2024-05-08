@@ -35,6 +35,10 @@
     Host u400394.your-storagebox.de
       User u400394
       IdentityFile ${config.sops.secrets.storagebox-ssh.path}
+
+    Host gitlab.office.scontain.com
+      User git
+      IdentityFile ${config.sops.secrets.gitlab-office-scontain-com.path}
     '';
     knownHosts =
     {
