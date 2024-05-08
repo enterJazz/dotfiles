@@ -39,6 +39,10 @@
     Host gitlab.office.scontain.com
       User git
       IdentityFile ${config.sops.secrets.gitlab-office-scontain-com.path}
+
+    Host 192.168.20*
+      User robert
+      IdentityFile ${config.sops.secrets.dev-vm-robert.path}
     '';
     knownHosts =
     {
