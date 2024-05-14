@@ -200,6 +200,6 @@
   networking.hostName = "barnabas";
 
   # try to enable sgx by updating kernel
-  # boot.kernelPackages = pkgs.linuxPackages_6_5;
+  boot.kernelPackages = pkgs.linuxPackages_6_6;
 }
 
