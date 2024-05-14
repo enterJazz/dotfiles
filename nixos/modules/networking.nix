@@ -18,6 +18,7 @@
         "navigator".psk = "@PSK_NAVIGATOR@";
         "Alpina Dolomites".psk = "@PSK_ALPINA_DOLOMITES@";
         "Ritz-Carlton-Jena".psk = "@PSK_BENE@";
+        "SCONTAIN".psk = "@PSK_SCONTAIN@";
       };
       extraConfig =
       ''
