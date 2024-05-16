@@ -1,6 +1,7 @@
 {
   pkgs
   , lib
+  , config
   , ...
 }:
 let
@@ -54,8 +55,13 @@ in
     # An LSP for nix.
     rnix-lsp
 
-    ## rust: see https://github.com/iamthememory/dotfiles/blob/main/home/neovim/filetypes/rust.nix
-    # for when I need it
+    # rust: see https://github.com/iamthememory/dotfiles/blob/main/home/neovim/filetypes/rust.nix
+    cargo
+    rustc
+    clippy
+    rust-analyzer
+    rustfmt
+
 
     ## C
     clang_16
@@ -76,16 +82,28 @@ in
         "clangd.arguments" =  [ "--clang-tidy" ];
         "clangd.fallbackFlags" =  [ "-stdc++17" ];
 
-        languageserver.nix =
-        {
-          # The command to run.
-          command = "rnix-lsp";
+        ## Rust
+        # Show document links when hovering.
+        "rust-analyzer.hoverActions.linksInHover" = true;
 
-          # Run on nix files.
-          filetypes =
-          [
-            "nix"
-          ];
+        # The path to rust-analyzer.
+        # If not specified, coc-rust-analyzer assumes it needs to download it from
+        # a GitHub release.
+        "rust-analyzer.serverPath" = "${config.home.profileDirectory}/bin/rust-analyzer";
+
+        languageserver =
+        {
+          nix =
+          {
+            # The command to run.
+            command = "rnix-lsp";
+
+            # Run on nix files.
+            filetypes =
+            [
+              "nix"
+            ];
+          };
         };
       };
     };
@@ -111,6 +129,7 @@ in
       vim-gitgutter
       nvim-lspconfig
       coc-pyright
+      coc-rust-analyzer
       vim-just
     ] ++
     [
@@ -195,6 +214,30 @@ in
       ca tn tabnew
       ca th tabp
       ca tl tabn
+
+      " Rust
+      " Run rustfmt on saving.
+      " Also make sure g:ale_fixers exists, because home-manager can put these
+      " configs in whatever order it likes.
+      if !exists("g:ale_fixers")
+        let g:ale_fixers = {}
+      endif
+      let g:ale_fixers['rust'] = ['rustfmt']
+
+
+      " Run cargo check/clippy on all targets, including examples, tests, etc.
+      " when linting.
+      let g:ale_rust_cargo_check_all_targets = 1
+
+      " Use clippy for linting.
+      let g:ale_rust_cargo_use_clippy = 1
+
+      " Disable default style to allow setting textwidth to 80.
+      let g:rust_recommended_style = 0
+
+      if empty($RUST_SRC_PATH)
+        let $RUST_SRC_PATH = '${pkgs.rustPlatform.rustLibSrc}'
+      endif
     '';
   };
 }
