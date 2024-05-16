@@ -16,6 +16,7 @@
       rename
       # bitwarden
       pass
+      ripgrep
     ];
   };
 
