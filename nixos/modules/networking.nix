@@ -19,12 +19,10 @@
         "Alpina Dolomites".psk = "@PSK_ALPINA_DOLOMITES@";
         "Ritz-Carlton-Jena".psk = "@PSK_BENE@";
         "SCONTAIN".psk = "@PSK_SCONTAIN@";
+        "WIFIonICE".extraConfig = "key_mgmt=NONE";
       };
       extraConfig =
       ''
-        network={
-          ssid="FlixTrain Wi-Fi"
-        }
         network={
                 ssid="eduroam"
                 key_mgmt=WPA-EAP
