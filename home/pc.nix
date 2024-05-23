@@ -61,7 +61,6 @@ in
       zathura
       drawio
       playerctl
-      figma-linux
     ] ++
     [
       slackdump
