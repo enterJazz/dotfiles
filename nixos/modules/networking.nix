@@ -19,7 +19,10 @@
         "Alpina Dolomites".psk = "@PSK_ALPINA_DOLOMITES@";
         "Ritz-Carlton-Jena".psk = "@PSK_BENE@";
         "SCONTAIN".psk = "@PSK_SCONTAIN@";
+        "TP-Link_1FC7".psk = "@PSK_KONRAD@";
         "WIFIonICE".extraConfig = "key_mgmt=NONE";
+        "WIFI@DB".extraConfig = "key_mgmt=NONE";
+        "MeinJena".extraConfig = "key_mgmt=NONE";
       };
       extraConfig =
       ''
@@ -28,10 +31,7 @@
                 key_mgmt=WPA-EAP
                 eap=TTLS
                 ca_cert="/etc/ssl/certs/ca-certificates.crt"
-                identity="ge32jig@eduroam.mwn.de"
-                domain_suffix_match="radius.lrz.de"
-                subject_match="radius.lrz.de"
-                anonymous_identity="anonymous@eduroam.mwn.de"
+                identity="@USER_EDUROAM@"
                 phase2="auth=PAP"
                 password="@PSK_EDUROAM@"
         }
