@@ -23,6 +23,7 @@
         "WIFIonICE".extraConfig = "key_mgmt=NONE";
         "WIFI@DB".extraConfig = "key_mgmt=NONE";
         "MeinJena".extraConfig = "key_mgmt=NONE";
+        "Living Apartments".psk = "@PSK_ABNB_1@";
       };
       extraConfig =
       ''
