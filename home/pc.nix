@@ -38,7 +38,7 @@ in
       xournalpp
       libreoffice
       evince
-      authy
+      # authy -> EOL 24.05
       wget
       unzip
       tree
