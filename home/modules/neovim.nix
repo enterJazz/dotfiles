@@ -53,7 +53,7 @@ in
     nixpkgs-fmt
     
     # An LSP for nix.
-    rnix-lsp
+    # rnix-lsp -> deprecated 24.05
 
     # rust: see https://github.com/iamthememory/dotfiles/blob/main/home/neovim/filetypes/rust.nix
     cargo
