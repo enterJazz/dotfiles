@@ -18,6 +18,7 @@ in
     packages = with pkgs;
     [
       # teams
+      poppler_utils
       wireguard-tools
       neofetch
       jq
