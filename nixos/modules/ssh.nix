@@ -12,16 +12,6 @@
     '';
     knownHosts =
     {
-      "login.dos.cit.tum.de" =
-      {
-        hostNames = [ "login.dos.cit.tum.de" ];
-        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOdlUylM9WIFfIYZDK8rjVYQzX+RYwIlLgsEh4j0pNx6";
-      };
-      "vislor.dos.cit.tum.de " =
-      {
-        hostNames = [ "vislor.dos.cit.tum.de" ];
-        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBFKh4D5rTKnC8Jmhuj1SA7a82IG642dXmk38wYdP/lD";
-      };
       "github.com" =
       {
         hostNames = [ "github.com" ];

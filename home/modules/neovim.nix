@@ -54,6 +54,7 @@ in
     
     # An LSP for nix.
     # rnix-lsp -> deprecated 24.05
+    nil
 
     # rust: see https://github.com/iamthememory/dotfiles/blob/main/home/neovim/filetypes/rust.nix
     cargo
@@ -96,13 +97,11 @@ in
           nix =
           {
             # The command to run.
-            command = "rnix-lsp";
-
+            command = "nil";
             # Run on nix files.
-            filetypes =
-            [
-              "nix"
-            ];
+            filetypes = [ "nix" ];
+            rootPatterns = [ "flake.nix" ];
+            settings.nil.formatting.command = "nixpkgs-fmt";
           };
         };
       };
