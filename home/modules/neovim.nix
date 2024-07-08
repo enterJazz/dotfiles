@@ -101,7 +101,7 @@ in
             # Run on nix files.
             filetypes = [ "nix" ];
             rootPatterns = [ "flake.nix" ];
-            settings.nil.formatting.command = "nixpkgs-fmt";
+            # settings.nil.formatting.command = "nixpkgs-fmt";
           };
         };
       };
