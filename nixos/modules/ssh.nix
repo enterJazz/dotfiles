@@ -20,6 +20,10 @@
       User git
       IdentityFile ${config.sops.secrets.gitlab-office-scontain-com.path}
 
+    Host 192.168.205.189
+      User root
+      IdentityFile ${config.sops.secrets.sconecf-gitlab-icelake-runner-9-robert-nixos.path}
+
     Host 192.168.20*
       User ubuntu
       IdentityFile ${config.sops.secrets.dev-vm-robert.path}

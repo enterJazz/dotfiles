@@ -110,6 +110,12 @@
         format = "binary";
         owner = config.users.users.robert.name;
       };
+      sconecf-gitlab-icelake-runner-9-robert-nixos =
+      {
+        sopsFile = ../secrets/keys/sconecf-gitlab-icelake-runner-9-robert-nixos;
+        format = "binary";
+        owner = config.users.users.robert.name;
+      };
     };
   };
 }
