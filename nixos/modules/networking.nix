@@ -23,7 +23,7 @@
         "WIFIonICE".extraConfig = "key_mgmt=NONE";
         "WIFI@DB".extraConfig = "key_mgmt=NONE";
         "MeinJena".extraConfig = "key_mgmt=NONE";
-        "Living Apartments".psk = "@PSK_ABNB_1@";
+        "Netzwerk 123".psk = "@PSK_MARTIN@";
       };
       extraConfig =
       ''
@@ -32,9 +32,9 @@
                 key_mgmt=WPA-EAP
                 eap=TTLS
                 ca_cert="/etc/ssl/certs/ca-certificates.crt"
-                identity="@USER_EDUROAM@"
+                identity="@USER_EDUROAM_2@"
                 phase2="auth=PAP"
-                password="@PSK_EDUROAM@"
+                password="@PSK_EDUROAM_2@"
         }
       '';
     };
