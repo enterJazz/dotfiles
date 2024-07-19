@@ -5,6 +5,7 @@ in
 {
   imports =
   [
+    ./modules/git.nix
     ./modules/fzf.nix
     ./modules/zsh.nix
     ./modules/neovim.nix
@@ -47,7 +48,6 @@ in
       nix-index
       age
       tmux
-      git
       rename
       firefox-wayland
       bitwarden
