@@ -22,7 +22,7 @@
     # ../modules/passwordstore.nix
     # ../modules/protonmail.nix
     ../modules/xournalpp.nix
-    # ../modules/remote-builder.nix
+    ../modules/remote-builder.nix
     ../modules/ssh.nix
     ../modules/docker.nix
     ../modules/borgbackup.nix

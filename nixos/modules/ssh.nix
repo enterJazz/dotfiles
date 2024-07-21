@@ -31,6 +31,11 @@
     Host scone.cf
       User git
       IdentityFile ${config.sops.secrets.scone-cf.path}
+
+    Host builder
+      User nixremote
+      HostName 192.168.205.120
+      IdentityFile ${config.sops.secrets.dev-vm-robert.path}
     '';
     knownHosts =
     {
