@@ -8,13 +8,12 @@
   [
     {
       # speedFactor = 0;
-      hostName = "vislor-builder";
-      protocol = "ssh";
-      sshUser = "nix";
+      hostName = "builder";
+      protocol = "ssh-ng";
+      sshUser = "nixremote";
       system = "x86_64-linux";
       maxJobs = 64;
-      # TODO replace w/ sops
-      sshKey = config.sops.secrets.remoteBuilder.path;
+      sshKey = config.sops.secrets.dev-vm-robert.path;
       supportedFeatures =
       [
         "big-parallel"
