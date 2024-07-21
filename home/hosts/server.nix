@@ -3,10 +3,7 @@
 
   imports =
   [
-    # ../modules/fish.nix
-    ../modules/dev.nix
     ../common/linux.nix
-    ../modules/tmux.nix
   ];
 
   home = {
