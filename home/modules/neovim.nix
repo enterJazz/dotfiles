@@ -132,6 +132,7 @@ in
       coc-pyright
       coc-rust-analyzer
       vim-just
+      bats-vim
     ] ++
     [
       {
