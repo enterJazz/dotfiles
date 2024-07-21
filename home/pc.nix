@@ -12,6 +12,7 @@ in
     ./modules/foot.nix
     ./modules/waybar.nix
     ./modules/direnv.nix
+    ./modules/tmux.nix
     ./modules/vscode.nix
   ];
 
