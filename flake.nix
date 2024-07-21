@@ -130,22 +130,13 @@
             }
           ];
         };
-        "${username}-server" = home-manager.lib.homeManagerConfiguration
+        "server" = home-manager.lib.homeManagerConfiguration
         {
 # workaround: https://github.com/nix-community/home-manager/issues/2942#issuecomment-1378627909
           pkgs = hmpkgs; 
           modules =
           [
-# <sops-nix/modules/home-manager/sops.nix>
           ./home/hosts/server.nix
-            {
-              home =
-              {
-                username = "${username}";
-                homeDirectory = "/home/${username}";
-                stateVersion = "24.05";
-              };
-            }
           ];
         };
       };

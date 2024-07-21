@@ -3,9 +3,11 @@
   imports =
   [
     ../modules/fzf.nix
-    ../modules/zsh.nix
-    ../modules/ssh.nix
+    ../modules/git.nix
     ../modules/neovim.nix
+    ../modules/ssh.nix
+    ../modules/tmux.nix
+    ../modules/zsh.nix
   ];
   home =
   {
@@ -18,8 +20,6 @@
       man-pages
       nix-index
       age
-      tmux
-      git
     ];
   };
 
