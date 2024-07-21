@@ -56,17 +56,19 @@ in
     # rnix-lsp -> deprecated 24.05
     nil
 
+    # Note: below may conflict w/ project-specific config
+    # define in shell.nix.
+    #
     # rust: see https://github.com/iamthememory/dotfiles/blob/main/home/neovim/filetypes/rust.nix
-    cargo
-    rustc
-    clippy
-    rust-analyzer
-    rustfmt
-
+    # cargo
+    # rustc
+    # clippy
+    # rust-analyzer
+    # rustfmt
 
     ## C
-    clang_16
-    clang-tools_16
+    # clang_16
+    # clang-tools_16
   ];
 
   programs.neovim =
