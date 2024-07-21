@@ -1,19 +1,17 @@
 { pkgs, lib, ... }:
-let
-  slackdump = pkgs.callPackage ./modules/slackdump.nix { inherit pkgs; };
-in
 {
   imports =
   [
-    ./modules/git.nix
-    ./modules/fzf.nix
-    ./modules/zsh.nix
-    ./modules/neovim.nix
-    ./modules/foot.nix
-    ./modules/waybar.nix
     ./modules/direnv.nix
+    ./modules/foot.nix
+    ./modules/fzf.nix
+    ./modules/git.nix
+    ./modules/neovim.nix
     ./modules/tmux.nix
+    ./modules/tofi.nix
     ./modules/vscode.nix
+    ./modules/waybar.nix
+    ./modules/zsh.nix
   ];
 
   home = {
@@ -53,7 +51,6 @@ in
       signal-desktop
       sshpass
       thunderbird
-      tmux
       tree
       unzip
       wget
