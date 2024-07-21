@@ -1,0 +1,4 @@
+{ ... }:
+{
+  programs.tofi.enable = true;
+}
