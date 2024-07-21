@@ -15,6 +15,7 @@
       # bitwarden
       pass
       ripgrep
+      neofetch
     ];
   };
 
