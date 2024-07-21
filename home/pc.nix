@@ -19,53 +19,51 @@ in
     packages = with pkgs;
     [
       # teams
-      poppler_utils
-      wireguard-tools
-      neofetch
-      jq
-      shotwell
-      ripgrep
-      lazygit
-      sshpass
-      nextcloud-client
-      brave
-      openvpn
-      ferdium
-      cpuid
-      docker-compose
-      zoom-us
-      light
-      pavucontrol
-      dig
-      xournalpp
-      libreoffice
-      evince
       # authy -> EOL 24.05
-      wget
-      unzip
-      tree
-      man-pages
-      nix-index
-      age
-      tmux
-      rename
-      firefox-wayland
-      bitwarden
-      thunderbird
-      wl-clipboard
-      shotman
-      # telegram-desktop
-      signal-desktop
       # slack
-      obsidian
-      zotero
-      zathura
+      # telegram-desktop
+      age
+      bitwarden
+      brave
+      cpuid
+      dig
+      docker-compose
       drawio
+      evince
+      ferdium
+      firefox-wayland
+      foliate
+      jq
+      lazygit
+      libreoffice
+      light
+      man-pages
+      neofetch
+      nextcloud-client
+      nix-index
+      obsidian
+      openvpn
+      pavucontrol
       playerctl
-    ] ++
-    [
-      slackdump
+      rename
+      ripgrep
+      shotman
+      shotwell
+      signal-desktop
+      sshpass
+      thunderbird
+      tmux
+      tree
+      unzip
+      wget
+      wireguard-tools
+      wl-clipboard
+      xournalpp
+      zathura
+      zoom-us
+      zotero
     ];
+
     sessionVariables =
     {
       MOZ_ENABLE_WAYLAND = 1;
