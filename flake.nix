@@ -4,20 +4,31 @@
   inputs =
   {
     nixpkgs.url = "github:NixOs/nixpkgs/nixos-24.05";
+
     home-manager =
     {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nur.url = "github:nix-community/NUR";
+
     sops-nix.url = "github:Mic92/sops-nix";
+
     lanzaboote =
     {
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
+
+    lix-module =
+    {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -29,6 +40,7 @@
     , sops-nix
     , lanzaboote
     , flake-parts
+    , lix-module
     , ... }:
   # https://flake.parts/getting-started
   flake-parts.lib.mkFlake { inherit inputs; }
@@ -156,10 +168,10 @@
           inherit system;
           modules =
             [
-            ./nixos/hosts/barnabas.nix
-# TODO refactor
+              ./nixos/hosts/barnabas.nix
               sops-nix.nixosModules.sops
               lanzaboote.nixosModules.lanzaboote
+              lix-module.nixosModules.default
             ];
         };
       };
