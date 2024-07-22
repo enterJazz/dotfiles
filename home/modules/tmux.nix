@@ -9,7 +9,6 @@
     keyMode = "vi";
     mouse = true;
     escapeTime = 0;
-    prefix = "C-a";
 
     extraConfig =
     ''
