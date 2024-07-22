@@ -63,8 +63,8 @@ in
     # cargo
     # rustc
     # clippy
-    # rust-analyzer
-    # rustfmt
+    rust-analyzer
+    rustfmt
 
     ## C
     # clang_16
