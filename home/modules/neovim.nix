@@ -57,12 +57,11 @@ in
     nil
 
     # Note: below may conflict w/ project-specific config
-    # define in shell.nix.
     #
     # rust: see https://github.com/iamthememory/dotfiles/blob/main/home/neovim/filetypes/rust.nix
-    # cargo
-    # rustc
-    # clippy
+    cargo
+    rustc
+    clippy
     rust-analyzer
     rustfmt
 
