@@ -110,6 +110,7 @@ in
     defaultEditor = true;
     plugins = with pkgs.vimPlugins;
     [
+      vim-fugitive
       copilot-vim
       vim-toml
       vim-surround
