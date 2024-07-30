@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ config, ... }:
 {
   # embedd in config files : https://github.com/Mic92/sops-nix#templates
   sops =
