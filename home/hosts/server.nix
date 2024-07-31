@@ -16,6 +16,8 @@
       pass
       ripgrep
       neofetch
+      htop
+      diesel-cli
     ];
   };
 
