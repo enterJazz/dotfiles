@@ -22,7 +22,7 @@
         "TP-Link_1FC7".psk = "@PSK_KONRAD@";
         "WIFIonICE".extraConfig = "key_mgmt=NONE";
         "WIFI@DB".extraConfig = "key_mgmt=NONE";
-        "MeinJena".extraConfig = "key_mgmt=NONE";
+        # "MeinJena".extraConfig = "key_mgmt=NONE";
         "Netzwerk 123".psk = "@PSK_MARTIN@";
       };
       extraConfig =

@@ -18,6 +18,7 @@
       neofetch
       htop
       diesel-cli
+      docker-compose
     ];
   };
 
