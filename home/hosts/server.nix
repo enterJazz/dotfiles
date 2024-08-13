@@ -19,6 +19,7 @@
       htop
       diesel-cli
       docker-compose
+      sqlite
     ];
   };
 
