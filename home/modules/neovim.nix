@@ -111,7 +111,7 @@ in
     plugins = with pkgs.vimPlugins;
     [
       vim-fugitive
-      copilot-vim
+      # copilot-vim
       vim-toml
       vim-surround
       vim-repeat

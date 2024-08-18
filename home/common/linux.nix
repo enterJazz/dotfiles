@@ -13,13 +13,17 @@
   {
     packages = with pkgs;
     [
+      age
+      findutils
       lazygit
-      wget
-      unzip
-      tree
       man-pages
       nix-index
-      age
+      tree
+      unzip
+      wget
+      # rust linux tools
+      dua
+      eza
     ];
   };
 

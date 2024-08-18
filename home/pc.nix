@@ -2,6 +2,7 @@
 {
   imports =
   [
+    ./common/linux.nix
     ./modules/direnv.nix
     ./modules/foot.nix
     ./modules/fzf.nix
@@ -21,7 +22,6 @@
       # authy -> EOL 24.05
       # slack
       # telegram-desktop
-      age
       bitwarden
       brave
       cpuid
@@ -33,13 +33,10 @@
       firefox-wayland
       foliate
       jq
-      lazygit
       libreoffice
       light
-      man-pages
       neofetch
       nextcloud-client
-      nix-index
       obsidian
       openvpn
       pavucontrol
@@ -51,9 +48,6 @@
       signal-desktop
       sshpass
       thunderbird
-      tree
-      unzip
-      wget
       wireguard-tools
       wl-clipboard
       xournalpp

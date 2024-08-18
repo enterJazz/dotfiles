@@ -7,6 +7,7 @@
     extraConfig =
     {
       merge.conflictStyle = "zdiff3";
+      push.autoSetupRemote = "true";
     };
   };
 }
