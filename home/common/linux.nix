@@ -21,6 +21,7 @@
       tree
       unzip
       wget
+      oath-toolkit
       # rust linux tools
       dua
       eza
