@@ -59,11 +59,11 @@ in
     # Note: below may conflict w/ project-specific config
     #
     # rust: see https://github.com/iamthememory/dotfiles/blob/main/home/neovim/filetypes/rust.nix
-    cargo
-    rustc
-    clippy
-    rust-analyzer
-    rustfmt
+    # cargo
+    # rustc
+    # clippy
+    # rust-analyzer
+    # rustfmt
 
     ## C
     # clang_16
@@ -86,12 +86,12 @@ in
 
         ## Rust
         # Show document links when hovering.
-        "rust-analyzer.hoverActions.linksInHover" = true;
+        # "rust-analyzer.hoverActions.linksInHover" = true;
 
         # The path to rust-analyzer.
         # If not specified, coc-rust-analyzer assumes it needs to download it from
         # a GitHub release.
-        "rust-analyzer.serverPath" = "${config.home.profileDirectory}/bin/rust-analyzer";
+        # "rust-analyzer.serverPath" = "${config.home.profileDirectory}/bin/rust-analyzer";
 
         languageserver =
         {
@@ -130,7 +130,7 @@ in
       vim-gitgutter
       nvim-lspconfig
       coc-pyright
-      coc-rust-analyzer
+      # coc-rust-analyzer
       vim-just
       bats-vim
     ] ++

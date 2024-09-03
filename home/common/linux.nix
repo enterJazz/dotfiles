@@ -5,7 +5,7 @@
     ../modules/fzf.nix
     ../modules/git.nix
     ../modules/neovim.nix
-    ../modules/ssh.nix
+    # ../modules/ssh.nix
     ../modules/tmux.nix
     ../modules/zsh.nix
   ];
@@ -25,6 +25,8 @@
       # rust linux tools
       dua
       eza
+      bat
+      fd
     ];
   };
 
