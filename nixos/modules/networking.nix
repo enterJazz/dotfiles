@@ -24,6 +24,7 @@
         "WIFI@DB".extraConfig = "key_mgmt=NONE";
         # "MeinJena".extraConfig = "key_mgmt=NONE";
         "Netzwerk 123".psk = "@PSK_MARTIN@";
+        "FRITZ!Box 6660 Cable TF".psk = "@PSK_WG@";
       };
       extraConfig =
       ''
