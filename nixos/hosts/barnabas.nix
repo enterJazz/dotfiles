@@ -11,27 +11,27 @@
 {
   imports =
   [
-    ../hardware/hardware-configuration.nix
-    ../modules/greetd.nix
-    ../modules/sops.nix
-    ../modules/pipewire.nix
-    ../modules/zsh.nix
-    ../modules/networking.nix
-    ../modules/xournalpp.nix
     # ../modules/fuse.nix
     # ../modules/passwordstore.nix
     # ../modules/protonmail.nix
-    ../modules/xournalpp.nix
-    ../modules/remote-builder.nix
-    ../modules/ssh.nix
-    ../modules/docker.nix
+    # ../modules/wireguard.nix
+    ../hardware/hardware-configuration.nix
+    ../modules/bluetooth.nix
     ../modules/borgbackup.nix
+    ../modules/docker.nix
     ../modules/fonts.nix
     ../modules/fwupd.nix
+    ../modules/greetd.nix
     ../modules/lanzaboote.nix
-    ../modules/bluetooth.nix
-    # ../modules/wireguard.nix
+    ../modules/networking.nix
     ../modules/openvpn.nix
+    ../modules/pipewire.nix
+    ../modules/remote-builder.nix
+    ../modules/sops.nix
+    ../modules/ssh.nix
+    ../modules/xournalpp.nix
+    ../modules/xournalpp.nix
+    ../modules/zsh.nix
   ];
 
   nix =

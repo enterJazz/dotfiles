@@ -11,23 +11,23 @@
 {
   imports =
   [
-    ../hardware/hardware-configuration.nix
-    ../modules/greetd.nix
-    ../modules/sops.nix
-    ../modules/pipewire.nix
-    ../modules/zsh.nix
-    ../modules/networking.nix
-    ../modules/xournalpp.nix
     # ../modules/fuse.nix
     # ../modules/passwordstore.nix
     # ../modules/protonmail.nix
-    ../modules/remote-builder.nix
-    ../modules/ssh.nix
-    ../modules/docker.nix
+    ../hardware/hardware-configuration.nix
     ../modules/borgbackup.nix
-    ../modules/nix-ld.nix
+    ../modules/docker.nix
     ../modules/fonts.nix
     ../modules/fwupd.nix
+    ../modules/greetd.nix
+    ../modules/networking.nix
+    ../modules/nix-ld.nix
+    ../modules/pipewire.nix
+    # ../modules/remote-builder.nix
+    ../modules/sops.nix
+    ../modules/ssh.nix
+    ../modules/xournalpp.nix
+    ../modules/zsh.nix
   ];
 
   nix =
