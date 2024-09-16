@@ -3,11 +3,11 @@
 # Also see https://github.com/Mic92/dotfiles/blob/master/nixos/.sops.yaml
 # for a more complex example.
 keys:
-  - &tum_dse_server age1mgm93qpxh2hnntgd69zacj6lx3j2xdfwjsc8jamvxh86gc8dqqrq7gmv7m
   - &pc age1h72rxhnmvfp55rct4zj4frhuav0uf23sgre2e8qyrvqd3zu3x40swg0rhc
+  - &klamm age19407phf8dyq8qm79pvxxnfvhn8chx4z4caz7w8yk89rlg6llucuqstpnpe
 creation_rules:
   - path_regex: secrets/[^/]+
     key_groups:
     - age:
-      - *tum_dse_server
       - *pc
+      - *klamm
