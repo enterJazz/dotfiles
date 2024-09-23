@@ -14,6 +14,7 @@
     # ../modules/fuse.nix
     # ../modules/passwordstore.nix
     # ../modules/protonmail.nix
+    # ../modules/wireguard.nix
     ../hardware/hardware-configuration.nix
     ../modules/borgbackup.nix
     ../modules/docker.nix

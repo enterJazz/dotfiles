@@ -116,6 +116,11 @@
         format = "binary";
         owner = config.users.users.robert.name;
       };
+      tud-vm = {
+        sopsFile = ../secrets/keys/maas;
+        format = "binary";
+        owner = config.users.users.robert.name;
+      };
     };
   };
 }

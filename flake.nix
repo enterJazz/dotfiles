@@ -4,6 +4,7 @@
   inputs =
   {
     nixpkgs.url = "github:NixOs/nixpkgs/nixos-24.05";
+    # unstable-nixpkgs.url = "github:NixOs/nixpkgs/nixpkgs-unstable";
 
     home-manager =
     {
@@ -118,7 +119,6 @@
           pkgs = hmpkgs;
           modules =
           [
-# <sops-nix/modules/home-manager/sops.nix>
           ./home/pc.nix
             {
               home =

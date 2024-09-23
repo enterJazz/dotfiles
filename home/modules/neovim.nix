@@ -59,11 +59,11 @@ in
     # Note: below may conflict w/ project-specific config
     #
     # rust: see https://github.com/iamthememory/dotfiles/blob/main/home/neovim/filetypes/rust.nix
-    # cargo
-    # rustc
-    # clippy
-    # rust-analyzer
-    # rustfmt
+    cargo
+    rustc
+    clippy
+    rust-analyzer
+    rustfmt
 
     ## C
     # clang_16
