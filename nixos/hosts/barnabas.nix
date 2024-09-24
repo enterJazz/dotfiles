@@ -14,7 +14,7 @@
     # ../modules/fuse.nix
     # ../modules/passwordstore.nix
     # ../modules/protonmail.nix
-    # ../modules/wireguard.nix
+    ../modules/wireguard.nix
     ../hardware/hardware-configuration.nix
     ../modules/bluetooth.nix
     ../modules/borgbackup.nix
@@ -26,7 +26,7 @@
     ../modules/networking.nix
     ../modules/openvpn.nix
     ../modules/pipewire.nix
-    ../modules/remote-builder.nix
+    # ../modules/remote-builder.nix
     ../modules/sops.nix
     ../modules/ssh.nix
     ../modules/xournalpp.nix

@@ -18,15 +18,16 @@
       lazygit
       man-pages
       nix-index
+      oath-toolkit
       tree
       unzip
       wget
-      oath-toolkit
       # rust linux tools
+      bat
       dua
       eza
-      bat
       fd
+      ripgrep
     ];
   };
 
