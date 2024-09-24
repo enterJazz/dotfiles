@@ -14,7 +14,6 @@
       rename
       # bitwarden
       pass
-      ripgrep
       neofetch
       htop
       diesel-cli

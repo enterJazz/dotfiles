@@ -10,7 +10,6 @@
     ./modules/neovim.nix
     ./modules/tmux.nix
     ./modules/tofi.nix
-    ./modules/vscode.nix
     ./modules/waybar.nix
     ./modules/zsh.nix
   ];
@@ -32,6 +31,7 @@
       ferdium
       firefox-wayland
       foliate
+      google-chrome
       jq
       libreoffice
       light
@@ -42,12 +42,12 @@
       pavucontrol
       playerctl
       rename
-      ripgrep
       shotman
       shotwell
       signal-desktop
       sshpass
       thunderbird
+      vscode-fhs
       wireguard-tools
       wl-clipboard
       xournalpp
