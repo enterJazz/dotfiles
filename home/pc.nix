@@ -50,6 +50,7 @@
       vscode-fhs
       wireguard-tools
       wl-clipboard
+      wlsunset
       xournalpp
       zathura
       zoom-us
