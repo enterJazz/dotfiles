@@ -33,6 +33,7 @@
       foliate
       google-chrome
       jq
+      htop
       libreoffice
       light
       neofetch

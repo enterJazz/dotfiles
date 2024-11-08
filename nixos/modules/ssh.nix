@@ -41,7 +41,7 @@
       HostName 192.168.205.120
       IdentityFile ${config.sops.secrets.dev-vm-robert.path}
 
-    Host 141.76.44.114
+    Host tud-vm
       User robert
       HostName 141.76.44.114
       IdentityFile ${config.sops.secrets.tud-vm.path}
