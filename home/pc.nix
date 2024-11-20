@@ -55,7 +55,7 @@
       xournalpp
       zathura
       zoom-us
-      zotero
+      zotero_7
     ];
 
     sessionVariables =
