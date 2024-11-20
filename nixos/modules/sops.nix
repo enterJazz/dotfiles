@@ -121,6 +121,11 @@
         format = "binary";
         owner = config.users.users.robert.name;
       };
+      beast = {
+        sopsFile = ../secrets/keys/beast;
+        format = "binary";
+        owner = config.users.users.robert.name;
+      };
     };
   };
 }
