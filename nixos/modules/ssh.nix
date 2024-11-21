@@ -20,6 +20,10 @@
       User git
       IdentityFile ${config.sops.secrets.gitlab-office-scontain-com.path}
 
+    Host se-gitlab.inf.tu-dresden.de
+      User git
+      IdentityFile ${config.sops.secrets.tud-se-gitlab.path}
+
     Host sconecf.office.scontain.com
       User git
       IdentityFile ${config.sops.secrets.scone-cf.path}
@@ -27,6 +31,11 @@
     Host 192.168.205.190
       User root
       IdentityFile ${config.sops.secrets.sconecf-gitlab-icelake-runner-9-robert-nixos.path}
+
+    Host scone-dev-vm
+      User robert
+      HostName 192.168.205.120
+      IdentityFile ${config.sops.secrets.dev-vm-robert.path}
 
     Host 192.168.20*
       User ubuntu
