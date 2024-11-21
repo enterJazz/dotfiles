@@ -126,6 +126,11 @@
         format = "binary";
         owner = config.users.users.robert.name;
       };
+      tud-se-gitlab = {
+        sopsFile = ../secrets/keys/se-gitlab.inf.tu-dresden.de;
+        format = "binary";
+        owner = config.users.users.robert.name;
+      };
     };
   };
 }
