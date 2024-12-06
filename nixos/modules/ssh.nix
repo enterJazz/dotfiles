@@ -32,8 +32,13 @@
       User root
       IdentityFile ${config.sops.secrets.sconecf-gitlab-icelake-runner-9-robert-nixos.path}
 
-    Host scone-dev-vm
+    Host work-dev-vm
       User robert
+      HostName 192.168.205.120
+      IdentityFile ${config.sops.secrets.dev-vm-robert.path}
+
+    Host work-dev-vm-ubuntu
+      User ubuntu
       HostName 192.168.205.120
       IdentityFile ${config.sops.secrets.dev-vm-robert.path}
 
