@@ -3,8 +3,7 @@
 # and in the NixOS manual (accessible by running `nixos-help`).
 
 {
-  config
-  , pkgs
+  pkgs
   , ...
 }:
 
@@ -36,7 +35,7 @@
 
   nix =
   {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
@@ -193,9 +192,9 @@
 
   # from drakerossman.com/blog/wayland-on-nixos-confusion-conquest-triumph
   # audio
-  sound.enable = true;
+  # sound.enable = true; -> removed in 24.11
   # hardware.pulseaudio.enable = true;
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   networking.hostName = "barnabas";
 

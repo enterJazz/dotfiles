@@ -29,7 +29,7 @@
       drawio
       evince
       ferdium
-      firefox-wayland
+      # firefox-wayland
       foliate
       google-chrome
       jq

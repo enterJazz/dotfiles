@@ -1,4 +1,5 @@
-{ config, pkgs, ... }:
+# NOTE: possibly helpful: https://alberand.com/nixos-wireguard-vpn.html
+{ lib, config, pkgs, ... }:
 let
   wgScontainInterface = "wg-scontain";
 in
@@ -41,4 +42,7 @@ in
       }
     ];
   };
+
+  # maybe only works for wg-quick?
+  systemd.services.${wgScontainInterface}.wantedBy = lib.mkForce [];
 }
