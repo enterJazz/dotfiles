@@ -98,6 +98,18 @@
         format = "binary";
         owner = config.users.users.robert.name;
       };
+      wg-mullvad-privkey =
+      {
+        sopsFile = ../secrets/keys/wg-mullvad;
+        format = "binary";
+        owner = config.users.users.robert.name;
+      };
+      wg-mullvad-psk =
+      {
+        sopsFile = ../secrets/keys/wg-mullvad-psk;
+        format = "binary";
+        owner = config.users.users.robert.name;
+      };
       dev-vm-robert =
       {
         sopsFile = ../secrets/keys/dev-vm-robert;
