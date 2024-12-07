@@ -8,7 +8,7 @@
     # xournalpp fix https://github.com/NixOS/nixpkgs/issues/163107
     systemPackages = with pkgs;
     [
-      gnome.adwaita-icon-theme
+      adwaita-icon-theme
       shared-mime-info
     ];
     pathsToLink =

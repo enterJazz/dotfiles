@@ -10,22 +10,22 @@
     {
       enable = true;
       userControlled.enable = true;
-      environmentFile = config.sops.secrets.wpa_secrets.path;
+      secretsFile = config.sops.secrets.wpa_secrets.path;
       networks =
       {
-        "Arnetwork 138".psk = "@PSK_ARNETWORK@";
-        "iPhone von Robert".psk = "@PSK_IPHONE@";
-        "navigator".psk = "@PSK_NAVIGATOR@";
-        "Alpina Dolomites".psk = "@PSK_ALPINA_DOLOMITES@";
-        "Ritz-Carlton-Jena".psk = "@PSK_BENE@";
-        "SCONTAIN".psk = "@PSK_SCONTAIN@";
-        "TP-Link_1FC7".psk = "@PSK_KONRAD@";
+        "Arnetwork 138".pskRaw = "ext:PSK_ARNETWORK";
+        "iPhone von Robert".pskRaw = "ext:PSK_IPHONE";
+        "navigator".pskRaw = "ext:PSK_NAVIGATOR";
+        "Alpina Dolomites".pskRaw = "ext:PSK_ALPINA_DOLOMITES";
+        "Ritz-Carlton-Jena".pskRaw = "ext:PSK_BENE";
+        "SCONTAIN".pskRaw = "ext:PSK_SCONTAIN";
+        "TP-Link_1FC7".pskRaw = "ext:PSK_KONRAD";
         "WIFIonICE".extraConfig = "key_mgmt=NONE";
         "WIFI@DB".extraConfig = "key_mgmt=NONE";
         "Dresden".extraConfig = "key_mgmt=NONE";
         # "MeinJena".extraConfig = "key_mgmt=NONE";
-        "Netzwerk 123".psk = "@PSK_MARTIN@";
-        "FRITZ!Box 6660 Cable TF".psk = "@PSK_WG@";
+        "Netzwerk 123".pskRaw = "ext:PSK_MARTIN";
+        "FRITZ!Box 6660 Cable TF".pskRaw = "ext:PSK_WG";
       };
       extraConfig =
       ''
@@ -34,9 +34,9 @@
                 key_mgmt=WPA-EAP
                 eap=TTLS
                 ca_cert="/etc/ssl/certs/ca-certificates.crt"
-                identity="@USER_EDUROAM_2@"
+                identity="ext:USER_EDUROAM_2"
                 phase2="auth=PAP"
-                password="@PSK_EDUROAM_2@"
+                password="ext:PSK_EDUROAM_2"
         }
       '';
     };

@@ -1,14 +1,14 @@
 {
-  description = "A very basic flake";
+  description = "My NixOS Dotfiles";
 
   inputs =
   {
-    nixpkgs.url = "github:NixOs/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOs/nixpkgs/nixos-24.11";
     # unstable-nixpkgs.url = "github:NixOs/nixpkgs/nixpkgs-unstable";
 
     home-manager =
     {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -25,11 +25,12 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
 
-    lix-module =
-    {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # NOTE: appears to currently break building of nixos-options? (since 24.11)
+    # lix-module =
+    # {
+    #   url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs =
@@ -41,7 +42,7 @@
     , sops-nix
     , lanzaboote
     , flake-parts
-    , lix-module
+    # , lix-module
     , ... }:
   # https://flake.parts/getting-started
   flake-parts.lib.mkFlake { inherit inputs; }
@@ -80,7 +81,7 @@
       {
         inherit system;
         config.allowUnfree = true;
-        overlays = [ nur.overlay ];
+        overlays = [ nur.overlays.default ];
         config.permittedInsecurePackages = [ "electron-25.9.0" "nix-2.15.3" ];
       };
       aasystem = "aarch64-darwin";
@@ -89,7 +90,7 @@
       {
         system = aasystem;
         config.allowUnfree = true;
-        overlays = [ nur.overlay ];
+        overlays = [ nur.overlays.default ];
         config.permittedInsecurePackages = [ "electron-25.9.0" ];
       };
     in
@@ -108,7 +109,7 @@
               {
                 username = "robertschambach";
                 homeDirectory = "/Users/robertschambach";
-                stateVersion = "24.05";
+                stateVersion = "24.11";
               };
             }
           ];
@@ -125,7 +126,7 @@
               {
                 username = "${username}";
                 homeDirectory = "/home/${username}";
-                stateVersion = "24.05";
+                stateVersion = "24.11";
               };
             }
           ];
@@ -143,7 +144,7 @@
               {
                 username = "${username}";
                 homeDirectory = "/home/${username}";
-                stateVersion = "24.05";
+                stateVersion = "24.11";
               };
             }
           ];
@@ -171,7 +172,7 @@
               ./nixos/hosts/barnabas.nix
               sops-nix.nixosModules.sops
               lanzaboote.nixosModules.lanzaboote
-              lix-module.nixosModules.default
+              # lix-module.nixosModules.default
             ];
         };
       };
