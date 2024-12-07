@@ -2,7 +2,8 @@
 { lib, config, pkgs, ... }:
 let
   wgScontainInterface = "wg-scontain";
-  vpnServer = "REDACTED";
+  scontainVpnServer = "REDACTED";
+  wgAustriaRestricted = "wg-at-restrict";
 in
 {
   environment.systemPackages = with pkgs; [ wireguard-tools ];
@@ -21,30 +22,51 @@ in
 #    '';
 #  };
 
-  networking.wg-quick.interfaces.${wgScontainInterface} = {
-    address = [ "REDACTED" ];
+  networking.wg-quick.interfaces = {
+    ${wgAustriaRestricted} = {
+      address = [ "REDACTED" "REDACTED" ];
 
-#     postSetup =
-#     ''
-#       resolvectl dns ${wgScontainInterface} REDACTED
-#       resolvectl domain ${wgScontainInterface} REDACTED REDACTED REDACTED
-#     '';
+      dns = [ "REDACTED" ];
+      # listenPort = 51820;
 
-    mtu = 1280;
+      privateKeyFile = config.sops.secrets.wg-mullvad-privkey.path;
 
-    privateKeyFile = config.sops.secrets.wg-scontain-privkey.path;
-    peers = [
-      {
-        allowedIPs = [ "REDACTED" "REDACTED" ];
-        # allowedIPs = [ "0.0.0.0/0" ];
-        publicKey = "REDACTED";
-        endpoint = "${vpnServer}";
-        persistentKeepalive = 25;
-        presharedKeyFile = config.sops.secrets.wg-scontain-psk.path;
-      }
-    ];
+      peers = [
+        {
+          publicKey = "REDACTED";
+          allowedIPs = [ "0.0.0.0/0" "::0/0" ];
+          endpoint = "REDACTED";
+          persistentKeepalive = 25;
+          # presharedKeyFile = config.sops.secrets.wg-mullvad-psk.path;
+        }
+      ];
+      autostart = true;
+    };
+
+    ${wgScontainInterface} = {
+      address = [ "REDACTED" ];
+
+#   postSetup =
+#   ''
+#     resolvectl dns ${wgScontainInterface} REDACTED
+#     resolvectl domain ${wgScontainInterface} REDACTED REDACTED REDACTED
+#   '';
+
+      mtu = 1280;
+
+      privateKeyFile = config.sops.secrets.wg-scontain-privkey.path;
+      peers = [
+        {
+          allowedIPs = [ "REDACTED" "REDACTED" ];
+          # allowedIPs = [ "0.0.0.0/0" ];
+          publicKey = "REDACTED";
+          endpoint = "${scontainVpnServer}";
+          persistentKeepalive = 25;
+          presharedKeyFile = config.sops.secrets.wg-scontain-psk.path;
+        }
+      ];
+      autostart = false;
+    };
   };
 
-  # maybe only works for wg-quick?
-  systemd.services."wg-quick-${wgScontainInterface}".wantedBy = lib.mkForce [];
 }
