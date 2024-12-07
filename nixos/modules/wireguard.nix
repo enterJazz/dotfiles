@@ -2,26 +2,27 @@
 { lib, config, pkgs, ... }:
 let
   wgScontainInterface = "wg-scontain";
+  vpnServer = "REDACTED";
 in
 {
   environment.systemPackages = with pkgs; [ wireguard-tools ];
   
-  services.resolved =
-  {
-    enable = true;
-    extraConfig =
-    ''
-      [Match]
-      Name=${wgScontainInterface}
+#  services.resolved =
+#  {
+#    enable = true;
+#    extraConfig =
+#    ''
+#      [Match]
+#      Name=${wgScontainInterface}
+#
+#      [Resolve]
+#      DNS=REDACTED
+#      Domains=REDACTED REDACTED REDACTED
+#    '';
+#  };
 
-      [Resolve]
-      DNS=REDACTED
-      Domains=REDACTED REDACTED REDACTED
-    '';
-  };
-
-  networking.wireguard.interfaces.${wgScontainInterface} = {
-    ips = [ "REDACTED" ];
+  networking.wg-quick.interfaces.${wgScontainInterface} = {
+    address = [ "REDACTED" ];
 
 #     postSetup =
 #     ''
@@ -37,12 +38,13 @@ in
         allowedIPs = [ "REDACTED" "REDACTED" ];
         # allowedIPs = [ "0.0.0.0/0" ];
         publicKey = "REDACTED";
-        endpoint = "REDACTED";
+        endpoint = "${vpnServer}";
+        persistentKeepalive = 25;
         presharedKeyFile = config.sops.secrets.wg-scontain-psk.path;
       }
     ];
   };
 
   # maybe only works for wg-quick?
-  systemd.services.${wgScontainInterface}.wantedBy = lib.mkForce [];
+  systemd.services."wg-quick-${wgScontainInterface}".wantedBy = lib.mkForce [];
 }
