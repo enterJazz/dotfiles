@@ -49,6 +49,7 @@
       sshpass
       thunderbird
       vscode-fhs
+      wdisplays
       wireguard-tools
       wl-clipboard
       wlsunset
