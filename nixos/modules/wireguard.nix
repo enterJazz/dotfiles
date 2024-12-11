@@ -40,7 +40,7 @@ in
           # presharedKeyFile = config.sops.secrets.wg-mullvad-psk.path;
         }
       ];
-      autostart = true;
+      autostart = if (config.networking.hostName == "barnabas") then true else false;
     };
 
     ${wgScontainInterface} = {
@@ -65,7 +65,7 @@ in
           presharedKeyFile = config.sops.secrets.wg-scontain-psk.path;
         }
       ];
-      autostart = false;
+      autostart = if (config.networking.hostName == "klamm") then true else false;
     };
   };
 
