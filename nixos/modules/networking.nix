@@ -27,6 +27,7 @@
         "Netzwerk 123".pskRaw = "ext:PSK_MARTIN";
         "FRITZ!Box 6660 Cable TF".pskRaw = "ext:PSK_WG";
       };
+      # FIXME: config now broken
       extraConfig =
       ''
         network={
