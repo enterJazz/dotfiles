@@ -1,4 +1,5 @@
 # NOTE: possibly helpful: https://alberand.com/nixos-wireguard-vpn.html
+# interesting multi-setup: https://github.com/LongerHV/nixos-configuration/blob/5f7a9336f564968c82eed59e59132d92c05c0ff5/nixos/mordor/vpn.nix
 { lib, config, pkgs, ... }:
 let
   wgScontainInterface = "wg-scontain";
@@ -27,6 +28,7 @@ in
       address = [ "REDACTED" "REDACTED" ];
 
       dns = [ "REDACTED" ];
+
       # listenPort = 51820;
 
       privateKeyFile = config.sops.secrets.wg-mullvad-privkey.path;
@@ -37,7 +39,6 @@ in
           allowedIPs = [ "0.0.0.0/0" "::0/0" ];
           endpoint = "REDACTED";
           persistentKeepalive = 25;
-          # presharedKeyFile = config.sops.secrets.wg-mullvad-psk.path;
         }
       ];
       autostart = if (config.networking.hostName == "barnabas") then true else false;
