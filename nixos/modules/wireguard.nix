@@ -3,7 +3,7 @@
 { lib, config, pkgs, ... }:
 let
   wgScontainInterface = "wg-scontain";
-  scontainVpnServer = "79.242.176.69:9030";
+  scontainVpnServer = "vpn.scontain.com:9030";
   wgAustriaRestricted = "wg-at-restrict";
 in
 {
