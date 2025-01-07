@@ -65,6 +65,8 @@ in
     rust-analyzer
     rustfmt
 
+    # llm-ls
+
     ## C
     # clang_16
     # clang-tools_16
@@ -133,6 +135,7 @@ in
       # coc-rust-analyzer
       vim-just
       bats-vim
+      # llm-nvim
     ] ++
     [
       {
@@ -241,6 +244,41 @@ in
         let $RUST_SRC_PATH = '${pkgs.rustPlatform.rustLibSrc}'
       endif
     '';
+#    extraLuaConfig =
+#    ''
+#      -- llm.nvim config
+#      require('llm').setup({
+#          backend = "ollama",
+#          model = "qwen2.5-coder:0.5b-base",
+#          url = "http://localhost:11434",
+#          tokens_to_clear = { "<|endoftext|>" }, -- tokens to remove from the model's output
+#          request_body = {
+#            parameters = {
+#              max_new_tokens = 60,
+#              temperature = 0.2,
+#              top_p = 0.95,
+#            },
+#          },
+#          debounce_ms = 150,
+#          accept_keymap = "<Tab>",
+#          dismiss_keymap = "<S-Tab>",
+#          tls_skip_verify_insecure = false,
+#          fim = {
+#            enabled = true,
+#            prefix = "<fim_prefix>",
+#            middle = "<fim_middle>",
+#            suffix = "<fim_suffix>",
+#          },
+#          lsp = {
+#            bin_path = '${pkgs.llm-ls}/bin/llm-ls',
+#          },
+#          tokenizer = nil, -- cf Tokenizer paragraph
+#          context_window = 1024, -- max number of tokens for the context window
+#          enable_suggestions_on_startup = true,
+#          enable_suggestions_on_files = "*", -- pattern matching syntax to enable suggestions on specific files, either a string or a list of strings
+#          disable_url_path_completion = false, -- cf Backend
+#      })
+#    '';
   };
 }
 
