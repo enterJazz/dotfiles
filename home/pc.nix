@@ -24,6 +24,7 @@
       bitwarden
       brave
       cpuid
+      ctags
       dig
       docker-compose
       drawio
@@ -40,6 +41,7 @@
       nextcloud-client
       obsidian
       openvpn
+      ollama
       pavucontrol
       playerctl
       rename
