@@ -70,6 +70,11 @@
       User robert
       HostName 141.76.44.114
       IdentityFile ${config.sops.secrets.tud-vm.path}
+
+    Host tud-vm-temp
+      User ubuntu
+      HostName 141.76.44.113
+      IdentityFile ${config.sops.secrets.tud-vm.path}
     '';
     knownHosts =
     {
