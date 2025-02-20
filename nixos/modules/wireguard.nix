@@ -9,19 +9,19 @@ in
 {
   environment.systemPackages = with pkgs; [ wireguard-tools ];
   
-#  services.resolved =
-#  {
-#    enable = true;
-#    extraConfig =
-#    ''
-#      [Match]
-#      Name=${wgScontainInterface}
-#
-#      [Resolve]
-#      DNS=REDACTED
-#      Domains=REDACTED REDACTED REDACTED
-#    '';
-#  };
+  services.resolved =
+  {
+    enable = true;
+    extraConfig =
+    ''
+      [Match]
+      Name=${wgScontainInterface}
+
+      [Resolve]
+      DNS=REDACTED
+      Domains=REDACTED REDACTED REDACTED
+    '';
+  };
 
   networking.wg-quick.interfaces = {
     ${wgAustriaRestricted} = {
@@ -47,11 +47,11 @@ in
     ${wgScontainInterface} = {
       address = [ "REDACTED" ];
 
-#   postSetup =
-#   ''
-#     resolvectl dns ${wgScontainInterface} REDACTED
-#     resolvectl domain ${wgScontainInterface} REDACTED REDACTED REDACTED
-#   '';
+       postUp =
+       ''
+         resolvectl dns ${wgScontainInterface} REDACTED
+         resolvectl domain ${wgScontainInterface} REDACTED REDACTED REDACTED
+       '';
 
       mtu = 1280;
 
