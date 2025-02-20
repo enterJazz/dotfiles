@@ -19,6 +19,7 @@
       diesel-cli
       docker-compose
       sqlite
+      rustup
     ];
   };
 
