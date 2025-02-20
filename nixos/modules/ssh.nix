@@ -37,6 +37,11 @@
       HostName 192.168.205.120
       IdentityFile ${config.sops.secrets.dev-vm-robert.path}
 
+    Host work-dev-vm-3
+      User robert
+      HostName 192.168.205.187
+      IdentityFile ${config.sops.secrets.dev-vm-robert.path}
+
     Host work-dev-vm-ubuntu
       User ubuntu
       HostName 192.168.205.120
@@ -71,9 +76,8 @@
       HostName 141.76.44.114
       IdentityFile ${config.sops.secrets.tud-vm.path}
 
-    Host tud-vm-temp
+    Host 141.76.44.*
       User ubuntu
-      HostName 141.76.44.113
       IdentityFile ${config.sops.secrets.tud-vm.path}
     '';
     knownHosts =
