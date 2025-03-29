@@ -24,25 +24,25 @@ in
   };
 
   networking.wg-quick.interfaces = {
-    ${wgAustriaRestricted} = {
-      address = [ "REDACTED" "REDACTED" ];
-
-      dns = [ "REDACTED" ];
-
-      # listenPort = 51820;
-
-      privateKeyFile = config.sops.secrets.wg-mullvad-privkey.path;
-
-      peers = [
-        {
-          publicKey = "REDACTED";
-          allowedIPs = [ "0.0.0.0/0" "::0/0" ];
-          endpoint = "REDACTED";
-          persistentKeepalive = 25;
-        }
-      ];
-      autostart = if (config.networking.hostName == "barnabas") then true else false;
-    };
+#    ${wgAustriaRestricted} = {
+#      address = [ "REDACTED" "REDACTED" ];
+#
+#      dns = [ "REDACTED" ];
+#
+#      # listenPort = 51820;
+#
+#      privateKeyFile = config.sops.secrets.wg-mullvad-privkey.path;
+#
+#      peers = [
+#        {
+#          publicKey = "REDACTED";
+#          allowedIPs = [ "0.0.0.0/0" "::0/0" ];
+#          endpoint = "REDACTED";
+#          persistentKeepalive = 25;
+#        }
+#      ];
+#      # autostart = if (config.networking.hostName == "barnabas") then true else false;
+#    };
 
     ${wgScontainInterface} = {
       address = [ "REDACTED" ];

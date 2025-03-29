@@ -143,6 +143,11 @@
         format = "binary";
         owner = config.users.users.robert.name;
       };
+      hetzner = {
+        sopsFile = ../secrets/keys/hetzner;
+        format = "binary";
+        owner = config.users.users.robert.name;
+      };
     };
   };
 }
