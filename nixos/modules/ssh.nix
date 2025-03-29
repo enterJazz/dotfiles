@@ -71,6 +71,12 @@
       IdentityFile ${config.sops.secrets.tud-vm.path}
       ProxyJump beast
 
+    Host tud-vm-jump-temp
+      User ubuntu
+      HostName 141.76.44.113
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+      ProxyJump beast
+
     Host tud-vm
       User robert
       HostName 141.76.44.114
@@ -79,6 +85,10 @@
     Host 141.76.44.*
       User ubuntu
       IdentityFile ${config.sops.secrets.tud-vm.path}
+
+    Host 2a01:4f8:c013:ea4a::1
+      User robert
+      IdentityFile ${config.sops.secrets.hetzner.path}
     '';
     knownHosts =
     {

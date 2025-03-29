@@ -24,25 +24,25 @@ in
   };
 
   networking.wg-quick.interfaces = {
-    ${wgAustriaRestricted} = {
-      address = [ "10.73.221.217/32" "fc00:bbbb:bbbb:bb01::a:ddd8/128" ];
-
-      dns = [ "100.64.0.63" ];
-
-      # listenPort = 51820;
-
-      privateKeyFile = config.sops.secrets.wg-mullvad-privkey.path;
-
-      peers = [
-        {
-          publicKey = "ehXBc726YX1N6Dm7fDAVMG5cIaYAFqCA4Lbpl4VWcWE=";
-          allowedIPs = [ "0.0.0.0/0" "::0/0" ];
-          endpoint = "146.70.116.130:51820";
-          persistentKeepalive = 25;
-        }
-      ];
-      autostart = if (config.networking.hostName == "barnabas") then true else false;
-    };
+#    ${wgAustriaRestricted} = {
+#      address = [ "10.73.221.217/32" "fc00:bbbb:bbbb:bb01::a:ddd8/128" ];
+#
+#      dns = [ "100.64.0.63" ];
+#
+#      # listenPort = 51820;
+#
+#      privateKeyFile = config.sops.secrets.wg-mullvad-privkey.path;
+#
+#      peers = [
+#        {
+#          publicKey = "ehXBc726YX1N6Dm7fDAVMG5cIaYAFqCA4Lbpl4VWcWE=";
+#          allowedIPs = [ "0.0.0.0/0" "::0/0" ];
+#          endpoint = "146.70.116.130:51820";
+#          persistentKeepalive = 25;
+#        }
+#      ];
+#      # autostart = if (config.networking.hostName == "barnabas") then true else false;
+#    };
 
     ${wgScontainInterface} = {
       address = [ "10.50.0.37/24" ];

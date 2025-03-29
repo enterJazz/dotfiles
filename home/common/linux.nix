@@ -13,6 +13,10 @@
   {
     packages = with pkgs;
     [
+      # trying these out; delete if not used enough!
+      lazydocker
+      # isd -> https://isd-project.github.io/isd/#__tabbed_1_2
+      # end
       age
       findutils
       lazygit

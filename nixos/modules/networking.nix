@@ -26,6 +26,7 @@
         # "MeinJena".extraConfig = "key_mgmt=NONE";
         "Netzwerk 123".pskRaw = "ext:PSK_MARTIN";
         "FRITZ!Box 6660 Cable TF".pskRaw = "ext:PSK_WG";
+        "hotel-wetterstein".extraConfig = "key_mgmt=NONE";
       };
       # FIXME: config now broken
       extraConfig =
