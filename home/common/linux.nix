@@ -32,6 +32,7 @@
       eza
       fd
       ripgrep
+      jujutsu
     ];
   };
 
