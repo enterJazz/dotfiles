@@ -37,6 +37,7 @@
       htop
       libreoffice
       light
+      nautilus
       neofetch
       nextcloud-client
       obsidian
