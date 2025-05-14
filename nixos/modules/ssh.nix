@@ -37,6 +37,11 @@
       HostName 192.168.205.120
       IdentityFile ${config.sops.secrets.dev-vm-robert.path}
 
+    Host work-dev-vm-3-root
+      User root
+      HostName 192.168.205.187
+      IdentityFile ${config.sops.secrets.dev-vm-robert.path}
+
     Host work-dev-vm-3
       User robert
       HostName 192.168.205.187
