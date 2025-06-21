@@ -32,7 +32,7 @@
       eza
       fd
       ripgrep
-      jujutsu
+      # jujutsu -> unstable
     ];
   };
 
