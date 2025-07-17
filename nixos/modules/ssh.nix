@@ -65,6 +65,17 @@
       HostName 192.168.205.120
       IdentityFile ${config.sops.secrets.dev-vm-robert.path}
 
+    Host zih-login
+      User rosc685g
+      Hostname login.zih.tu-dresden.de
+      IdentityFile ${config.sops.secrets.zih.path}
+
+    Host beast-jump
+      User rschambach
+      HostName 141.76.44.200
+      IdentityFile ${config.sops.secrets.beast.path}
+      ProxyJump zih-login
+
     Host beast
       User rschambach
       HostName 141.76.44.200
