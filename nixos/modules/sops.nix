@@ -133,6 +133,12 @@
         format = "binary";
         owner = config.users.users.robert.name;
       };
+      zih = {
+        sopsFile = ../secrets/keys/zih;
+        format = "binary";
+        owner = config.users.users.robert.name;
+      };
+
       beast = {
         sopsFile = ../secrets/keys/beast;
         format = "binary";
