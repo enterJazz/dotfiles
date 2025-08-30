@@ -6,7 +6,8 @@
 {
   fonts.packages = with pkgs;
   [
-    nerdfonts
+    # nerdfonts # -> need to get the actual font I need explicitly...
+    nerd-fonts.fira-code
     dejavu_fonts
     noto-fonts
     noto-fonts-cjk-sans

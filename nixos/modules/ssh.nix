@@ -76,6 +76,12 @@
       IdentityFile ${config.sops.secrets.beast.path}
       ProxyJump zih-login
 
+    Host tud-server-ext-jump
+      User robert
+      HostName 141.76.44.182
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+      ProxyJump beast-jump
+
     Host beast
       User rschambach
       HostName 141.76.44.200
@@ -93,10 +99,22 @@
       IdentityFile ${config.sops.secrets.tud-vm.path}
       ProxyJump beast
 
+    Host tud-vm-ubuntu
+      User ubuntu
+      HostName 141.76.44.114
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+
     Host tud-vm
       User robert
       HostName 141.76.44.114
       IdentityFile ${config.sops.secrets.tud-vm.path}
+
+    Host tud-vm-noah-jump
+      User ubuntu
+      HostName 141.76.44.87
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+      ProxyJump beast-jump
+
 
     Host 141.76.44.*
       User ubuntu
