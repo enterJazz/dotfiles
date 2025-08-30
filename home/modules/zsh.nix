@@ -1,4 +1,4 @@
-{ pkgs , ... }:
+{ ... }:
 {
   programs.zsh =
   {
@@ -15,7 +15,7 @@
       ];
       theme = "robbyrussell";
     };
-    initExtra =
+    initContent =
     ''
       DISABLE_UNTRACKED_FILES_DIRTY="true"
     '';

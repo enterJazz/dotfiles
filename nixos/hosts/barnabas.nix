@@ -152,7 +152,7 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.05";
   
   boot.loader =
   {
@@ -199,6 +199,6 @@
   networking.hostName = "barnabas";
 
   # try to enable sgx by updating kernel
-  boot.kernelPackages = pkgs.linuxPackages_6_6;
+  # boot.kernelPackages = pkgs.linuxPackages_6_6;
 }
 

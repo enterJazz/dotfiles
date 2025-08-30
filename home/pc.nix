@@ -32,7 +32,7 @@
       ferdium
       # firefox-wayland
       foliate
-      google-chrome
+      # google-chrome
       jq
       htop
       libreoffice
@@ -79,7 +79,7 @@
         id = 0;
         search =
         {
-          default = "DuckDuckGo";
+          default = "ddg";
           force = true;
           engines =
           {
@@ -118,15 +118,15 @@
             "NixOS Wiki" =
             {
               urls = [{ template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; }];
-              iconUpdateURL = "https://wiki.nixos.org/nixos.png";
+              icon = "https://wiki.nixos.org/nixos.png";
               updateInterval = 24 * 60 * 60 * 1000;
               definedAliases = [ "@nw" ];
             };
-            "Wikipedia (en)".metaData.alias = "@wiki";
-            "Google".metaData.hidden = true;
-            "Amazon.com".metaData.hidden = true;
-            "Bing".metaData.hidden = true;
-            "eBay".metaData.hidden = true;
+            "wikipedia".metaData.alias = "@wiki";
+            "google".metaData.hidden = true;
+            "amazondotcom-us".metaData.hidden = true;
+            "bing".metaData.hidden = true;
+            "ebay".metaData.hidden = true;
           };
         };
         settings =
@@ -244,22 +244,23 @@
     mako =
     {
       enable = true;
-      extraConfig =
-      ''
-        [urgency=low]
-        border-color=#cccccc
-
-        [urgency=normal]
-        border-color=#d08770
-
-        [urgency=high]
-        border-color=#bf616a
-        default-timeout=0
-
-        [category=mpd]
-        default-timeout=2000
-        group-by=category
-      '';
+      settings =
+      {
+        actions = true;
+        anchor = "top-right";
+        background-color = "#000000";
+        border-color = "#FFFFFF";
+        border-radius = 0;
+        default-timeout = 0;
+        font = "monospace 10";
+        height = 100;
+        width = 300;
+        icons = true;
+        ignore-timeout = false;
+        layer = "top";
+        margin = 10;
+        markup = true;
+      };
     };
   };
 }

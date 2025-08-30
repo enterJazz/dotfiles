@@ -3,12 +3,12 @@
 
   inputs =
   {
-    nixpkgs.url = "github:NixOs/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOs/nixpkgs/nixos-25.05";
     # unstable-nixpkgs.url = "github:NixOs/nixpkgs/nixpkgs-unstable";
 
     home-manager =
     {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -25,7 +25,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
 
-    # NOTE: appears to currently break building of nixos-options? (since 24.11)
+    # NOTE: appears to currently break building of nixos-options? (since 25.05)
     # lix-module =
     # {
     #   url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
@@ -70,7 +70,6 @@
     systems =
     [
       "x86_64-linux"
-      "aarch64-darwin"
     ];
     flake =
     let
@@ -84,36 +83,11 @@
         overlays = [ nur.overlays.default ];
         config.permittedInsecurePackages = [ "electron-25.9.0" "nix-2.15.3" ];
       };
-      aasystem = "aarch64-darwin";
-      aapkgs = nixpkgs.legacyPackages.${aasystem};
-      aahmpkgs = import nixpkgs
-      {
-        system = aasystem;
-        config.allowUnfree = true;
-        overlays = [ nur.overlays.default ];
-        config.permittedInsecurePackages = [ "electron-25.9.0" ];
-      };
     in
     {
 # home configuration
       homeConfigurations =
       {
-        "amalia" = home-manager.lib.homeManagerConfiguration
-        {
-          pkgs = aahmpkgs;
-          modules =
-          [
-            ./home/hosts/amalia.nix
-            {
-              home =
-              {
-                username = "robertschambach";
-                homeDirectory = "/Users/robertschambach";
-                stateVersion = "24.11";
-              };
-            }
-          ];
-        };
         "${username}-pc" = home-manager.lib.homeManagerConfiguration
         {
 # workaround: https://github.com/nix-community/home-manager/issues/2942#issuecomment-1378627909
@@ -126,7 +100,7 @@
               {
                 username = "${username}";
                 homeDirectory = "/home/${username}";
-                stateVersion = "24.11";
+                stateVersion = "25.05";
               };
             }
           ];
@@ -144,7 +118,7 @@
               {
                 username = "${username}";
                 homeDirectory = "/home/${username}";
-                stateVersion = "24.11";
+                stateVersion = "25.05";
               };
             }
           ];
@@ -174,15 +148,6 @@
               lanzaboote.nixosModules.lanzaboote
               # lix-module.nixosModules.default
             ];
-        };
-      };
-
-      apps.${aasystem} =
-      {
-        "switch-amalia" =
-        {
-          type = "app";
-          program = "${self.homeConfigurations."amalia".activationPackage}/activate";
         };
       };
 

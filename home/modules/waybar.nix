@@ -101,7 +101,7 @@
 
           network =
           {
-            "format-wifi" = "{icon} {essid}";
+            "format-wifi" = "{icon}  {essid}";
             "format-ethernet" = " {ifname}: {ipaddr}/{cidr}";
             "format-disconnected" = "⚠ Disconnected";
             "interval" = 7;
@@ -139,7 +139,7 @@
                           "warning" = 30;
                           "critical" = 15;
                   };
-                  "format" = "{icon} {capacity}%";
+                  "format" = "{icon}  {capacity}%";
                   "format-icons" = [
                           ""
                           ""
@@ -162,7 +162,7 @@
       ''
       * {
 	font-size: 20px;
-	font-family: monospace;
+	font-family: fira-code;
         }
         
         window#waybar {
