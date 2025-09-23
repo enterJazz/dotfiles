@@ -32,11 +32,6 @@
       User root
       IdentityFile ${config.sops.secrets.sconecf-gitlab-icelake-runner-9-robert-nixos.path}
 
-    Host work-dev-vm
-      User robert
-      HostName 192.168.205.120
-      IdentityFile ${config.sops.secrets.dev-vm-robert.path}
-
     Host work-dev-vm-3-root
       User root
       HostName 192.168.205.187
@@ -52,9 +47,9 @@
       HostName 192.168.205.187
       IdentityFile ${config.sops.secrets.dev-vm-robert.path}
 
-    Host work-dev-vm-ubuntu
+    Host work-dev-vm-3-ubuntu
       User ubuntu
-      HostName 192.168.205.120
+      HostName 192.168.205.187
       IdentityFile ${config.sops.secrets.dev-vm-robert.path}
 
     Host 192.168.20*
@@ -110,7 +105,7 @@
       IdentityFile ${config.sops.secrets.tud-vm.path}
 
     Host tud-vm
-      User robert
+      User ubuntu
       HostName 141.76.44.114
       IdentityFile ${config.sops.secrets.tud-vm.path}
 
@@ -120,6 +115,21 @@
       IdentityFile ${config.sops.secrets.tud-vm.path}
       ProxyJump beast-jump
 
+    Host tud-vm-noah
+      User ubuntu
+      HostName 141.76.50.249
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+      ProxyJump beast
+
+    Host tud-vm-root
+      User root
+      HostName 141.76.44.114
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+
+    Host tud-server
+      User robert
+      HostName 141.76.44.182
+      IdentityFile ${config.sops.secrets.tud-vm.path}
 
     Host 141.76.44.*
       User ubuntu

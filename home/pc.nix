@@ -48,7 +48,7 @@
       rename
       shotman
       shotwell
-      signal-desktop
+      # signal-desktop -> broken 25.05
       sshpass
       thunderbird
       vscode-fhs
@@ -146,7 +146,7 @@
           }];
           "extensions.pocket.enabled" = false;
         };
-        extensions = with pkgs.nur.repos.rycee.firefox-addons;
+        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons;
         [
           ublock-origin
           privacy-badger

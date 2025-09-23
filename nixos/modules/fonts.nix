@@ -15,7 +15,7 @@
     liberation_ttf
     libertine
     font-awesome
-  ];
+  ]  ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
   fonts.enableDefaultPackages = true;
 
 }
