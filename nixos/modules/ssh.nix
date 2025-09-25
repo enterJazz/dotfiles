@@ -131,6 +131,22 @@
       HostName 141.76.44.182
       IdentityFile ${config.sops.secrets.tud-vm.path}
 
+    Host tud-server-vm
+      User tdx
+      HostName localhost
+      Port 10022
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+      ProxyJump tud-server
+
+    Host tud-server-vm-llm
+      User tdx
+      HostName localhost
+      Port 10022
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+      LocalForward 11434 localhost:11434
+      ProxyJump tud-server
+
+
     Host 141.76.44.*
       User ubuntu
       IdentityFile ${config.sops.secrets.tud-vm.path}
