@@ -79,7 +79,7 @@ in
     vimAlias = true;
     coc =
     {
-      enable = true;
+      enable = false;
       settings =
       {
         ## C
@@ -131,7 +131,7 @@ in
       }
       vim-gitgutter
       nvim-lspconfig
-      coc-pyright
+      # coc-pyright
       # coc-rust-analyzer
       vim-just
       bats-vim
