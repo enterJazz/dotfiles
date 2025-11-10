@@ -87,48 +87,51 @@
       HostName 141.76.44.200
       IdentityFile ${config.sops.secrets.beast.path}
 
-    Host tud-vm-jump
-      User robert
-      HostName 141.76.44.114
-      IdentityFile ${config.sops.secrets.tud-vm.path}
-      ProxyJump beast
-
-    Host tud-vm-jump-temp
-      User ubuntu
-      HostName 141.76.44.113
-      IdentityFile ${config.sops.secrets.tud-vm.path}
-      ProxyJump beast
-
-    Host tud-vm-ubuntu
-      User ubuntu
-      HostName 141.76.44.114
-      IdentityFile ${config.sops.secrets.tud-vm.path}
-
-    Host tud-vm
-      User ubuntu
-      HostName 141.76.44.114
-      IdentityFile ${config.sops.secrets.tud-vm.path}
-
     Host tud-vm-noah-jump
       User ubuntu
       HostName 141.76.44.87
       IdentityFile ${config.sops.secrets.tud-vm.path}
       ProxyJump beast-jump
 
-    Host tud-vm-noah
+    Host tud-vm-student
       User ubuntu
-      HostName 141.76.50.249
+      HostName 141.76.44.113
       IdentityFile ${config.sops.secrets.tud-vm.path}
       ProxyJump beast
-
-    Host tud-vm-root
-      User root
-      HostName 141.76.44.114
-      IdentityFile ${config.sops.secrets.tud-vm.path}
 
     Host tud-server
       User robert
       HostName 141.76.44.182
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+
+    Host sgx13 # daria
+      User ubuntu
+      HostName 141.76.44.93
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+
+    Host sgx19
+      User ubuntu
+      HostName 141.76.44.120
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+
+    Host sgx22 # ryu
+      User ubuntu
+      HostName 141.76.44.107
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+
+    Host sgx23 # pamenas gave me access ; no sgxv2
+      User robert
+      HostName 141.76.44.108
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+
+    Host sgx26 # max -> release
+      User ubuntu
+      HostName 141.76.44.113
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+
+    Host sgx27 # noah
+      User robert
+      HostName 141.76.44.114
       IdentityFile ${config.sops.secrets.tud-vm.path}
 
     Host tud-server-vm
