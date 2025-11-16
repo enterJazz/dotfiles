@@ -16,6 +16,7 @@
         "Arnetwork 138".pskRaw = "ext:PSK_ARNETWORK";
         "iPhone von Robert".pskRaw = "ext:PSK_IPHONE";
         "navigator".pskRaw = "ext:PSK_NAVIGATOR";
+        "navigator guest".pskRaw = "ext:PSK_NAVIGATOR_GUEST";
         "Alpina Dolomites".pskRaw = "ext:PSK_ALPINA_DOLOMITES";
         "Ritz-Carlton-Jena".pskRaw = "ext:PSK_BENE";
         "SCONTAIN".pskRaw = "ext:PSK_SCONTAIN";
