@@ -23,6 +23,7 @@
     Host se-gitlab.inf.tu-dresden.de
       User git
       IdentityFile ${config.sops.secrets.tud-se-gitlab.path}
+      ProxyJump zih-login
 
     Host sconecf.office.scontain.com
       User git
@@ -135,6 +136,23 @@
       IdentityFile ${config.sops.secrets.tud-vm.path}
       LocalForward 11434 localhost:11434
       ProxyJump tud-server
+
+    Host tud-bm-server-jump
+      User robert
+      HostName 141.76.44.166
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+      ProxyJump beast-jump
+
+    Host sgx23
+      User robert
+      HostName 141.76.44.108
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+      ProxyJump beast-jump
+
+    Host sgx23-no-key
+      User robert
+      HostName 141.76.44.108
+      ProxyJump beast-jump
 
 
     Host 141.76.44.*
