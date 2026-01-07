@@ -48,13 +48,15 @@
       rename
       shotman
       shotwell
-      # signal-desktop -> broken 25.05
+      signal-desktop # -> broken 25.05
       sshpass
       thunderbird
+      virtualbox
       vscode-fhs
       wdisplays
       wireguard-tools
       wl-clipboard
+      wl-mirror
       wlsunset
       xournalpp
       zathura
