@@ -5,18 +5,18 @@ proot := justfile_directory()
 default:
     just --choose
 
-init-nixos-config:
+config:
     # may need to install bootloader
     sudo nixos-rebuild --upgrade --flake .#$(hostname) switch --impure
 
-init-hm-pc:
+pc:
     nix run .#switch-$(whoami)-hm-pc
 
-init-hm-amalia:
+amalia:
     nix run .#switch-amalia --extra-experimental-features nix-command --extra-experimental-features flakes --show-trace
 
 
-init-hm-server:
+server:
     nix run .#switch-$(whoami)-hm-server
 
 init-links:

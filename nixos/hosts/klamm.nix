@@ -28,7 +28,7 @@
     # ../modules/remote-builder.nix
     ../modules/sops.nix
     ../modules/ssh.nix
-    ../modules/virtualbox.nix
+    ../modules/virt-manager.nix
     ../modules/xournalpp.nix
     ../modules/zsh.nix
   ];

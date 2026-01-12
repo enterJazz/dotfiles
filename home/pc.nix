@@ -51,7 +51,6 @@
       signal-desktop # -> broken 25.05
       sshpass
       thunderbird
-      virtualbox
       vscode-fhs
       wdisplays
       wireguard-tools
