@@ -145,6 +145,12 @@
       User robert
       HostName 91.99.1.55
       IdentityFile ${config.sops.secrets.hetzner.path}
+
+    Host sm
+      User robert
+      HostName 172.16.20.101
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+      ProxyJump sgx19
     '';
     knownHosts =
     {
