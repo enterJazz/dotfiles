@@ -38,6 +38,10 @@
       HostName 192.168.205.187
       IdentityFile ${config.sops.secrets.dev-vm-robert.path}
 
+    Host 192.168.20*
+      User ubuntu
+      IdentityFile ${config.sops.secrets.dev-vm-robert.path}
+
     Host scone.cf
       User git
       IdentityFile ${config.sops.secrets.scone-cf.path}
@@ -60,7 +64,7 @@
 
     Host tud-server-ext-jump
       User robert
-      HostName 141.76.44.154
+      HostName 141.76.44.130
       IdentityFile ${config.sops.secrets.tud-vm.path}
       ProxyJump beast-jump
 
@@ -91,12 +95,24 @@
       HostName 141.76.44.93
       IdentityFile ${config.sops.secrets.tud-vm.path}
 
-    Host sgx19 # benchmarks
+    Host sgx13-jump # daria
+      User ubuntu
+      HostName 141.76.44.93
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+      ProxyJump beast-jump
+
+    Host sgx19
       User robert
       HostName 141.76.44.120
       IdentityFile ${config.sops.secrets.tud-vm.path}
       
     Host sgx19-jump # benchmarks
+      User robert
+      HostName 141.76.44.120
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+      ProxyJump beast-jump
+
+    Host sgx19-jump
       User robert
       HostName 141.76.44.120
       IdentityFile ${config.sops.secrets.tud-vm.path}
@@ -169,6 +185,12 @@
       HostName 172.16.20.101
       IdentityFile ${config.sops.secrets.tud-vm.path}
       ProxyJump sgx19
+    
+    Host sm-jump
+      User robert
+      HostName 172.16.20.101
+      IdentityFile ${config.sops.secrets.tud-vm.path}
+      ProxyJump sgx19-jump
     '';
     knownHosts =
     {

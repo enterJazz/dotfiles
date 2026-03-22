@@ -21,7 +21,7 @@
       # authy -> EOL 24.05
       # slack
       # telegram-desktop
-      bitwarden
+      bitwarden-desktop
       brave
       cpuid
       ctags
@@ -187,6 +187,7 @@
   in
   {
     enable = true;
+    wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
     config = rec
     {
       # bars by waybar

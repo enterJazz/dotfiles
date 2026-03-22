@@ -1,13 +1,17 @@
 { ... }:
 {
-  programs.git =
-  {
-    enable = true;
-    delta.enable = true;
-    extraConfig =
-    {
-      merge.conflictStyle = "zdiff3";
-      push.autoSetupRemote = "true";
+  programs = {
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+    };
+    git = {
+      enable = true;
+      settings =
+      {
+         merge.conflictStyle = "zdiff3";
+         push.autoSetupRemote = "true";
+      };
     };
   };
 }
