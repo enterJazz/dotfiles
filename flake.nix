@@ -3,12 +3,12 @@
 
   inputs =
   {
-    nixpkgs.url = "github:NixOs/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOs/nixpkgs/nixos-25.11";
     # unstable-nixpkgs.url = "github:NixOs/nixpkgs/nixpkgs-unstable";
 
     home-manager =
     {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -25,7 +25,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
 
-    # NOTE: appears to currently break building of nixos-options? (since 25.05)
+    # NOTE: appears to currently break building of nixos-options? (since 25.11)
     # lix-module =
     # {
     #   url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
@@ -100,7 +100,7 @@
               {
                 username = "${username}";
                 homeDirectory = "/home/${username}";
-                stateVersion = "25.05";
+                stateVersion = "25.11";
               };
             }
           ];
@@ -118,7 +118,7 @@
               {
                 username = "${username}";
                 homeDirectory = "/home/${username}";
-                stateVersion = "25.05";
+                stateVersion = "25.11";
               };
             }
           ];

@@ -28,6 +28,8 @@
         "Netzwerk 123".pskRaw = "ext:PSK_MARTIN";
         "FRITZ!Box 6660 Cable TF".pskRaw = "ext:PSK_WG";
         "hotel-wetterstein".extraConfig = "key_mgmt=NONE";
+        "MeinJena".extraConfig = "key_mgmt=NONE";
+        "RoboLab Playground".pskRaw = "ext:PSK_ROBOLAB";
       };
       # FIXME: config now broken
       extraConfig =
