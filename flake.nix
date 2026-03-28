@@ -138,12 +138,12 @@
             ];
         };
 
-        barnabas = nixpkgs.lib.nixosSystem
+        frieda = nixpkgs.lib.nixosSystem
         {
           inherit system;
           modules =
             [
-              ./nixos/hosts/barnabas.nix
+              ./nixos/hosts/frieda.nix
               sops-nix.nixosModules.sops
               lanzaboote.nixosModules.lanzaboote
               # lix-module.nixosModules.default

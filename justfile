@@ -7,7 +7,7 @@ default:
 
 config:
     # may need to install bootloader
-    sudo nixos-rebuild --upgrade --flake .#$(hostname) switch --impure
+    sudo nixos-rebuild --upgrade --flake .#frieda switch --impure
 
 pc:
     nix run .#switch-$(whoami)-hm-pc
@@ -15,6 +15,8 @@ pc:
 amalia:
     nix run .#switch-amalia --extra-experimental-features nix-command --extra-experimental-features flakes --show-trace
 
+frieda:
+    nix run .#switch-frieda --extra-experimental-features nix-command --extra-experimental-features flakes --show-trace
 
 server:
     nix run .#switch-$(whoami)-hm-server

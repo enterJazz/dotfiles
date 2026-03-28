@@ -66,11 +66,6 @@
   # setup to fail
   programs.ssh.knownHosts =
   {
-    "borgbackup.cit.tum.de" =
-    {
-      hostNames = [ "borgbackup.cit.tum.de" ];
-      publicKey = "SHA256:qp2UT3bAeh4LAB6jYBR1Ij9oTa8edCNR4w2n4s7whts";
-    };
     "u400394.your-storagebox.de" =
     {
       hostNames = [ "u400394.your-storagebox.de" ];
