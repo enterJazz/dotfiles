@@ -33,6 +33,7 @@
       # firefox-wayland
       foliate
       # google-chrome
+      gemini-cli
       jq
       htop
       libreoffice
