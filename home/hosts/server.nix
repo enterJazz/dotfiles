@@ -20,6 +20,7 @@
       docker-compose
       sqlite
       rustup
+      gemini-cli
     ];
   };
 
