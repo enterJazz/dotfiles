@@ -19,8 +19,9 @@
     [
       # teams
       # authy -> EOL 24.05
-      # slack
+      slack
       # telegram-desktop
+      brightnessctl
       bitwarden-desktop
       brave
       cpuid
@@ -35,11 +36,11 @@
       # google-chrome
       gemini-cli
       jq
+      keepassxc
       htop
       libreoffice
-      light
       nautilus
-      neofetch
+      hyfetch
       nextcloud-client
       obsidian
       openvpn
@@ -61,7 +62,7 @@
       xournalpp
       zathura
       zoom-us
-      zotero_7
+      zotero
     ];
 
     sessionVariables =
@@ -194,6 +195,13 @@
       # bars by waybar
       bars = [];
       modifier = "${mod}";
+      input =
+      {
+        "type:keyboard" = {
+          xkb_layout = "us";
+          xkb_options = "compose:ralt";
+        };
+      };
       output =
       {
         "Virtual-1" =
@@ -217,8 +225,8 @@
         # https://github.com/qmk/qmk_firmware/issues/17749 ?
         "XF86AudioMicMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
         # Brightness
-        "XF86MonBrightnessDown" = "exec light -U 5";
-        "XF86MonBrightnessUp" = "exec light -A 5";
+        "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
+        "XF86MonBrightnessUp" = "exec brightnessctl set +5%";
         # Control audio
         "XF86AudioPlay" = "exec playerctl play-pause";
         "XF86AudioNext" = "exec playerctl next";

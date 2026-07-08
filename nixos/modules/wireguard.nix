@@ -12,15 +12,17 @@ in
   services.resolved =
   {
     enable = true;
-    extraConfig =
-    ''
-      [Match]
-      Name=${wgScontainInterface}
-
-      [Resolve]
-      DNS=REDACTED
-      Domains=REDACTED REDACTED REDACTED
-    '';
+    settings = {
+      #Match =
+      #{
+      #  Name = wgScontainInterface;
+      #};
+      Resolve =
+      {
+        DNS = "REDACTED";
+        Domains = "REDACTED REDACTED REDACTED";
+      };
+    };
   };
 
   networking.wg-quick.interfaces = {
