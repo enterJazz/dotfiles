@@ -3,12 +3,12 @@
 
   inputs =
   {
-    nixpkgs.url = "github:NixOs/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOs/nixpkgs/nixos-26.05";
     # unstable-nixpkgs.url = "github:NixOs/nixpkgs/nixpkgs-unstable";
 
     home-manager =
     {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -25,7 +25,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
 
-    # NOTE: appears to currently break building of nixos-options? (since 25.11)
+    # NOTE: appears to currently break building of nixos-options? (since 26.05)
     # lix-module =
     # {
     #   url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
@@ -81,7 +81,7 @@
         inherit system;
         config.allowUnfree = true;
         overlays = [ nur.overlays.default ];
-        config.permittedInsecurePackages = [ "electron-25.9.0" "nix-2.15.3" ];
+        config.permittedInsecurePackages = [ "electron-39.8.10" "nix-2.15.3" ];
       };
     in
     {
@@ -100,7 +100,7 @@
               {
                 username = "${username}";
                 homeDirectory = "/home/${username}";
-                stateVersion = "25.11";
+                stateVersion = "26.05";
               };
             }
           ];
@@ -118,7 +118,7 @@
               {
                 username = "${username}";
                 homeDirectory = "/home/${username}";
-                stateVersion = "25.11";
+                stateVersion = "26.05";
               };
             }
           ];

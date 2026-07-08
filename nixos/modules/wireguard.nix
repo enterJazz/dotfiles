@@ -12,15 +12,17 @@ in
   services.resolved =
   {
     enable = true;
-    extraConfig =
-    ''
-      [Match]
-      Name=${wgScontainInterface}
-
-      [Resolve]
-      DNS=10.50.0.1
-      Domains=~office.scontain ~office.scontain.com ~intranet.scontain.com
-    '';
+    settings = {
+      #Match =
+      #{
+      #  Name = wgScontainInterface;
+      #};
+      Resolve =
+      {
+        DNS = "10.50.0.1";
+        Domains = "~office.scontain ~office.scontain.com ~intranet.scontain.com";
+      };
+    };
   };
 
   networking.wg-quick.interfaces = {
