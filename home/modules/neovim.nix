@@ -120,13 +120,13 @@ in
       ale
       {
         plugin = vim-easy-align;
+        type = "lua";
         config =
         ''
-          " Start interactive EasyAlign in visual mode (e.g. vipga)
-          xmap ga <Plug>(EasyAlign)
-
-          " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-          nmap ga <Plug>(EasyAlign)
+          vim.cmd([[
+            xmap ga <Plug>(EasyAlign)
+            nmap ga <Plug>(EasyAlign)
+          ]])
         '';
       }
       vim-gitgutter
@@ -140,38 +140,37 @@ in
     [
       {
         plugin = vim-yoink;
+        type = "lua";
         config =
         ''
-          " vim-yoink config
-          " swap most recent paste around in yank history
-          nmap <c-n> <plug>(YoinkPostPasteSwapBack)
-          nmap <c-p> <plug>(YoinkPostPasteSwapForward)
+          vim.cmd([[
+            nmap <c-n> <plug>(YoinkPostPasteSwapBack)
+            nmap <c-p> <plug>(YoinkPostPasteSwapForward)
 
-          " use vimyank for pasting
-          nmap p <plug>(YoinkPaste_p)
-          nmap P <plug>(YoinkPaste_P)
+            nmap p <plug>(YoinkPaste_p)
+            nmap P <plug>(YoinkPaste_P)
 
-          " permanently cycle through history
-          nmap [y <plug>(YoinkRotateBack)
-          nmap ]y <plug>(YoinkRotateForward)
+            nmap [y <plug>(YoinkRotateBack)
+            nmap ]y <plug>(YoinkRotateForward)
 
-          " toggle if current paste is formatted
-          nmap <c-=> <plug>(YoinkPostPasteToggleFormat)
+            nmap <c-=> <plug>(YoinkPostPasteToggleFormat)
+          ]])
         '';
       }
       {
         plugin = vim-cutlass;
+        type = "lua";
         config =
         ''
-          " vimcutlass: add cut operations to Yank history
-          let g:yoinkIncludeDeleteOperations = 1
+          vim.cmd([[
+            let g:yoinkIncludeDeleteOperations = 1
 
-          " vimcutlass: map 'r' as cut
-          nnoremap r d
-          xnoremap r d
+            nnoremap r d
+            xnoremap r d
 
-          nnoremap rr dd
-          nnoremap R D
+            nnoremap rr dd
+            nnoremap R D
+          ]])
         '';
       }
     ];

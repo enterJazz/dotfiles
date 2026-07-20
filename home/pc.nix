@@ -20,6 +20,7 @@
       # teams
       # authy -> EOL 24.05
       slack
+      s3cmd
       # telegram-desktop
       brightnessctl
       bitwarden-desktop
@@ -34,7 +35,7 @@
       # firefox-wayland
       foliate
       # google-chrome
-      gemini-cli
+      claude-code
       jq
       keepassxc
       htop
