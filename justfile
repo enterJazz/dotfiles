@@ -10,7 +10,7 @@ config:
     sudo nixos-rebuild --upgrade --flake .#frieda switch --impure
 
 pc:
-    nix run .#switch-$(whoami)-hm-pc
+    nix run --impure .#switch-$(whoami)-hm-pc
 
 amalia:
     nix run .#switch-amalia --extra-experimental-features nix-command --extra-experimental-features flakes --show-trace
@@ -19,7 +19,7 @@ frieda:
     nix run .#switch-frieda --extra-experimental-features nix-command --extra-experimental-features flakes --show-trace
 
 server:
-    nix run .#switch-$(whoami)-hm-server
+    nix run --impure .#switch-$(whoami)-hm-server
 
 init-links:
     @ mkdir -p ~/.ssh/keys \

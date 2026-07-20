@@ -75,7 +75,6 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      username = "robert";
       hmpkgs = import nixpkgs
       {
         inherit system;
@@ -83,47 +82,55 @@
         overlays = [ nur.overlays.default ];
         config.permittedInsecurePackages = [ "electron-39.8.10" "nix-2.15.3" ];
       };
+
+      mkHomeConfigs = username:
+      let
+        # workaround: https://github.com/nix-community/home-manager/issues/2942#issuecomment-1378627909
+        mkConfig = modules: home-manager.lib.homeManagerConfiguration
+        {
+          pkgs = hmpkgs;
+          modules = modules ++
+          [
+            {
+              home =
+              {
+                inherit username;
+                homeDirectory = "/home/${username}";
+                stateVersion = "26.05";
+              };
+            }
+          ];
+        };
+      in
+      {
+        homeConfigurations =
+        {
+          "${username}-pc" = mkConfig [ ./home/pc.nix ];
+          "${username}-server" = mkConfig [ ./home/hosts/server.nix ];
+        };
+        apps =
+        {
+          "switch-${username}-hm-pc" =
+          {
+            type = "app";
+            program = "${self.homeConfigurations."${username}-pc".activationPackage}/activate";
+          };
+          "switch-${username}-hm-server" =
+          {
+            type = "app";
+            program = "${self.homeConfigurations."${username}-server".activationPackage}/activate";
+          };
+        };
+      };
+
+      username = let u = builtins.getEnv "USER"; in
+        if u == "" then throw "USER env var is unset; run with --impure" else u;
+
+      userConfigs = mkHomeConfigs username;
     in
     {
 # home configuration
-      homeConfigurations =
-      {
-        "${username}-pc" = home-manager.lib.homeManagerConfiguration
-        {
-# workaround: https://github.com/nix-community/home-manager/issues/2942#issuecomment-1378627909
-          pkgs = hmpkgs;
-          modules =
-          [
-          ./home/pc.nix
-            {
-              home =
-              {
-                username = "${username}";
-                homeDirectory = "/home/${username}";
-                stateVersion = "26.05";
-              };
-            }
-          ];
-        };
-        "${username}-server" = home-manager.lib.homeManagerConfiguration
-        {
-# workaround: https://github.com/nix-community/home-manager/issues/2942#issuecomment-1378627909
-          pkgs = hmpkgs; 
-          modules =
-          [
-# <sops-nix/modules/home-manager/sops.nix>
-          ./home/hosts/server.nix
-            {
-              home =
-              {
-                username = "${username}";
-                homeDirectory = "/home/${username}";
-                stateVersion = "26.05";
-              };
-            }
-          ];
-        };
-      };
+      homeConfigurations = userConfigs.homeConfigurations;
 
 # system configuration
       nixosConfigurations =
@@ -151,19 +158,8 @@
         };
       };
 
-      apps.${system} =
-      {
-        "switch-${username}-hm-pc" =
-        {
-          type = "app";
-          program = "${self.homeConfigurations."${username}-pc".activationPackage}/activate";
-        };
-        "switch-${username}-hm-server" =
-        {
-          type = "app";
-          program = "${self.homeConfigurations."${username}-server".activationPackage}/activate";
-        };
-      };
+      apps.${system} = userConfigs.apps;
+
       devShells.${system}.default = pkgs.mkShell
       {
         name = "dotfiles-devshell";
