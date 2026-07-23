@@ -47,11 +47,14 @@ in
 #    };
 
     ${wgScontainInterface} = {
-      address = [ "REDACTED" ];
+      address = [
+        "REDACTED"
+        "fdfa:4029:e9e1:2965::7/128"
+      ];
 
        postUp =
        ''
-         resolvectl dns ${wgScontainInterface} REDACTED
+         resolvectl dns ${wgScontainInterface} REDACTED fdfa:4029:e9e1:2965::1
          resolvectl domain ${wgScontainInterface} REDACTED REDACTED REDACTED
        '';
 
@@ -60,7 +63,7 @@ in
       privateKeyFile = config.sops.secrets.wg-scontain-privkey.path;
       peers = [
         {
-          allowedIPs = [ "REDACTED" "REDACTED" ];
+          allowedIPs = [ "0.0.0.0/0" "::/0" ];
           # allowedIPs = [ "0.0.0.0/0" ];
           publicKey = "REDACTED";
           endpoint = "${scontainVpnServer}";
