@@ -9,7 +9,7 @@
     ./modules/git.nix
     ./modules/neovim.nix
     ./modules/tmux.nix
-    ./modules/tofi.nix
+    ./modules/fuzzel.nix
     ./modules/waybar.nix
     ./modules/zsh.nix
   ];
@@ -196,6 +196,7 @@
       # bars by waybar
       bars = [];
       modifier = "${mod}";
+      menu = "${pkgs.fuzzel}/bin/fuzzel";
       input =
       {
         "type:keyboard" = {
