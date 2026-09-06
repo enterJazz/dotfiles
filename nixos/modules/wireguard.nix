@@ -3,7 +3,7 @@
 { lib, config, pkgs, ... }:
 let
   wgScontainInterface = "wg-scontain";
-  scontainVpnServer = "vpn.scontain.com:9030";
+  scontainVpnServer = "vpn.scontain.com:51820";
   wgAustriaRestricted = "wg-at-restrict";
 in
 {
@@ -47,11 +47,11 @@ in
 #    };
 
     ${wgScontainInterface} = {
-      address = [ "10.50.0.37/24" ];
+      address = [ "10.99.100.18/32" ];
 
        postUp =
        ''
-         resolvectl dns ${wgScontainInterface} 10.50.0.1
+         resolvectl dns ${wgScontainInterface} 10.99.100.1
          resolvectl domain ${wgScontainInterface} ~office.scontain ~office.scontain.com ~intranet.scontain.com
        '';
 
@@ -60,9 +60,9 @@ in
       privateKeyFile = config.sops.secrets.wg-scontain-privkey.path;
       peers = [
         {
-          allowedIPs = [ "192.168.200.0/21" "10.50.0.0/24" ];
+          allowedIPs = [ "192.168.200.0/21" "10.99.0.0/16" ];
           # allowedIPs = [ "0.0.0.0/0" ];
-          publicKey = "3AmSLyD64bUiixYmzMNJ5zQ9dFdMx5jF1QYcr+nz8xo=";
+          publicKey = "xu0Avv8DaxWpfcyZQSbo87lL2ccQTgDZNHkf0e9wvz8=";
           endpoint = "${scontainVpnServer}";
           persistentKeepalive = 25;
           presharedKeyFile = config.sops.secrets.wg-scontain-psk.path;

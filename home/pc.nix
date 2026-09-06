@@ -24,7 +24,7 @@
       # telegram-desktop
       brightnessctl
       bitwarden-desktop
-      brave
+      #brave
       cpuid
       ctags
       dig
@@ -35,7 +35,7 @@
       # firefox-wayland
       foliate
       # google-chrome
-      claude-code
+      #claude-code
       jq
       keepassxc
       htop
