@@ -201,6 +201,11 @@
       HostName 172.16.20.101
       IdentityFile ${config.sops.secrets.tud-vm.path}
       ProxyJump sgx19-jump
+
+    Host stonks-anal
+      User agent
+      HostName 2.28.71.181
+      IdentityFile ${config.sops.secrets.stonks-anal.path}
     '';
     knownHosts =
     {
