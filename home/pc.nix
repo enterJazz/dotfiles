@@ -210,6 +210,20 @@
 	{
 	  mode = "1920x1080@60Hz";
 	};
+        # frieda built-in panel
+        "BOE NV133WUM-N6D Unknown" =
+        {
+          mode = "1920x1200@60.003Hz";
+          position = "2821,2160";
+          scale = "1";
+        };
+        # frieda external LG display
+        "LG Electronics LG HDR 4K 0x0004B350" =
+        {
+          mode = "2560x1440@59.951Hz";
+          position = "2596,720";
+          scale = "1";
+        };
       };
       keybindings =
       lib.mkOptionDefault
