@@ -203,9 +203,14 @@
       ProxyJump sgx19-jump
 
     Host stonks-anal
-      User agent
+      User root
       HostName 2.28.71.181
       IdentityFile ${config.sops.secrets.stonks-anal.path}
+
+    Host stonks-anal-agent
+      User agent
+      HostName 2.28.71.181
+      IdentityFile ${config.sops.secrets.stonks-anal-agent.path}
     '';
     knownHosts =
     {
