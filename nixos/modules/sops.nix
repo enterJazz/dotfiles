@@ -159,6 +159,11 @@
         format = "binary";
         owner = config.users.users.robert.name;
       };
+      stonks-anal-agent = {
+        sopsFile = ../secrets/keys/stonks-anal-agent;
+        format = "binary";
+        owner = config.users.users.robert.name;
+      };
     };
   };
 }
