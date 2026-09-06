@@ -211,6 +211,11 @@
       User agent
       HostName 2.28.71.181
       IdentityFile ${config.sops.secrets.stonks-anal-agent.path}
+
+    Host stonks-anal-admin
+      User admin
+      HostName 2.28.71.181
+      IdentityFile ${config.sops.secrets.stonks-anal-admin.path}
     '';
     knownHosts =
     {
