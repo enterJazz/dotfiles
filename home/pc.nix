@@ -35,7 +35,7 @@
       # firefox-wayland
       foliate
       # google-chrome
-      #claude-code
+      claude-code # from claude-code-nix overlay, not nixpkgs
       jq
       keepassxc
       htop

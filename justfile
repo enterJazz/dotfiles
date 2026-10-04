@@ -21,6 +21,11 @@ frieda:
 server:
     nix run --impure .#switch-$(whoami)-hm-server
 
+# pull the newest claude-code release, then re-switch home-manager
+claude-update:
+    nix flake update claude-code
+    just pc
+
 init-links:
     @ mkdir -p ~/.ssh/keys \
       ~/.config/home-manager
