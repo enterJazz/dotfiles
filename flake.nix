@@ -25,6 +25,9 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
 
+    # tracks upstream claude-code releases hourly; bump with `just claude-update`
+    claude-code.url = "github:sadjow/claude-code-nix";
+
     # NOTE: appears to currently break building of nixos-options? (since 26.05)
     # lix-module =
     # {
@@ -42,6 +45,7 @@
     , sops-nix
     , lanzaboote
     , flake-parts
+    , claude-code
     # , lix-module
     , ... }:
   # https://flake.parts/getting-started
@@ -79,7 +83,7 @@
       {
         inherit system;
         config.allowUnfree = true;
-        overlays = [ nur.overlays.default ];
+        overlays = [ nur.overlays.default claude-code.overlays.default ];
         config.permittedInsecurePackages = [ "electron-39.8.10" "nix-2.15.3" ];
       };
 
