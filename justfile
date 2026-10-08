@@ -21,9 +21,15 @@ frieda:
 server:
     nix run --impure .#switch-$(whoami)-hm-server
 
-# pull the newest claude-code release, then re-switch home-manager
-claude-update:
-    nix flake update claude-code
+# pin claude-code to the newest upstream release, then re-switch home-manager
+claude-update version="":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    base="https://downloads.claude.ai/claude-code-releases"
+    version="{{version}}"
+    [ -n "$version" ] || version=$(curl -fsSL "$base/latest")
+    curl -fsSL "$base/$version/manifest.json" -o {{proot}}/home/modules/claude-code/manifest.json
+    echo "claude-code -> $version"
     just pc
 
 init-links:

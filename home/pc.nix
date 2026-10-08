@@ -3,6 +3,7 @@
   imports =
   [
     ./common/linux.nix
+    ./modules/claude-code.nix
     ./modules/direnv.nix
     ./modules/foot.nix
     ./modules/fzf.nix
@@ -35,7 +36,6 @@
       # firefox-wayland
       foliate
       # google-chrome
-      claude-code # from claude-code-nix overlay, not nixpkgs
       jq
       keepassxc
       htop
