@@ -49,6 +49,7 @@
       pavucontrol
       playerctl
       rename
+      rustup # toolchains via `rustup default stable`; works on NixOS thanks to nix-ld
       shotman
       shotwell
       signal-desktop # -> broken 25.05
@@ -71,6 +72,9 @@
       MOZ_ENABLE_WAYLAND = 1;
       XDG_CURRENT_DESKTOP = "sway";
     };
+
+    # `cargo install` binaries
+    sessionPath = [ "$HOME/.cargo/bin" ];
   };
 
   programs =
