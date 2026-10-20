@@ -228,6 +228,13 @@ in
       endif
       let g:ale_fixers['rust'] = ['rustfmt']
 
+      " Lint with cargo only; ALE would otherwise also start rust-analyzer,
+      " which rustup puts on PATH.
+      if !exists("g:ale_linters")
+        let g:ale_linters = {}
+      endif
+      let g:ale_linters['rust'] = ['cargo']
+
 
       " Run cargo check/clippy on all targets, including examples, tests, etc.
       " when linting.
