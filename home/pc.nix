@@ -22,6 +22,7 @@
       # authy -> EOL 24.05
       slack
       s3cmd
+      gcc
       # telegram-desktop
       brightnessctl
       bitwarden-desktop
@@ -36,6 +37,7 @@
       # firefox-wayland
       foliate
       # google-chrome
+      gh
       jq
       keepassxc
       htop
