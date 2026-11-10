@@ -12,7 +12,10 @@
       {
         sopsFile = ../secrets/ssh-hosts;
         format = "binary";
-        owner = config.users.users.robert.name;
+        # ssh refuses included config files not owned by root or the calling
+        # user; root (the nix daemon) and robert both read this one.
+        group = config.users.users.robert.group;
+        mode = "0440";
       };
       wpa_secrets =
       {
