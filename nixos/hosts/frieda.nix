@@ -22,6 +22,7 @@
     ../modules/fonts.nix
     ../modules/fwupd.nix
     ../modules/greetd.nix
+    ../modules/lanzaboote.nix
     ../modules/networking.nix
     ../modules/nix-ld.nix
     ../modules/pipewire.nix
@@ -152,21 +153,8 @@
 
   system.stateVersion = "23.11";
   
-  boot.loader =
-  {
-    grub =
-    {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
-      configurationLimit = 10;
-    };
-    efi =
-    {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot";
-    };
-  };
+  # bootloader: see ../modules/lanzaboote.nix
+  boot.loader.efi.efiSysMountPoint = "/boot";
 
   security =
   {
