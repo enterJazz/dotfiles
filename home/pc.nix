@@ -57,7 +57,24 @@
       signal-desktop # -> broken 25.05
       sshpass
       thunderbird
-      vscode-fhs
+      # TODO: drop the override once nixos-26.05 carries the fixes for
+      # vscode 1.144 (both already on nixpkgs master):
+      # - https://github.com/NixOS/nixpkgs/issues/584492: ripgrep moved to
+      #   @vscode/ripgrep-universal; the 26.05 derivation rm's the old path
+      #   and fails to build.
+      # - https://github.com/NixOS/nixpkgs/issues/584184: vsce-sign loses its
+      #   executable bit, so extension signature verification fails.
+      (vscode.overrideAttrs (old:
+      {
+        postPatch = builtins.replaceStrings
+          [ "resources/app/node_modules/@vscode/ripgrep/bin/rg" ]
+          [ "resources/app/node_modules/@vscode/ripgrep-universal/bin/linux-x64/rg" ]
+          old.postPatch;
+        postFixup = old.postFixup +
+        ''
+          chmod +x $out/lib/vscode/resources/app/node_modules/@vscode/vsce-sign/bin/vsce-sign
+        '';
+      })).fhs
       wdisplays
       wireguard-tools
       wl-clipboard
