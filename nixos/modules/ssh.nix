@@ -4,21 +4,17 @@
   , ...
 }:
 {
-  services.openssh =
-  {
-    enable = true;
-  };
-
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [22];
-  };
+  # outbound ssh only: no sshd, no open ports
+  networking.firewall.enable = true;
 
   programs.ssh =
   {
+    # The host list (names, IPs, users, jump chains) lives sops-encrypted in
+    # ../secrets/ssh-hosts; IdentityFile entries there point at /run/secrets/<name>.
+    # Edit: sops --input-type binary --output-type binary nixos/secrets/ssh-hosts
     extraConfig =
     ''
-      # host list removed from history; now in the sops secret ssh-hosts
+      Include ${config.sops.secrets.ssh-hosts.path}
     '';
     knownHosts =
     {

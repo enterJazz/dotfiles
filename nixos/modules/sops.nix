@@ -7,6 +7,13 @@
     # defaultSopsFile = ./secrets.yaml;
     secrets =
     {
+      # ssh client host list, included from /etc/ssh/ssh_config
+      ssh-hosts =
+      {
+        sopsFile = ../secrets/ssh-hosts;
+        format = "binary";
+        owner = config.users.users.robert.name;
+      };
       wpa_secrets =
       {
         sopsFile = ../secrets/wpa_secrets.env;
