@@ -1,75 +1,38 @@
-# NOTE: possibly helpful: https://alberand.com/nixos-wireguard-vpn.html
-# interesting multi-setup: https://github.com/LongerHV/nixos-configuration/blob/5f7a9336f564968c82eed59e59132d92c05c0ff5/nixos/mordor/vpn.nix
-{ lib, config, pkgs, ... }:
+{ config, pkgs, ... }:
 let
-  wgScontainInterface = "wg-scontain";
-  scontainVpnServer = "REDACTED";
-  wgAustriaRestricted = "wg-at-restrict";
+  wgInterface = "wg-scontain";
 in
 {
   environment.systemPackages = with pkgs; [ wireguard-tools ];
-  
-  services.resolved =
+
+  # Endpoint, peer, addresses, routes and DNS all live sops-encrypted:
+  # - ../secrets/wg-scontain-conf: a wg-quick config; it loads the private
+  #   key and PSK from /run/secrets/wg-scontain-{privkey,psk} in PostUp.
+  # - ../secrets/resolved-scontain: a systemd-resolved drop-in.
+  # Edit: sops --input-type binary --output-type binary nixos/secrets/<file>
+  sops.secrets =
   {
-    enable = true;
-    settings = {
-      #Match =
-      #{
-      #  Name = wgScontainInterface;
-      #};
-      Resolve =
-      {
-        DNS = "REDACTED";
-        Domains = "REDACTED REDACTED REDACTED";
-      };
+    wg-scontain-conf =
+    {
+      sopsFile = ../secrets/wg-scontain-conf;
+      format = "binary";
+    };
+    resolved-scontain =
+    {
+      sopsFile = ../secrets/resolved-scontain;
+      format = "binary";
+      mode = "0444"; # read by the systemd-resolve user
+      restartUnits = [ "systemd-resolved.service" ];
     };
   };
 
-  networking.wg-quick.interfaces = {
-#    ${wgAustriaRestricted} = {
-#      address = [ "REDACTED" "REDACTED" ];
-#
-#      dns = [ "REDACTED" ];
-#
-#      # listenPort = 51820;
-#
-#      privateKeyFile = config.sops.secrets.wg-mullvad-privkey.path;
-#
-#      peers = [
-#        {
-#          publicKey = "REDACTED";
-#          allowedIPs = [ "0.0.0.0/0" "::0/0" ];
-#          endpoint = "REDACTED";
-#          persistentKeepalive = 25;
-#        }
-#      ];
-#      # autostart = if (config.networking.hostName == "barnabas") then true else false;
-#    };
+  services.resolved.enable = true;
+  environment.etc."systemd/resolved.conf.d/10-vpn.conf".source =
+    config.sops.secrets.resolved-scontain.path;
 
-    ${wgScontainInterface} = {
-      address = [ "REDACTED" ];
-
-       postUp =
-       ''
-         resolvectl dns ${wgScontainInterface} REDACTED
-         resolvectl domain ${wgScontainInterface} REDACTED REDACTED REDACTED
-       '';
-
-      mtu = 1280;
-
-      privateKeyFile = config.sops.secrets.wg-scontain-privkey.path;
-      peers = [
-        {
-          allowedIPs = [ "REDACTED" "REDACTED" ];
-          # allowedIPs = [ "0.0.0.0/0" ];
-          publicKey = "REDACTED";
-          endpoint = "${scontainVpnServer}";
-          persistentKeepalive = 25;
-          presharedKeyFile = config.sops.secrets.wg-scontain-psk.path;
-        }
-      ];
-      autostart = if (config.networking.hostName == "klamm") then true else false;
-    };
+  networking.wg-quick.interfaces.${wgInterface} =
+  {
+    configFile = config.sops.secrets.wg-scontain-conf.path;
+    autostart = config.networking.hostName == "klamm";
   };
-
 }
