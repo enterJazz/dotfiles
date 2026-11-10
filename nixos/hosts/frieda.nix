@@ -85,6 +85,7 @@
         "wheel"
         "video"
         "audio"
+        "networkmanager" # manage connections (nmtui/nmcli) without sudo
         # config.users.groups.keys.age
       ]; # Enable ‘sudo’ for the user.
     };
