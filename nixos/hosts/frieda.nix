@@ -26,7 +26,7 @@
     ../modules/networking.nix
     ../modules/nix-ld.nix
     ../modules/pipewire.nix
-    # ../modules/remote-builder.nix
+    ../modules/remote-builder.nix
     ../modules/sops.nix
     ../modules/ssh.nix
     ../modules/virt-manager.nix
