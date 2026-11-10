@@ -72,6 +72,9 @@ in
     # clang-tools_16
   ];
 
+  # read man pages in neovim (:Man)
+  home.sessionVariables.MANPAGER = "nvim +Man!";
+
   programs.neovim =
   {
     enable = true;
