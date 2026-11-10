@@ -21,7 +21,8 @@ frieda:
 server:
     nix run --impure .#switch-$(whoami)-hm-server
 
-# pin claude-code to the newest upstream release, then re-switch home-manager
+# refresh the vendored fallback claude-code manifest (used by
+# `CLAUDE_CODE_PINNED=1 just pc`); `just pc` itself always resolves the newest release
 claude-update version="":
     #!/usr/bin/env bash
     set -euo pipefail
@@ -29,8 +30,7 @@ claude-update version="":
     version="{{version}}"
     [ -n "$version" ] || version=$(curl -fsSL "$base/latest")
     curl -fsSL "$base/$version/manifest.json" -o {{proot}}/home/modules/claude-code/manifest.json
-    echo "claude-code -> $version"
-    just pc
+    echo "vendored claude-code manifest -> $version"
 
 init-links:
     @ mkdir -p ~/.ssh/keys \
