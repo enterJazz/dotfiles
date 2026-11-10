@@ -62,6 +62,12 @@
         format = "binary";
         owner = config.users.users.robert.name;
       };
+      gitlab-scontain-com =
+      {
+        sopsFile = ../secrets/keys/gitlab.scontain.com;
+        format = "binary";
+        owner = config.users.users.robert.name;
+      };
       gitlab-lrz =
       {
         sopsFile = ../secrets/keys/gitlab.lrz.de;
