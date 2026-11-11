@@ -4,6 +4,7 @@
   imports =
   [
     ../common/linux.nix
+    ../modules/claude-code.nix
   ];
 
   home = {
@@ -14,13 +15,10 @@
       rename
       # bitwarden
       pass
-      neofetch
+      hyfetch # provides neowofetch, the maintained neofetch fork
       htop
-      diesel-cli
       docker-compose
-      sqlite
       rustup
-      gemini-cli
     ];
   };
 
@@ -30,18 +28,12 @@
     ssh =
     {
       enable = true;
-      matchBlocks =
+      # the old home-manager defaults equal OpenSSH's own defaults
+      enableDefaultConfig = false;
+      settings =
       {
-        dosServer = lib.hm.dag.entryBefore [ "any" ]
-        {
-          host = "*.dos.cit.tum.de";
-          identityFile = "~/.ssh/keys/dos.cit.tum.de";
-        };
-        any =
-        {
-          host = "*";
-          identityFile = "~/.ssh/keys/%r@%h";
-        };
+        # "*" is always written last
+        "*".IdentityFile = "~/.ssh/keys/%r@%h";
       };
     };
     password-store =
